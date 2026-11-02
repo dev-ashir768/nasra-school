@@ -1,0 +1,94 @@
+/* ==================================================================
+   Nasra School - site CSS (scrollbar, smooth scroll, animations)
+   Brand: #0D6616 primary, #162716 dark, #7ED957 lime
+   ================================================================== */
+
+/* ---------- Smooth scroll (Lenis adds .lenis; CSS fallback otherwise) ---------- */
+html { scroll-behavior: smooth; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- Custom scrollbar ---------- */
+html {
+    scrollbar-width: thin;                      /* Firefox */
+    scrollbar-color: #0D6616 #eef5ef;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #eef5ef; }
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #177B12, #0D6616 60%, #162716);
+    border-radius: 999px;
+    border: 2px solid #eef5ef;
+}
+::-webkit-scrollbar-thumb:hover { background: #162716; }
+
+::selection { background: #7ED957; color: #162716; }
+
+/* ---------- Scroll progress bar ---------- */
+#scroll-progress {
+    position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 60;
+    background: linear-gradient(90deg, #7ED957, #177B12, #0D6616);
+    transform-origin: 0 50%; transform: scaleX(0);
+}
+
+/* ---------- Back to top ---------- */
+#back-to-top {
+    position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40;
+    width: 3rem; height: 3rem; border-radius: 999px;
+    display: grid; place-items: center;
+    background: #0D6616; color: #fff;
+    box-shadow: 0 10px 25px -5px rgba(13, 102, 22, .45);
+    opacity: 0; transform: translateY(1rem) scale(.8); pointer-events: none;
+    transition: opacity .35s ease, transform .35s ease, background .2s;
+}
+#back-to-top.is-shown { opacity: 1; transform: none; pointer-events: auto; }
+#back-to-top:hover { background: #162716; transform: translateY(-3px); }
+
+/* ---------- Header on scroll ---------- */
+#site-header.is-scrolled { box-shadow: 0 8px 30px -12px rgba(22, 39, 22, .25); }
+#site-header.is-scrolled #site-logo { width: 3rem; height: 3rem; }
+
+/* ---------- Buttons: arrow nudge ---------- */
+.btn .fa-arrow-right { transition: transform .3s ease; }
+.btn:hover .fa-arrow-right { transform: translateX(4px); }
+
+/* ==================================================================
+   Animations
+   ================================================================== */
+:root { --ease-out: cubic-bezier(.16, 1, .3, 1); }
+
+/* Hero entrance (runs on page load, staggered with --d) */
+.hero-in { animation: heroIn 1s var(--ease-out) both; animation-delay: var(--d, 0s); }
+.hero-photo { animation: heroPhoto 1.4s var(--ease-out) both; }
+@keyframes heroIn    { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes heroPhoto { from { opacity: 0; transform: translateX(60px); clip-path: inset(0 0 0 100%); } to { opacity: 1; transform: none; clip-path: inset(0 0 0 0); } }
+
+/* Scroll reveal - hidden only when JS is running, so content is always visible to crawlers/no-JS */
+.js [data-animate] {
+    opacity: 0;
+    transition: opacity .9s var(--ease-out), transform .9s var(--ease-out);
+    transition-delay: var(--delay, 0ms);
+    will-change: opacity, transform;
+}
+.js [data-animate="fade-up"]    { transform: translateY(40px); }
+.js [data-animate="fade-left"]  { transform: translateX(50px); }
+.js [data-animate="fade-right"] { transform: translateX(-50px); }
+.js [data-animate="zoom"]       { transform: scale(.92); }
+.js [data-animate].is-visible   { opacity: 1; transform: none; }
+
+/* Hero photo edge: part of a large ellipse whose centre sits below the section,
+   so the curve sweeps from ~35% across at the top to the left edge at the bottom
+   and never turns vertical (which looked "cut off" on wide screens). */
+.hero-curve { clip-path: ellipse(101.6% 169.1% at 100% 130%); }
+
+/* Slow zoom on the hero photo */
+.ken-burns { animation: kenBurns 20s ease-in-out infinite alternate; }
+@keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.08); } }
+
+/* ---------- Respect users who prefer less motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    .js [data-animate] { opacity: 1; transform: none; }
+}

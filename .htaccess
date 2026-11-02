@@ -1,0 +1,23 @@
+# ------------------------------------------------------------------
+# Root .htaccess
+# Sends every request into /public so app/, storage/ etc. are
+# never reachable from the web. If your host lets you set
+# the document root, point it at /public and this file isn't needed.
+# ------------------------------------------------------------------
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Already inside public/ -> stop
+    RewriteRule ^public/ - [L]
+
+    # Everything else -> public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Block dotfiles and project files if rewrite is unavailable
+<FilesMatch "^(\.|README\.md)">
+    Require all denied
+</FilesMatch>
