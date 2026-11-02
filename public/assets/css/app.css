@@ -82,6 +82,39 @@ html {
    and never turns vertical (which looked "cut off" on wide screens). */
 .hero-curve { clip-path: ellipse(101.6% 169.1% at 100% 130%); }
 
+/* ---------- Hero slider dots ----------
+   Frosted pill so the dots read on any photo; the current dot stretches and a lime bar
+   fills it over the slide's duration (--slide-time, set by JS) so visitors see what's next. */
+.hero-dots {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 10px; border-radius: 999px;
+    background: rgba(22, 39, 22, .45);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    box-shadow: 0 6px 20px -6px rgba(0, 0, 0, .35);
+}
+.hero-dots.is-vertical { flex-direction: column; padding: 10px 8px; }
+.hero-dots button {
+    position: relative; overflow: hidden; flex: none;
+    width: 10px; height: 10px; border-radius: 999px;
+    background: rgba(255, 255, 255, .55);
+    transition: width .5s var(--ease-out), height .5s var(--ease-out), background .3s;
+    cursor: pointer;
+}
+.hero-dots button:hover { background: #fff; }
+.hero-dots button:focus-visible { outline: 2px solid #7ED957; outline-offset: 3px; }
+.hero-dots button.is-current { width: 36px; background: rgba(255, 255, 255, .35); }
+.hero-dots.is-vertical button.is-current { width: 10px; height: 36px; }
+
+.hero-dots .dot-fill {
+    position: absolute; inset: 0; border-radius: inherit; background: #7ED957;
+    transform: scaleX(0); transform-origin: left center;
+}
+.hero-dots.is-vertical .dot-fill { transform: scaleY(0); transform-origin: center top; }
+.hero-dots button.is-current .dot-fill { animation: dotFillX var(--slide-time, 6s) linear forwards; }
+.hero-dots.is-vertical button.is-current .dot-fill { animation-name: dotFillY; }
+@keyframes dotFillX { to { transform: scaleX(1); } }
+@keyframes dotFillY { to { transform: scaleY(1); } }
+
 /* Slow zoom on the hero photo */
 .ken-burns { animation: kenBurns 20s ease-in-out infinite alternate; }
 @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.08); } }

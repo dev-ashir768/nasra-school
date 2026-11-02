@@ -109,6 +109,50 @@ $(function () {
         $('[data-count]').each(function () { counterObserver.observe(this); });
     }
 
+    // ---------- Hero photo slider (crossfade; heading and buttons stay put) ----------
+    $('[data-hero-slider]').each(function () {
+        const $root = $(this);
+        const $slides = $root.find('.hero-slide');
+        const $dots = $root.find('.hero-dots button');
+        const slideTime = 6000;
+        let index = 0;
+        let timer = null;
+
+        if ($slides.length < 2) return;
+
+        // The lime progress bar in the current dot fills over the same time as the autoplay
+        $root.find('.hero-dots')[0].style.setProperty('--slide-time', slideTime + 'ms');
+
+        function show(n) {
+            $slides.eq(index).removeClass('is-active opacity-100').addClass('opacity-0').attr('aria-hidden', true);
+            index = (n + $slides.length) % $slides.length;
+            $slides.eq(index).removeClass('opacity-0').addClass('is-active opacity-100').attr('aria-hidden', false);
+
+            $dots.removeClass('is-current').removeAttr('aria-current');
+            const dot = $dots.eq(index).addClass('is-current').attr('aria-current', 'true')[0];
+            // restart the fill animation even if the same dot is chosen again
+            const fill = dot.querySelector('.dot-fill');
+            fill.style.animation = 'none';
+            fill.offsetWidth;
+            fill.style.animation = '';
+        }
+
+        function play() {
+            if (reduceMotion) return;
+            clearInterval(timer);
+            timer = setInterval(function () { show(index + 1); }, slideTime);
+        }
+
+        $dots.each(function (n) { $(this).on('click', function () { show(n); play(); }); });
+
+        // Start the other photos downloading once the page has loaded, so each fade is instant
+        $(window).on('load', function () {
+            $slides.find('img[loading="lazy"]').attr('loading', 'eager');
+        });
+
+        play();
+    });
+
     // ---------- Testimonials slider ----------
     $('.testimonials').each(function () {
         const $root = $(this);

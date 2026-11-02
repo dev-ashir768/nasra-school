@@ -1,4 +1,12 @@
 <?php
+// Hero photo slider: image, alt text. The first one loads immediately (it's the LCP image).
+$heroSlides = [
+    ['home/hero.jpg',     'Nasra School students walking to class'],
+    ['home/legacy-1.jpg', 'A Nasra School campus building'],
+    ['home/hero-2.jpg',   'Students in green Nasra School uniforms on campus'],
+    ['home/campus-1.jpg', 'Student batting in a school cricket match'],
+];
+
 // icon, label, chip colours (each value gets its own palette accent)
 $values = [
     ['fa-handshake',     'Tolerance',     'bg-primary/10 text-primary'],
@@ -30,10 +38,22 @@ $stages = [
     <!-- Photo with curved left edge (desktop) -->
     <div class="hero-photo absolute inset-y-0 right-0 hidden w-[52%] lg:block xl:w-[62%]">
         <div class="hero-curve absolute inset-y-0 -left-4 right-4 bg-gradient-to-b from-gradient-lime/70 to-primary/50"></div>
-        <div class="hero-curve absolute inset-0 overflow-hidden">
-            <?= photo('home/hero.png', 'Nasra School students walking on campus', 'ken-burns h-full w-full', true) ?>
+        <div class="hero-curve absolute inset-0 overflow-hidden" data-hero-slider aria-roledescription="carousel" aria-label="Life at Nasra School">
+            <?php foreach ($heroSlides as $i => [$img, $alt]): ?>
+                <div class="hero-slide absolute inset-0 transition-opacity duration-[1400ms] ease-in-out <?= $i === 0 ? 'is-active opacity-100' : 'opacity-0' ?>" aria-hidden="<?= $i === 0 ? 'false' : 'true' ?>">
+                    <?= photo($img, $alt, 'ken-burns h-full w-full', $i === 0) ?>
+                </div>
+            <?php endforeach; ?>
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-dark/30 via-transparent to-transparent"></div>
+
+            <!-- Vertical progress dots -->
+            <div class="hero-dots is-vertical absolute right-6 top-1/2 z-10 -translate-y-1/2">
+                <?php foreach ($heroSlides as $i => $_): ?>
+                    <button type="button" class="<?= $i === 0 ? 'is-current' : '' ?>" aria-label="Show photo <?= $i + 1 ?> of <?= count($heroSlides) ?>"<?= $i === 0 ? ' aria-current="true"' : '' ?>><span class="dot-fill"></span></button>
+                <?php endforeach; ?>
+            </div>
         </div>
-        <span class="absolute bottom-16 right-10 -rotate-6 font-script text-4xl text-white drop-shadow-lg">Since 1949</span>
+        <span class="pointer-events-none absolute bottom-16 right-14 -rotate-6 font-script text-4xl text-white drop-shadow-lg">Since 1949</span>
     </div>
 
     <div class="container relative pb-28 pt-14 lg:pb-36 lg:pt-20">
@@ -54,9 +74,19 @@ $stages = [
         </div>
 
         <!-- Photo (mobile / tablet) -->
-        <div class="hero-in relative mt-10 overflow-hidden rounded-3xl lg:hidden" style="--d:.7s">
-            <?= photo('home/hero.png', 'Nasra School students walking on campus', 'aspect-[4/3] w-full', true) ?>
+        <div class="hero-in relative mt-10 aspect-[4/3] overflow-hidden rounded-3xl lg:hidden" style="--d:.7s" data-hero-slider aria-roledescription="carousel" aria-label="Life at Nasra School">
+            <?php foreach ($heroSlides as $i => [$img, $alt]): ?>
+                <div class="hero-slide absolute inset-0 transition-opacity duration-[1400ms] ease-in-out <?= $i === 0 ? 'is-active opacity-100' : 'opacity-0' ?>" aria-hidden="<?= $i === 0 ? 'false' : 'true' ?>">
+                    <?= photo($img, $alt, 'h-full w-full', $i === 0) ?>
+                </div>
+            <?php endforeach; ?>
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-dark/50 via-transparent to-transparent"></div>
             <span class="absolute bottom-4 right-5 -rotate-6 font-script text-3xl text-white drop-shadow-lg">Since 1949</span>
+            <div class="hero-dots absolute bottom-4 left-4 z-10">
+                <?php foreach ($heroSlides as $i => $_): ?>
+                    <button type="button" class="<?= $i === 0 ? 'is-current' : '' ?>" aria-label="Show photo <?= $i + 1 ?> of <?= count($heroSlides) ?>"<?= $i === 0 ? ' aria-current="true"' : '' ?>><span class="dot-fill"></span></button>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>
