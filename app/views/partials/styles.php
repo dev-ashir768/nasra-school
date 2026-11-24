@@ -50,10 +50,10 @@
         }
 
         .nav-link {
-            @apply relative px-3 py-2 text-sm font-semibold text-ink/80 transition hover:text-primary;
+            @apply relative px-2.5 py-2 text-[13px] font-medium text-ink/70 transition hover:text-primary 2xl:px-3 2xl:text-sm;
         }
         .nav-link-active {
-            @apply text-primary after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded after:bg-accent;
+            @apply font-semibold text-primary after:absolute after:inset-x-2 after:bottom-0 after:h-[2px] after:bg-accent;
         }
 
         .form-label {

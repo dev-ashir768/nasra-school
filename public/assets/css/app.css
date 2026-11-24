@@ -46,9 +46,12 @@ html {
 #back-to-top:hover { background: #00331A; transform: translateY(-3px); }
 
 /* ---------- Header on scroll ---------- */
-#site-header.is-scrolled { box-shadow: 0 8px 30px -12px rgba(0, 51, 26, .25); }
-#site-header.is-scrolled #site-logo { width: 2.75rem; height: 2.75rem; }
+#site-header.is-scrolled { box-shadow: 0 4px 20px -8px rgba(0, 0, 0, .12); }
 #site-header.is-scrolled .site-topbar { display: none; }
+#site-header.is-scrolled #site-logo {
+    width: 2.5rem;
+    height: 2.5rem;
+}
 
 /* ---------- Hamburger (morphs into an X) ---------- */
 .burger {
