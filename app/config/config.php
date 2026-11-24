@@ -49,9 +49,9 @@ return [
     'instagram_feed' => [
         'handle' => 'nasraschools',
         'posts'  => [
+            'https://www.instagram.com/p/DgFU0XKFs2x/',
             'https://www.instagram.com/p/Dfok-oxnGqu/',
             'https://www.instagram.com/p/DeHLsQwlg1D/',
-            'https://www.instagram.com/p/DgFU0XKFs2x/',
             'https://www.instagram.com/reel/Df4b8kCjr1n/',
             'https://www.instagram.com/p/De1TtdLCXBR/',
             'https://www.instagram.com/p/DeOa26FFp2E/',

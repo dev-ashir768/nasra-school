@@ -364,7 +364,7 @@ $igProfile = config('social.instagram') ?: ('https://www.instagram.com/' . $igHa
                 Instagram
             </p>
             <h2 id="instagram-title" class="section-title mt-4">@<?= e($igHandle) ?></h2>
-            <p class="lead mt-3">Moments from our campuses, classrooms and community — follow Nasra for daily life at ETNS.</p>
+            <p class="lead mt-3">Moments from our campuses, classrooms and community follow Nasra for daily life at ETNS.</p>
             <a href="<?= e($igProfile) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-6">
                 <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                 Follow on Instagram
