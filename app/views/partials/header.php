@@ -50,6 +50,29 @@ $navIcons = [
 ];
 
 $isSection = fn(string $path) => $path === '/' ? is_active('/') : strpos(Router::currentPath(), $path) === 0;
+
+/** Render one primary nav item (with optional dropdown). */
+$renderNavItem = static function (string $label, $item, callable $isSection): void {
+    [$path, $children] = is_array($item) ? $item : [$item, []];
+    if ($children) {
+        echo '<div class="group relative">';
+        echo '<a href="' . e(base_url($path)) . '" class="nav-link inline-flex items-center gap-1.5 ' . ($isSection($path) ? 'nav-link-active' : '') . '">';
+        echo e($label) . '<i class="fa-solid fa-chevron-down text-[9px] opacity-50"></i></a>';
+        echo '<div class="invisible absolute left-1/2 top-full z-20 w-56 -translate-x-1/2 pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100">';
+        echo '<div class="rounded-md border border-black/5 bg-white py-2 shadow-lg">';
+        foreach ($children as $childLabel => $childPath) {
+            echo '<a href="' . e(base_url($childPath)) . '" class="block px-4 py-2 text-sm text-ink/75 hover:bg-black/[0.03] hover:text-primary">' . e($childLabel) . '</a>';
+        }
+        echo '</div></div></div>';
+        return;
+    }
+    echo '<a href="' . e(base_url($path)) . '" class="nav-link ' . ($isSection($path) ? 'nav-link-active' : '') . '">' . e($label) . '</a>';
+};
+
+$navKeys = array_keys($navLinks);
+$navMid = (int) ceil(count($navKeys) / 2);
+$navLeft = array_slice($navLinks, 0, $navMid, true);
+$navRight = array_slice($navLinks, $navMid, null, true);
 ?>
 <header id="site-header" class="sticky top-0 z-50 bg-white transition-shadow duration-300">
     <!-- Top bar -->
@@ -80,53 +103,46 @@ $isSection = fn(string $path) => $path === '/' ? is_active('/') : strpos(Router:
         </div>
     </div>
 
-    <!-- Main navbar -->
+    <!-- Main navbar: mobile = logo left; desktop xl = logo centered with split nav -->
     <div class="border-b border-black/5 bg-white">
-        <div class="container flex h-16 items-center gap-4 lg:h-[4.25rem]">
+        <!-- Mobile / tablet -->
+        <div class="container flex h-16 items-center gap-4 xl:hidden">
             <a href="<?= base_url() ?>" class="flex shrink-0 items-center" aria-label="Nasra School home">
-                <img
-                    src="<?= asset('images/branding/logo.webp') ?>"
-                    alt="Nasra School"
-                    width="56"
-                    height="56"
-                    id="site-logo"
-                    class="h-11 w-11 rounded-full object-cover lg:h-12 lg:w-12"
-                >
+                <img src="<?= asset('images/branding/logo.webp') ?>" alt="Nasra School" width="56" height="56" class="site-logo h-11 w-11 rounded-full object-cover">
             </a>
-
-            <div class="mx-1 hidden h-8 w-px shrink-0 bg-black/10 xl:block" aria-hidden="true"></div>
-
-            <nav class="hidden flex-1 items-center justify-center gap-1 xl:flex" aria-label="Primary">
-                <?php foreach ($navLinks as $label => $item): ?>
-                    <?php [$path, $children] = is_array($item) ? $item : [$item, []]; ?>
-                    <?php if ($children): ?>
-                        <div class="group relative">
-                            <a href="<?= base_url($path) ?>" class="nav-link inline-flex items-center gap-1.5 <?= $isSection($path) ? 'nav-link-active' : '' ?>">
-                                <?= e($label) ?>
-                                <i class="fa-solid fa-chevron-down text-[9px] opacity-50"></i>
-                            </a>
-                            <div class="invisible absolute left-1/2 top-full z-20 w-56 -translate-x-1/2 pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100">
-                                <div class="rounded-md border border-black/5 bg-white py-2 shadow-lg">
-                                    <?php foreach ($children as $childLabel => $childPath): ?>
-                                        <a href="<?= base_url($childPath) ?>" class="block px-4 py-2 text-sm text-ink/75 hover:bg-black/[0.03] hover:text-primary"><?= e($childLabel) ?></a>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                    <?php else: ?>
-                        <a href="<?= base_url($path) ?>" class="nav-link <?= $isSection($path) ? 'nav-link-active' : '' ?>"><?= e($label) ?></a>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </nav>
-
-            <div class="ml-auto flex items-center gap-3 xl:ml-0">
-                <a href="<?= base_url('admissions') ?>" class="btn btn-primary hidden !rounded-md !px-4 !py-2.5 !text-xs font-semibold sm:inline-flex">
-                    Admissions
-                </a>
-                <button type="button" id="menu-toggle" class="burger xl:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+            <div class="ml-auto flex items-center gap-3">
+                <a href="<?= base_url('admissions') ?>" class="btn btn-primary hidden !rounded-md !px-4 !py-2.5 !text-xs font-semibold sm:inline-flex">Admissions</a>
+                <button type="button" id="menu-toggle" class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span></span><span></span><span></span>
                 </button>
             </div>
+        </div>
+
+        <!-- Desktop: centered logo, nav split left / right -->
+        <div class="container relative hidden h-[5.25rem] items-center xl:flex">
+            <nav class="flex flex-1 items-center justify-end gap-0.5 pr-[4.75rem] 2xl:gap-1 2xl:pr-[5.5rem]" aria-label="Primary left">
+                <?php foreach ($navLeft as $label => $item): ?>
+                    <?php $renderNavItem($label, $item, $isSection); ?>
+                <?php endforeach; ?>
+            </nav>
+
+            <a href="<?= base_url() ?>" class="site-logo-link absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2" aria-label="Nasra School home">
+                <img
+                    src="<?= asset('images/branding/logo.webp') ?>"
+                    alt="Nasra School"
+                    width="72"
+                    height="72"
+                    id="site-logo"
+                    class="site-logo h-[4.25rem] w-[4.25rem] rounded-full object-cover ring-2 ring-white"
+                >
+            </a>
+
+            <nav class="flex flex-1 items-center justify-start gap-0.5 pl-[4.75rem] 2xl:gap-1 2xl:pl-[5.5rem]" aria-label="Primary right">
+                <?php foreach ($navRight as $label => $item): ?>
+                    <?php $renderNavItem($label, $item, $isSection); ?>
+                <?php endforeach; ?>
+                <a href="<?= base_url('admissions') ?>" class="btn btn-primary ml-3 !rounded-md !px-4 !py-2.5 !text-xs font-semibold">Admissions</a>
+            </nav>
         </div>
     </div>
 </header>

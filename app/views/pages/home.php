@@ -350,13 +350,13 @@ $campusPillars = [
 </section>
 
 <!-- ============ FOUNDER ============ -->
-<section class="founder-section relative bg-white" aria-labelledby="legacy-title">
-    <div class="grid items-stretch lg:grid-cols-[minmax(0,38%)_minmax(0,62%)]">
+<section class="founder-section relative overflow-hidden bg-white" aria-labelledby="legacy-title">
+    <div class="founder-section__inner grid items-stretch lg:grid-cols-[minmax(0,38%)_minmax(0,62%)]">
         <div class="founder-section__photo relative min-h-[280px] sm:min-h-[340px]" data-animate="fade-right">
-            <?= photo('home/founder.jpg', 'Nasra Wazir Ali (S.I.), founder of Nasra School', 'absolute inset-0 h-full w-full object-[50%_30%] grayscale') ?>
+            <?= photo('home/founder.jpg', 'Nasra Wazir Ali (S.I.), founder of Nasra School', 'absolute inset-0 h-full w-full object-[50%_28%] grayscale') ?>
         </div>
 
-        <div class="grid items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1fr_auto] lg:gap-12 lg:py-20 lg:pl-14 lg:pr-10 xl:pr-16">
+        <div class="founder-section__copy grid items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1fr_auto] lg:gap-12 lg:py-20 lg:pl-14 lg:pr-10 xl:pr-16">
             <div data-animate="fade-up">
                 <p class="eyebrow">Late Founder of ETNS</p>
                 <h2 id="legacy-title" class="section-title mt-4 font-display">Nasra Wazir Ali (S.I.)</h2>
@@ -377,9 +377,9 @@ $campusPillars = [
         </div>
     </div>
 
-    <!-- Wave sits on white section so ink CTA meets flush — no black gap -->
-    <svg class="founder-section__wave block w-full text-ink" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true">
-        <path fill="currentColor" d="M0 56V28c240 28 480-28 720-8s480 36 720 8v28H0z"/>
+    <!-- Ink wave overlays photo + copy so the image is cut organically — no white gap -->
+    <svg class="founder-section__wave text-ink" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="currentColor" d="M0 64V30c200 26 400-26 620-6 220 20 420 40 620 2 100-18 160-28 200-34V64H0z"/>
     </svg>
 </section>
 

@@ -50,9 +50,8 @@
     </div>
 
     <div class="border-t border-white/10">
-        <div class="container flex flex-col items-center justify-between gap-2 py-5 text-center text-xs sm:flex-row sm:text-left">
+        <div class="container py-5 text-center text-xs sm:text-left">
             <span>&copy; <?= date('Y') ?> Education Trust Nasra School. All rights reserved.</span>
-            <a href="https://nasraschool.edu.pk" class="font-semibold text-white hover:text-accent">nasraschool.edu.pk</a>
         </div>
     </div>
 </footer>
