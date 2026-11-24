@@ -164,7 +164,7 @@ $legacyPillars = [
         <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
             <p class="eyebrow justify-center">The Nasra School System</p>
             <h2 id="difference-title" class="section-title mt-4">The Nasra Difference</h2>
-            <p class="lead mt-4">What sets Education Trust Nasra School apart — values lived every day across our campuses.</p>
+            <p class="lead mt-4">What sets Education Trust Nasra School apart values lived every day across our campuses.</p>
         </div>
 
         <!-- 5 cards: wrap + center so the last row never looks incomplete -->
@@ -257,24 +257,50 @@ $campusMosaic = [
     ['hero-2',    'Students in Nasra School uniforms'],
     ['legacy-1',  'Students on a Nasra School campus'],
 ];
+$campusPillars = [
+    ['fa-trophy',     'Sportsmanship'],
+    ['fa-palette',    'Creative Arts'],
+    ['fa-people-group', 'Leadership'],
+];
 ?>
-<section class="overflow-hidden bg-surface-soft py-20 lg:py-24">
-    <div class="container grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16 xl:gap-20">
+<section class="campus-section relative overflow-hidden py-20 lg:py-28" aria-labelledby="campus-title">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -left-20 top-1/4 h-72 w-72 rounded-full bg-primary/10 blur-3xl"></div>
+        <div class="absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-accent/20 blur-3xl"></div>
+    </div>
+
+    <div class="container relative grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 xl:gap-20">
         <div data-animate="fade-right">
             <p class="eyebrow">Campus Life</p>
-            <h2 class="section-title mt-4">Sportsmanship &amp; Community</h2>
-            <p class="lead mt-6 max-w-md">
+            <h2 id="campus-title" class="section-title mt-4">Sportsmanship &amp; Community</h2>
+            <p class="mt-3 font-script text-2xl text-primary/70 md:text-3xl">Where skill meets character</p>
+            <p class="lead mt-5 max-w-md">
                 Sportsmanship, strategy and cooperation form the basis of all team work — and along with honed skill lead to victory. From the field to creative arts and leadership programmes, campus life shapes confident Nasrarians.
             </p>
-            <a href="<?= base_url('campus-life') ?>" class="btn btn-primary mt-8">Explore Campus Life <i class="fa-solid fa-arrow-right"></i></a>
+
+            <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-3" aria-label="Campus life pillars">
+                <?php foreach ($campusPillars as [$icon, $label]): ?>
+                    <li class="inline-flex items-center gap-2.5 text-sm font-semibold text-primary">
+                        <span class="grid h-9 w-9 place-items-center rounded-full bg-primary/10 text-primary">
+                            <i class="fa-solid <?= $icon ?>"></i>
+                        </span>
+                        <?= e($label) ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+
+            <a href="<?= base_url('campus-life') ?>" class="btn btn-primary mt-10">Explore Campus Life <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
-        <div class="ss-mosaic mx-auto w-full max-w-md lg:max-w-none" data-animate="fade-left">
-            <?php foreach ($campusMosaic as $i => [$img, $alt]): ?>
-                <div class="ss-mosaic__item ss-mosaic__item--<?= $i + 1 ?>">
-                    <?= photo("home/{$img}.jpg", $alt, 'h-full w-full') ?>
-                </div>
-            <?php endforeach; ?>
+        <div class="campus-mosaic-wrap relative mx-auto w-full max-w-lg lg:max-w-none" data-animate="fade-left">
+            <div class="ss-mosaic" aria-label="Life at Nasra School">
+                <?php foreach ($campusMosaic as $i => [$img, $alt]): ?>
+                    <div class="ss-mosaic__item ss-mosaic__item--<?= $i + 1 ?>">
+                        <?= photo("home/{$img}.jpg", $alt, 'h-full w-full') ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <p class="mt-5 text-center font-script text-xl text-primary/60 lg:text-left">Life beyond the classroom</p>
         </div>
     </div>
 </section>
