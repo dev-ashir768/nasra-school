@@ -187,6 +187,17 @@ html.drawer-open { overflow: hidden; }
 .btn .fa-arrow-right { transition: transform .3s ease; }
 .btn:hover .fa-arrow-right { transform: translateX(4px); }
 
+/* ---------- Footer quick links ---------- */
+.footer-links a {
+    display: inline-block;
+    color: rgba(255, 255, 255, .75);
+    transition: color .2s ease, transform .2s ease;
+}
+.footer-links a:hover {
+    color: #FFCC00;
+    transform: translateX(3px);
+}
+
 /* ---------- Founder band ---------- */
 .founder-section {
     --founder-wave-h: 4rem;

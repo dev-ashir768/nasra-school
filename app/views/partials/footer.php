@@ -18,12 +18,15 @@
 
         <div>
             <h3 class="font-display text-base font-bold text-white">Quick Links</h3>
-            <ul class="mt-4 space-y-2 text-sm">
-                <li><a href="<?= base_url('about') ?>" class="hover:text-accent">About Us</a></li>
-                <li><a href="<?= base_url('academics') ?>" class="hover:text-accent">Academics</a></li>
-                <li><a href="<?= base_url('admissions') ?>" class="hover:text-accent">Admissions</a></li>
-                <li><a href="<?= base_url('campus-life') ?>" class="hover:text-accent">Campus Life</a></li>
-                <li><a href="<?= base_url('alumni') ?>" class="hover:text-accent">Alumni</a></li>
+            <ul class="footer-links mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5 text-sm sm:grid-cols-1">
+                <li><a href="<?= base_url() ?>">Home</a></li>
+                <li><a href="<?= base_url('about') ?>">About Us</a></li>
+                <li><a href="<?= base_url('academics') ?>">Academics</a></li>
+                <li><a href="<?= base_url('campus-life') ?>">Campus Life</a></li>
+                <li><a href="<?= base_url('admissions') ?>">Admissions</a></li>
+                <li><a href="<?= base_url('community') ?>">Community</a></li>
+                <li><a href="<?= base_url('careers') ?>">Careers</a></li>
+                <li><a href="<?= base_url('contact') ?>">Contact Us</a></li>
             </ul>
         </div>
 

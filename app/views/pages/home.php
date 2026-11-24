@@ -19,7 +19,7 @@ $differences = [
 
 // Real alumni testimonials from nasraschool.edu.pk/alumni
 $testimonials = [
-    ['Falak Naz', 'PhD Student, Mass Communications, Karachi University', 'My teachers were my mentors — they taught me how to be an ambassador of peace, light, and knowledge. They worked on me so I could become a symbol of change, a symbol of enlightenment.'],
+    ['Falak Naz', 'PhD Student, Mass Communications, Karachi University', 'My teachers were my mentors they taught me how to be an ambassador of peace, light, and knowledge. They worked on me so I could become a symbol of change, a symbol of enlightenment.'],
     ['Mohammad Sameer Kayani', 'Senior Actuarial Consultant · National Position Holder, SSC & HSSC', 'ETNS provided me with a solid foundation which helped me in every phase of my life later on. The hard work that my teachers put into my development was unparalleled.'],
     ['Urooba Adil', 'Fashion Design Student, Asian Institute of Fashion Design', 'Nasra School gave me the confidence and trust that I have in myself today. Our amazing teachers loved their students like their own children, moulding them into better people.'],
     ['M. Hozefa Haider', 'Computer Science Student, Habib University', 'One of the best things that Nasra School instilled in me is selflessness and the realization that respecting others begets respect in turn. I feel immensely proud to represent this institution.'],
@@ -269,8 +269,20 @@ $campusPillars = [
         <div class="absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-accent/20 blur-3xl"></div>
     </div>
 
-    <div class="container relative grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 xl:gap-20">
-        <div data-animate="fade-right">
+    <div class="container relative grid items-center gap-10 sm:gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 xl:gap-20">
+        <!-- Images first on mobile; text left on desktop -->
+        <div class="order-1 campus-mosaic-wrap relative mx-auto w-full max-w-lg lg:order-2 lg:max-w-none" data-animate="fade-left">
+            <div class="ss-mosaic" aria-label="Life at Nasra School">
+                <?php foreach ($campusMosaic as $i => [$img, $alt]): ?>
+                    <div class="ss-mosaic__item ss-mosaic__item--<?= $i + 1 ?>">
+                        <?= photo("home/{$img}.jpg", $alt, 'h-full w-full') ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <p class="mt-5 text-center font-script text-xl text-primary/60 lg:text-left">Life beyond the classroom</p>
+        </div>
+
+        <div class="order-2 lg:order-1" data-animate="fade-right">
             <p class="eyebrow">Campus Life</p>
             <h2 id="campus-title" class="section-title mt-4">Sportsmanship &amp; Community</h2>
             <p class="mt-3 font-script text-2xl text-primary/70 md:text-3xl">Where skill meets character</p>
@@ -291,17 +303,6 @@ $campusPillars = [
 
             <a href="<?= base_url('campus-life') ?>" class="btn btn-primary mt-10">Explore Campus Life <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-
-        <div class="campus-mosaic-wrap relative mx-auto w-full max-w-lg lg:max-w-none" data-animate="fade-left">
-            <div class="ss-mosaic" aria-label="Life at Nasra School">
-                <?php foreach ($campusMosaic as $i => [$img, $alt]): ?>
-                    <div class="ss-mosaic__item ss-mosaic__item--<?= $i + 1 ?>">
-                        <?= photo("home/{$img}.jpg", $alt, 'h-full w-full') ?>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-            <p class="mt-5 text-center font-script text-xl text-primary/60 lg:text-left">Life beyond the classroom</p>
-        </div>
     </div>
 </section>
 
@@ -313,13 +314,13 @@ $campusPillars = [
             <h2 id="testimonials-title" class="section-title mt-4">Voices of Nasra</h2>
         </div>
 
-        <div class="relative mx-auto mt-12 max-w-3xl">
-            <i class="fa-solid fa-quote-left absolute -top-2 left-0 text-4xl text-accent/80 md:-left-4 md:text-5xl" aria-hidden="true"></i>
+        <div class="relative mx-auto mt-10 max-w-3xl text-center">
+            <i class="fa-solid fa-quote-left mb-5 inline-block text-4xl text-accent md:mb-6 md:text-5xl" aria-hidden="true"></i>
 
             <div class="t-viewport overflow-hidden" aria-live="polite">
                 <div class="t-track flex transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]">
                     <?php foreach ($testimonials as $i => [$name, $role, $quote]): ?>
-                        <figure class="t-slide w-full shrink-0 px-2 text-center md:px-8" role="group" aria-roledescription="slide" aria-label="<?= $i + 1 ?> of <?= count($testimonials) ?>">
+                        <figure class="t-slide w-full shrink-0 px-2 md:px-6" role="group" aria-roledescription="slide" aria-label="<?= $i + 1 ?> of <?= count($testimonials) ?>">
                             <blockquote class="font-sans text-xl font-light leading-[1.55] tracking-[-0.01em] text-ink md:text-[1.375rem] lg:text-[1.5rem]">
                                 <?= e($quote) ?>
                             </blockquote>
@@ -388,7 +389,7 @@ $campusPillars = [
     <div class="container flex flex-col items-start gap-6 pb-14 pt-10 md:flex-row md:items-center md:justify-between md:pt-8" data-animate="fade-up">
         <div>
             <h2 class="section-title !text-white">Join the Nasra Family</h2>
-            <p class="mt-3 max-w-lg text-white/75">Affordable, high-quality education for underserved communities — bridging education and gender gaps since 1949.</p>
+            <p class="mt-3 max-w-lg text-white/75">Affordable, high-quality education for underserved communities bridging education and gender gaps since 1949.</p>
             <p class="mt-3 font-script text-3xl text-accent">Rooted in Values, Ready for the Future</p>
         </div>
         <a href="<?= base_url('admissions') ?>" class="btn btn-accent !px-8 !py-4 text-base">View Admissions <i class="fa-solid fa-arrow-right"></i></a>
