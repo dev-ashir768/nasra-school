@@ -119,8 +119,8 @@ $navRight = array_slice($navLinks, $navMid, null, true);
         </div>
 
         <!-- Desktop: centered logo, nav split left / right -->
-        <div class="container relative hidden h-[5.25rem] items-center xl:flex">
-            <nav class="flex flex-1 items-center justify-end gap-0.5 pr-[4.75rem] 2xl:gap-1 2xl:pr-[5.5rem]" aria-label="Primary left">
+        <div class="container relative hidden h-[6.5rem] items-center xl:flex">
+            <nav class="flex flex-1 items-center justify-end gap-0.5 pr-[5.75rem] 2xl:gap-1 2xl:pr-[6.5rem]" aria-label="Primary left">
                 <?php foreach ($navLeft as $label => $item): ?>
                     <?php $renderNavItem($label, $item, $isSection); ?>
                 <?php endforeach; ?>
@@ -130,14 +130,14 @@ $navRight = array_slice($navLinks, $navMid, null, true);
                 <img
                     src="<?= asset('images/branding/logo.webp') ?>"
                     alt="Nasra School"
-                    width="72"
-                    height="72"
+                    width="96"
+                    height="96"
                     id="site-logo"
-                    class="site-logo h-[4.25rem] w-[4.25rem] rounded-full object-cover ring-2 ring-white"
+                    class="site-logo h-[5.75rem] w-[5.75rem] rounded-full object-cover ring-2 ring-white"
                 >
             </a>
 
-            <nav class="flex flex-1 items-center justify-start gap-0.5 pl-[4.75rem] 2xl:gap-1 2xl:pl-[5.5rem]" aria-label="Primary right">
+            <nav class="flex flex-1 items-center justify-start gap-0.5 pl-[5.75rem] 2xl:gap-1 2xl:pl-[6.5rem]" aria-label="Primary right">
                 <?php foreach ($navRight as $label => $item): ?>
                     <?php $renderNavItem($label, $item, $isSection); ?>
                 <?php endforeach; ?>
@@ -154,7 +154,7 @@ $navRight = array_slice($navLinks, $navMid, null, true);
     <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Site menu">
         <div class="flex items-center justify-between border-b border-black/5 px-5 py-4">
             <a href="<?= base_url() ?>" aria-label="Nasra School home">
-                <img src="<?= asset('images/branding/logo.webp') ?>" alt="" width="44" height="44" class="h-11 w-11 rounded-full object-cover">
+                <img src="<?= asset('images/branding/logo.webp') ?>" alt="" width="56" height="56" class="h-14 w-14 rounded-full object-cover">
             </a>
             <button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">
                 <i class="fa-solid fa-xmark"></i>

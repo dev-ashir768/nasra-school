@@ -82,19 +82,19 @@ html {
     pointer-events: none;
 }
 #site-header.is-scrolled .site-logo {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 3.25rem;
+    height: 3.25rem;
 }
 @media (min-width: 1280px) {
     #site-header .container.relative {
         transition: height .3s ease;
     }
     #site-header.is-scrolled .site-logo {
-        width: 3.25rem;
-        height: 3.25rem;
+        width: 4.25rem;
+        height: 4.25rem;
     }
     #site-header.is-scrolled .container.relative {
-        height: 4.25rem;
+        height: 5rem;
     }
 }
 
@@ -507,19 +507,19 @@ html.drawer-open { overflow: hidden; }
 
 /* ---------- Hero: exactly one viewport below sticky header ---------- */
 .hero-banner {
-    height: calc(100svh - 4rem);      /* navbar h-16 */
-    max-height: calc(100svh - 4rem);
+    height: calc(100svh - 4.5rem);     /* navbar 4.5rem */
+    max-height: calc(100svh - 4.5rem);
 }
 @media (min-width: 768px) {
     .hero-banner {
-        height: calc(100svh - 6.25rem); /* topbar h-9 + navbar h-16 */
-        max-height: calc(100svh - 6.25rem);
+        height: calc(100svh - 6.75rem); /* topbar h-9 + navbar 4.5rem */
+        max-height: calc(100svh - 6.75rem);
     }
 }
 @media (min-width: 1280px) {
     .hero-banner {
-        height: calc(100svh - 7.5rem);  /* topbar h-9 + centered-logo navbar 5.25rem */
-        max-height: calc(100svh - 7.5rem);
+        height: calc(100svh - 8.75rem); /* topbar h-9 + centered-logo navbar 6.5rem */
+        max-height: calc(100svh - 8.75rem);
     }
 }
 .hero-slides { isolation: isolate; }
