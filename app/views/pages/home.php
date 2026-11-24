@@ -261,7 +261,6 @@ $igProfile = config('social.instagram') ?: ('https://www.instagram.com/' . $igHa
                         class="instagram-media"
                         data-instgrm-permalink="<?= e($permalink) ?>"
                         data-instgrm-version="14"
-                        data-instgrm-captioned
                     >
                         <a href="<?= e($permalink) ?>" target="_blank" rel="noopener noreferrer">View this post on Instagram</a>
                     </blockquote>
