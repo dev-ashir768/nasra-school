@@ -407,6 +407,29 @@ html.drawer-open { overflow: hidden; }
     text-transform: uppercase;
     color: #fff;
 }
+.motto-type {
+    display: inline-block;
+    min-height: 1em;
+}
+.motto-type__cursor {
+    display: inline-block;
+    width: 0.08em;
+    height: 0.85em;
+    margin-left: 0.06em;
+    vertical-align: -0.05em;
+    background: #FFCC00;
+    animation: mottoBlink 0.85s step-end infinite;
+}
+.motto-type.is-done .motto-type__cursor {
+    opacity: 0;
+    animation: none;
+}
+@keyframes mottoBlink {
+    50% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .motto-type__cursor { display: none; }
+}
 
 /* ---------- Campus Life mosaic ---------- */
 .campus-section {

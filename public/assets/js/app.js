@@ -369,6 +369,50 @@ $(function () {
         io.observe(section);
     })();
 
+    // ---------- Motto typewriter ----------
+    (function mottoTypewriter() {
+        const el = document.querySelector('.motto-type[data-type-text]');
+        if (!el) return;
+
+        const text = el.getAttribute('data-type-text') || '';
+        const out = el.querySelector('.motto-type__text');
+        if (!out || !text) return;
+
+        function type() {
+            if (el.classList.contains('is-typed')) return;
+            el.classList.add('is-typed');
+
+            if (reduceMotion) {
+                out.textContent = text;
+                el.classList.add('is-done');
+                return;
+            }
+
+            let i = 0;
+            const tick = function () {
+                out.textContent = text.slice(0, ++i);
+                if (i < text.length) {
+                    setTimeout(tick, 90);
+                } else {
+                    el.classList.add('is-done');
+                }
+            };
+            tick();
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            type();
+            return;
+        }
+
+        const io = new IntersectionObserver(function (entries) {
+            if (!entries.some(function (e) { return e.isIntersecting; })) return;
+            io.disconnect();
+            type();
+        }, { threshold: 0.35 });
+        io.observe(el.closest('.motto-section') || el);
+    })();
+
     // ---------- Homepage video player ----------
     $('[data-video-player]').each(function () {
         const $root = $(this);

@@ -236,7 +236,9 @@ $legacyPillars = [
                     Our Motto
                 </p>
                 <h2 id="motto-title" class="motto-section__word mt-6">
-                    <span class="brush-word brush-word-light">Tolerance</span>
+                    <span class="brush-word brush-word-light motto-type" data-type-text="TOLERANCE" aria-label="Tolerance">
+                        <span class="motto-type__text"></span><span class="motto-type__cursor" aria-hidden="true"></span>
+                    </span>
                 </h2>
                 <p class="mt-6 max-w-xl font-script text-3xl leading-none text-accent md:text-4xl">
                     The hallmark of an enlightened mindset
