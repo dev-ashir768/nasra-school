@@ -306,7 +306,7 @@ $campusPillars = [
 </section>
 
 <!-- ============ TESTIMONIALS ============ -->
-<section class="testimonials overflow-hidden bg-white py-20 lg:py-24" aria-labelledby="testimonials-title" aria-roledescription="carousel" data-animate="fade-up">
+<section class="testimonials overflow-hidden bg-white pb-20 pt-4 lg:pb-24 lg:pt-6" aria-labelledby="testimonials-title" aria-roledescription="carousel" data-animate="fade-up">
     <div class="container">
         <div class="mx-auto max-w-3xl text-center">
             <p class="eyebrow justify-center">Alumni</p>
@@ -350,15 +350,13 @@ $campusPillars = [
 </section>
 
 <!-- ============ FOUNDER ============ -->
-<section class="overflow-hidden bg-white" aria-labelledby="legacy-title">
-    <div class="grid items-stretch lg:grid-cols-[38%_1fr]">
-        <div class="relative min-h-[320px]" data-animate="fade-right">
-            <div class="absolute inset-0 overflow-hidden rounded-tr-[45%_100%]">
-                <?= photo('home/founder.jpg', 'Nasra Wazir Ali (S.I.), founder of Nasra School', 'h-full w-full object-[50%_30%] grayscale') ?>
-            </div>
+<section class="founder-section relative bg-white" aria-labelledby="legacy-title">
+    <div class="grid items-stretch lg:grid-cols-[minmax(0,38%)_minmax(0,62%)]">
+        <div class="founder-section__photo relative min-h-[280px] sm:min-h-[340px]" data-animate="fade-right">
+            <?= photo('home/founder.jpg', 'Nasra Wazir Ali (S.I.), founder of Nasra School', 'absolute inset-0 h-full w-full object-[50%_30%] grayscale') ?>
         </div>
 
-        <div class="container grid items-center gap-10 py-14 lg:mx-0 lg:max-w-none lg:grid-cols-[1fr_auto] lg:py-20 lg:pl-14">
+        <div class="grid items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1fr_auto] lg:gap-12 lg:py-20 lg:pl-14 lg:pr-10 xl:pr-16">
             <div data-animate="fade-up">
                 <p class="eyebrow">Late Founder of ETNS</p>
                 <h2 id="legacy-title" class="section-title mt-4 font-display">Nasra Wazir Ali (S.I.)</h2>
@@ -378,14 +376,16 @@ $campusPillars = [
             </figure>
         </div>
     </div>
+
+    <!-- Wave sits on white section so ink CTA meets flush — no black gap -->
+    <svg class="founder-section__wave block w-full text-ink" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="currentColor" d="M0 56V28c240 28 480-28 720-8s480 36 720 8v28H0z"/>
+    </svg>
 </section>
 
 <!-- ============ CTA ============ -->
-<section class="relative overflow-hidden bg-ink text-white">
-    <svg class="absolute left-0 top-0 h-12 w-full text-white" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
-        <path fill="currentColor" d="M0 0h1440v10C1200 40 960 0 720 14S240 44 0 10z"/>
-    </svg>
-    <div class="container relative flex flex-col items-start gap-6 pb-14 pt-24 md:flex-row md:items-center md:justify-between" data-animate="fade-up">
+<section class="relative bg-ink text-white">
+    <div class="container flex flex-col items-start gap-6 pb-14 pt-10 md:flex-row md:items-center md:justify-between md:pt-8" data-animate="fade-up">
         <div>
             <h2 class="section-title !text-white">Join the Nasra Family</h2>
             <p class="mt-3 max-w-lg text-white/75">Affordable, high-quality education for underserved communities — bridging education and gender gaps since 1949.</p>
