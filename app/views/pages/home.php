@@ -180,97 +180,6 @@ $legacyPillars = [
     </div>
 </section>
 
-<!-- ============ VIDEO / EXPERIENCE ============ -->
-<?php
-$videoCfg    = config('video') ?: [];
-$videoLocal  = $videoCfg['local'] ?? 'videos/campus.mp4';
-$videoPoster = $videoCfg['poster'] ?? 'home/hero-banner.jpg';
-$youtubeId   = $videoCfg['youtube_id'] ?? '';
-$hasLocalVideo = is_file(PUBLIC_PATH . '/assets/' . ltrim($videoLocal, '/'));
-?>
-<section class="video-section relative overflow-hidden py-20 lg:py-28" aria-labelledby="video-title">
-    <div class="container relative">
-        <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
-            <p class="eyebrow justify-center">Experience Nasra</p>
-            <h2 id="video-title" class="section-title mt-4">Life at Nasra School</h2>
-            <p class="lead mt-4">A glimpse of our campuses, classrooms and community — where values and ambition grow together.</p>
-        </div>
-
-        <div
-            class="video-player relative mx-auto mt-12 max-w-5xl overflow-hidden rounded-2xl bg-ink"
-            data-video-player
-            <?php if ($hasLocalVideo): ?>
-                data-video-src="<?= e(asset($videoLocal)) ?>"
-            <?php elseif ($youtubeId): ?>
-                data-youtube="<?= e($youtubeId) ?>"
-            <?php endif; ?>
-            data-animate="fade-up"
-            data-delay="100"
-        >
-            <div class="video-player__media aspect-video">
-                <?= photo($videoPoster, 'Students and campus life at Nasra School', 'video-player__poster h-full w-full') ?>
-                <div class="video-player__scrim" aria-hidden="true"></div>
-            </div>
-
-            <button type="button" class="video-player__play" aria-label="Play video">
-                <span class="video-player__play-ring" aria-hidden="true"></span>
-                <i class="fa-solid fa-play" aria-hidden="true"></i>
-            </button>
-
-            <p class="video-player__caption font-script">Rooted in Values, Ready for the Future</p>
-        </div>
-    </div>
-</section>
-
-<!-- ============ INSTAGRAM ============ -->
-<?php
-$igFeed    = config('instagram_feed') ?: [];
-$igHandle  = ltrim((string) ($igFeed['handle'] ?? 'nasraschools'), '@');
-$igPosts   = array_values(array_filter($igFeed['posts'] ?? []));
-$igProfile = config('social.instagram') ?: ('https://www.instagram.com/' . $igHandle . '/');
-?>
-<?php if ($igPosts): ?>
-<section class="instagram-section relative overflow-hidden py-20 lg:py-28" aria-labelledby="instagram-title">
-    <div class="container relative">
-        <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end" data-animate="fade-up">
-            <div>
-                <p class="eyebrow">
-                    <i class="fa-brands fa-instagram text-base" aria-hidden="true"></i>
-                    Instagram
-                </p>
-                <h2 id="instagram-title" class="section-title mt-4">@<?= e($igHandle) ?></h2>
-                <p class="lead mt-3 max-w-xl">Moments from our campuses, classrooms and community — follow Nasra for daily life at ETNS.</p>
-            </div>
-            <a href="<?= e($igProfile) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary shrink-0">
-                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                Follow on Instagram
-            </a>
-        </div>
-
-        <div class="instagram-embeds mt-12" data-animate="fade-up" data-delay="80">
-            <?php foreach ($igPosts as $permalink): ?>
-                <?php
-                $permalink = trim((string) $permalink);
-                if ($permalink === '') continue;
-                // Normalize to clean permalink (strip query/utm)
-                $permalink = strtok($permalink, '?') ?: $permalink;
-                $permalink = rtrim($permalink, '/') . '/';
-                ?>
-                <div class="instagram-embeds__item">
-                    <blockquote
-                        class="instagram-media"
-                        data-instgrm-permalink="<?= e($permalink) ?>"
-                        data-instgrm-version="14"
-                    >
-                        <a href="<?= e($permalink) ?>" target="_blank" rel="noopener noreferrer">View this post on Instagram</a>
-                    </blockquote>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-
 <!-- ============ ACADEMIC PATHWAYS ============ -->
 <section class="academics-section relative overflow-hidden py-20 lg:py-24">
     <div class="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -397,6 +306,94 @@ $campusPillars = [
     </div>
 </section>
 
+<!-- ============ VIDEO / EXPERIENCE ============ -->
+<?php
+$videoCfg    = config('video') ?: [];
+$videoLocal  = $videoCfg['local'] ?? 'videos/campus.mp4';
+$videoPoster = $videoCfg['poster'] ?? 'home/hero-banner.jpg';
+$youtubeId   = $videoCfg['youtube_id'] ?? '';
+$hasLocalVideo = is_file(PUBLIC_PATH . '/assets/' . ltrim($videoLocal, '/'));
+?>
+<section class="video-section relative overflow-hidden py-20 lg:py-28" aria-labelledby="video-title">
+    <div class="container relative">
+        <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
+            <p class="eyebrow justify-center">Experience Nasra</p>
+            <h2 id="video-title" class="section-title mt-4">Life at Nasra School</h2>
+            <p class="lead mt-4">A glimpse of our campuses, classrooms and community — where values and ambition grow together.</p>
+        </div>
+
+        <div
+            class="video-player relative mx-auto mt-12 max-w-5xl overflow-hidden rounded-2xl bg-ink"
+            data-video-player
+            <?php if ($hasLocalVideo): ?>
+                data-video-src="<?= e(asset($videoLocal)) ?>"
+            <?php elseif ($youtubeId): ?>
+                data-youtube="<?= e($youtubeId) ?>"
+            <?php endif; ?>
+            data-animate="fade-up"
+            data-delay="100"
+        >
+            <div class="video-player__media aspect-video">
+                <?= photo($videoPoster, 'Students and campus life at Nasra School', 'video-player__poster h-full w-full') ?>
+                <div class="video-player__scrim" aria-hidden="true"></div>
+            </div>
+
+            <button type="button" class="video-player__play" aria-label="Play video">
+                <span class="video-player__play-ring" aria-hidden="true"></span>
+                <i class="fa-solid fa-play" aria-hidden="true"></i>
+            </button>
+
+            <p class="video-player__caption font-script">Rooted in Values, Ready for the Future</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============ INSTAGRAM ============ -->
+<?php
+$igFeed    = config('instagram_feed') ?: [];
+$igHandle  = ltrim((string) ($igFeed['handle'] ?? 'nasraschools'), '@');
+$igPosts   = array_values(array_filter($igFeed['posts'] ?? []));
+$igProfile = config('social.instagram') ?: ('https://www.instagram.com/' . $igHandle . '/');
+?>
+<?php if ($igPosts): ?>
+<section class="instagram-section relative overflow-hidden py-20 lg:py-28" aria-labelledby="instagram-title">
+    <div class="container relative">
+        <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
+            <p class="eyebrow justify-center">
+                <i class="fa-brands fa-instagram text-base" aria-hidden="true"></i>
+                Instagram
+            </p>
+            <h2 id="instagram-title" class="section-title mt-4">@<?= e($igHandle) ?></h2>
+            <p class="lead mt-3">Moments from our campuses, classrooms and community — follow Nasra for daily life at ETNS.</p>
+            <a href="<?= e($igProfile) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-6">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                Follow on Instagram
+            </a>
+        </div>
+
+        <div class="instagram-embeds mt-12" data-animate="fade-up" data-delay="80">
+            <?php foreach ($igPosts as $permalink): ?>
+                <?php
+                $permalink = trim((string) $permalink);
+                if ($permalink === '') continue;
+                $permalink = strtok($permalink, '?') ?: $permalink;
+                $permalink = rtrim($permalink, '/') . '/';
+                ?>
+                <div class="instagram-embeds__item">
+                    <blockquote
+                        class="instagram-media"
+                        data-instgrm-permalink="<?= e($permalink) ?>"
+                        data-instgrm-version="14"
+                    >
+                        <a href="<?= e($permalink) ?>" target="_blank" rel="noopener noreferrer">View this post on Instagram</a>
+                    </blockquote>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
 <!-- ============ TESTIMONIALS ============ -->
 <section class="testimonials overflow-hidden bg-white pb-20 pt-4 lg:pb-24 lg:pt-6" aria-labelledby="testimonials-title" aria-roledescription="carousel" data-animate="fade-up">
     <div class="container">
@@ -454,7 +451,7 @@ $campusPillars = [
                 <h2 id="legacy-title" class="section-title mt-4 font-display">Nasra Wazir Ali (S.I.)</h2>
                 <p class="mt-2 text-sm font-medium text-muted">Pioneer educationalist · Humanitarian · Sitara-e-Imtiaz · 1922–2015</p>
                 <p class="lead mt-6 max-w-xl">
-                    In February 1949, from the living room of a bungalow on Bunder Road, Nasra Wazir Ali began teaching neighbourhood children alongside her own daughter. That humble beginning became Education Trust Nasra School — registered the following year as a not-for-profit to serve children of lower-income households.
+                    In February 1949, from the living room of a bungalow on Bunder Road, Nasra Wazir Ali began teaching neighbourhood children alongside her own daughter. That humble beginning became Education Trust Nasra School registered the following year as a not-for-profit to serve children of lower-income households.
                 </p>
                 <a href="<?= base_url('about/history') ?>" class="btn btn-primary mt-8">Full History <i class="fa-solid fa-arrow-right"></i></a>
             </div>
