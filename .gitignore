@@ -5,3 +5,5 @@ storage/logs/*
 Thumbs.db
 .vscode/
 .idea/
+docs
+.superpowers

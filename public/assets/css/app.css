@@ -1,6 +1,6 @@
 /* ==================================================================
    Nasra School - site CSS (scrollbar, smooth scroll, animations)
-   Brand: #0D6616 primary, #162716 dark, #7ED957 lime
+   Brand: #004D26 primary, #00331A dark, #FFCC00 accent
    ================================================================== */
 
 /* ---------- Smooth scroll (Lenis adds .lenis; CSS fallback otherwise) ---------- */
@@ -12,23 +12,23 @@ html.lenis, html.lenis body { height: auto; }
 /* ---------- Custom scrollbar ---------- */
 html {
     scrollbar-width: thin;                      /* Firefox */
-    scrollbar-color: #0D6616 #eef5ef;
+    scrollbar-color: #004D26 #eef5ef;
 }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: #eef5ef; }
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #177B12, #0D6616 60%, #162716);
+    background: linear-gradient(180deg, #0A6B3A, #004D26 60%, #00331A);
     border-radius: 999px;
     border: 2px solid #eef5ef;
 }
-::-webkit-scrollbar-thumb:hover { background: #162716; }
+::-webkit-scrollbar-thumb:hover { background: #00331A; }
 
-::selection { background: #7ED957; color: #162716; }
+::selection { background: #FFCC00; color: #00331A; }
 
 /* ---------- Scroll progress bar ---------- */
 #scroll-progress {
     position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 60;
-    background: linear-gradient(90deg, #7ED957, #177B12, #0D6616);
+    background: linear-gradient(90deg, #FFCC00, #004D26);
     transform-origin: 0 50%; transform: scaleX(0);
 }
 
@@ -37,26 +37,26 @@ html {
     position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40;
     width: 3rem; height: 3rem; border-radius: 999px;
     display: grid; place-items: center;
-    background: #0D6616; color: #fff;
-    box-shadow: 0 10px 25px -5px rgba(13, 102, 22, .45);
+    background: #004D26; color: #fff;
+    box-shadow: 0 10px 25px -5px rgba(0, 77, 38, .45);
     opacity: 0; transform: translateY(1rem) scale(.8); pointer-events: none;
     transition: opacity .35s ease, transform .35s ease, background .2s;
 }
 #back-to-top.is-shown { opacity: 1; transform: none; pointer-events: auto; }
-#back-to-top:hover { background: #162716; transform: translateY(-3px); }
+#back-to-top:hover { background: #00331A; transform: translateY(-3px); }
 
 /* ---------- Header on scroll ---------- */
-#site-header.is-scrolled { box-shadow: 0 8px 30px -12px rgba(22, 39, 22, .25); }
+#site-header.is-scrolled { box-shadow: 0 8px 30px -12px rgba(0, 51, 26, .25); }
 #site-header.is-scrolled #site-logo { width: 3rem; height: 3rem; }
 
 /* ---------- Hamburger (morphs into an X) ---------- */
 .burger {
     position: relative; width: 44px; height: 44px; border-radius: 12px;
     display: grid; place-items: center;
-    background: rgba(13, 102, 22, .08); color: #162716;
+    background: rgba(0, 77, 38, .08); color: #00331A;
     transition: background .3s;
 }
-.burger:hover { background: rgba(13, 102, 22, .14); }
+.burger:hover { background: rgba(0, 77, 38, .14); }
 .burger span {
     position: absolute; left: 12px; width: 20px; height: 2px; border-radius: 2px;
     background: currentColor;
@@ -93,16 +93,16 @@ html {
 /* thin brand gradient along the panel's left edge */
 .drawer-panel::before {
     content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-    background: linear-gradient(180deg, #7ED957, #0D6616 55%, #3F188D);
+    background: linear-gradient(180deg, #FFCC00, #004D26);
 }
 #mobile-drawer.is-open .drawer-panel { transform: none; }
 
 .drawer-close {
     width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
-    background: rgba(13, 102, 22, .08); color: #162716; font-size: 18px;
+    background: rgba(0, 77, 38, .08); color: #00331A; font-size: 18px;
     transition: background .3s, transform .4s var(--ease-out);
 }
-.drawer-close:hover { background: #0D6616; color: #fff; transform: rotate(90deg); }
+.drawer-close:hover { background: #004D26; color: #fff; transform: rotate(90deg); }
 
 /* Items slide in one after another */
 .drawer-item { opacity: 0; transform: translateX(24px); transition: opacity .35s ease, transform .5s var(--ease-out); }
@@ -117,18 +117,18 @@ html {
     font-weight: 600; color: #2C3333;
     transition: background .25s, color .25s;
 }
-.drawer-link:hover { background: rgba(126, 217, 87, .14); color: #0D6616; }
-.drawer-link.is-current { background: rgba(13, 102, 22, .08); color: #0D6616; }
+.drawer-link:hover { background: rgba(255, 204, 0, .18); color: #004D26; }
+.drawer-link.is-current { background: rgba(0, 77, 38, .08); color: #004D26; }
 .drawer-icon {
     width: 38px; height: 38px; flex: none; border-radius: 11px;
     display: grid; place-items: center; font-size: 15px;
-    background: rgba(44, 51, 51, .06); color: #0D6616;
+    background: rgba(44, 51, 51, .06); color: #004D26;
     transition: background .25s, color .25s;
 }
 .drawer-link:hover .drawer-icon,
-.drawer-link.is-current .drawer-icon { background: #0D6616; color: #fff; }
+.drawer-link.is-current .drawer-icon { background: #004D26; color: #fff; }
 .drawer-chevron { font-size: 12px; color: #737373; transition: transform .35s var(--ease-out); }
-.drawer-toggle[aria-expanded="true"] .drawer-chevron { transform: rotate(180deg); color: #0D6616; }
+.drawer-toggle[aria-expanded="true"] .drawer-chevron { transform: rotate(180deg); color: #004D26; }
 
 /* Smooth accordion: animates grid rows from 0fr to 1fr */
 .drawer-sub { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s var(--ease-out); }
@@ -139,15 +139,15 @@ html {
     font-size: 14px; color: #737373;
     transition: color .2s, background .2s, padding .25s;
 }
-.drawer-sublink:hover { color: #0D6616; background: rgba(126, 217, 87, .12); padding-left: 14px; }
-.drawer-sublink.is-current { color: #0D6616; font-weight: 600; }
+.drawer-sublink:hover { color: #004D26; background: rgba(255, 204, 0, .18); padding-left: 14px; }
+.drawer-sublink.is-current { color: #004D26; font-weight: 600; }
 
 .drawer-social {
     width: 38px; height: 38px; border-radius: 999px; display: grid; place-items: center;
-    background: rgba(13, 102, 22, .08); color: #0D6616;
+    background: rgba(0, 77, 38, .08); color: #004D26;
     transition: background .25s, color .25s;
 }
-.drawer-social:hover { background: #0D6616; color: #fff; }
+.drawer-social:hover { background: #004D26; color: #fff; }
 
 html.drawer-open { overflow: hidden; }
 
@@ -162,9 +162,7 @@ html.drawer-open { overflow: hidden; }
 
 /* Hero entrance (runs on page load, staggered with --d) */
 .hero-in { animation: heroIn 1s var(--ease-out) both; animation-delay: var(--d, 0s); }
-.hero-photo { animation: heroPhoto 1.4s var(--ease-out) both; }
 @keyframes heroIn    { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
-@keyframes heroPhoto { from { opacity: 0; transform: translateX(60px); clip-path: inset(0 0 0 100%); } to { opacity: 1; transform: none; clip-path: inset(0 0 0 0); } }
 
 /* Scroll reveal - hidden only when JS is running, so content is always visible to crawlers/no-JS */
 .js [data-animate] {
@@ -178,48 +176,6 @@ html.drawer-open { overflow: hidden; }
 .js [data-animate="fade-right"] { transform: translateX(-50px); }
 .js [data-animate="zoom"]       { transform: scale(.92); }
 .js [data-animate].is-visible   { opacity: 1; transform: none; }
-
-/* Hero photo edge: part of a large ellipse whose centre sits below the section,
-   so the curve sweeps from ~35% across at the top to the left edge at the bottom
-   and never turns vertical (which looked "cut off" on wide screens). */
-.hero-curve { clip-path: ellipse(101.6% 169.1% at 100% 130%); }
-
-/* ---------- Hero slider dots ----------
-   Frosted pill so the dots read on any photo; the current dot stretches and a lime bar
-   fills it over the slide's duration (--slide-time, set by JS) so visitors see what's next. */
-.hero-dots {
-    display: flex; align-items: center; gap: 8px;
-    padding: 8px 10px; border-radius: 999px;
-    background: rgba(22, 39, 22, .45);
-    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-    box-shadow: 0 6px 20px -6px rgba(0, 0, 0, .35);
-}
-.hero-dots.is-vertical { flex-direction: column; padding: 10px 8px; }
-.hero-dots button {
-    position: relative; overflow: hidden; flex: none;
-    width: 10px; height: 10px; border-radius: 999px;
-    background: rgba(255, 255, 255, .55);
-    transition: width .5s var(--ease-out), height .5s var(--ease-out), background .3s;
-    cursor: pointer;
-}
-.hero-dots button:hover { background: #fff; }
-.hero-dots button:focus-visible { outline: 2px solid #7ED957; outline-offset: 3px; }
-.hero-dots button.is-current { width: 36px; background: rgba(255, 255, 255, .35); }
-.hero-dots.is-vertical button.is-current { width: 10px; height: 36px; }
-
-.hero-dots .dot-fill {
-    position: absolute; inset: 0; border-radius: inherit; background: #7ED957;
-    transform: scaleX(0); transform-origin: left center;
-}
-.hero-dots.is-vertical .dot-fill { transform: scaleY(0); transform-origin: center top; }
-.hero-dots button.is-current .dot-fill { animation: dotFillX var(--slide-time, 6s) linear forwards; }
-.hero-dots.is-vertical button.is-current .dot-fill { animation-name: dotFillY; }
-@keyframes dotFillX { to { transform: scaleX(1); } }
-@keyframes dotFillY { to { transform: scaleY(1); } }
-
-/* Slow zoom on the hero photo */
-.ken-burns { animation: kenBurns 20s ease-in-out infinite alternate; }
-@keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.08); } }
 
 /* ---------- Respect users who prefer less motion ---------- */
 @media (prefers-reduced-motion: reduce) {

@@ -32,14 +32,14 @@ $navIcons = [
 
 $isSection = fn(string $path) => $path === '/' ? is_active('/') : strpos(Router::currentPath(), $path) === 0;
 ?>
-<header id="site-header" class="sticky top-0 z-50 border-b border-primary/10 bg-white/95 backdrop-blur transition-shadow duration-300">
+<header id="site-header" class="sticky top-0 z-50 border-b-2 border-primary bg-white/95 backdrop-blur transition-shadow duration-300">
     <div class="container flex h-20 items-center justify-between gap-6">
         <!-- Logo -->
         <a href="<?= base_url() ?>" class="flex shrink-0 items-center gap-3">
             <img src="<?= asset('images/branding/logo.webp') ?>" alt="Nasra School logo" width="56" height="56" class="h-14 w-14 transition-all duration-300" id="site-logo">
             <span class="leading-tight">
-                <span class="block font-serif text-xl font-bold text-primary-dark">Nasra School</span>
-                <span class="block text-sm text-complement-slate">Education Trust</span>
+                <span class="block font-display text-xl font-bold text-primary-dark">Nasra School</span>
+                <span class="block text-sm text-muted">Education Trust</span>
             </span>
         </a>
 
@@ -55,7 +55,7 @@ $isSection = fn(string $path) => $path === '/' ? is_active('/') : strpos(Router:
                         <div class="invisible absolute left-0 top-full z-10 w-60 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100">
                             <div class="rounded-xl border border-primary/10 bg-white p-2 shadow-xl">
                                 <?php foreach ($children as $childLabel => $childPath): ?>
-                                    <a href="<?= base_url($childPath) ?>" class="block rounded-lg px-4 py-2 text-sm text-complement-slate hover:bg-gradient-lime/15 hover:text-primary"><?= e($childLabel) ?></a>
+                                    <a href="<?= base_url($childPath) ?>" class="block rounded-lg px-4 py-2 text-sm text-muted hover:bg-accent/20 hover:text-primary"><?= e($childLabel) ?></a>
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -87,8 +87,8 @@ $isSection = fn(string $path) => $path === '/' ? is_active('/') : strpos(Router:
             <a href="<?= base_url() ?>" class="flex items-center gap-3">
                 <img src="<?= asset('images/branding/logo.webp') ?>" alt="" width="44" height="44" class="h-11 w-11">
                 <span class="leading-tight">
-                    <span class="block font-serif text-lg font-bold text-primary-dark">Nasra School</span>
-                    <span class="block text-xs text-complement-gray">Education Trust &bull; Since 1949</span>
+                    <span class="block font-display text-lg font-bold text-primary-dark">Nasra School</span>
+                    <span class="block text-xs text-muted">Education Trust &bull; Since 1949</span>
                 </span>
             </a>
             <button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">
@@ -109,7 +109,7 @@ $isSection = fn(string $path) => $path === '/' ? is_active('/') : strpos(Router:
                             </button>
                             <div class="drawer-sub">
                                 <div>
-                                    <ul class="ml-[3.25rem] space-y-0.5 border-l-2 border-gradient-lime/50 py-1 pl-4">
+                                    <ul class="ml-[3.25rem] space-y-0.5 border-l-2 border-accent/60 py-1 pl-4">
                                         <li><a href="<?= base_url($path) ?>" class="drawer-sublink">Overview</a></li>
                                         <?php foreach ($children as $childLabel => $childPath): ?>
                                             <li><a href="<?= base_url($childPath) ?>" class="drawer-sublink <?= is_active($childPath) ? 'is-current' : '' ?>"><?= e($childLabel) ?></a></li>
@@ -130,7 +130,7 @@ $isSection = fn(string $path) => $path === '/' ? is_active('/') : strpos(Router:
 
         <div class="drawer-item border-t border-primary/10 px-5 pb-6 pt-5" style="--i: <?= $n ?>">
             <a href="<?= base_url('admissions') ?>" class="btn btn-primary w-full !py-3.5">Explore Admissions <i class="fa-solid fa-arrow-right"></i></a>
-            <div class="mt-5 space-y-2 text-sm text-complement-slate">
+            <div class="mt-5 space-y-2 text-sm text-muted">
                 <a href="tel:<?= e(config('contact.tel')) ?>" class="flex items-center gap-3 hover:text-primary"><i class="fa-solid fa-phone w-4 text-primary"></i> <?= e(config('contact.phone')) ?></a>
                 <a href="mailto:<?= e(config('contact.email')) ?>" class="flex items-center gap-3 hover:text-primary"><i class="fa-solid fa-envelope w-4 text-primary"></i> <?= e(config('contact.email')) ?></a>
             </div>

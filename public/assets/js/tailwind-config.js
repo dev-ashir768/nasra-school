@@ -1,8 +1,5 @@
 /**
- * Tailwind CDN config - loaded right after the Tailwind CDN script
- *
- * Nasra School brand palette - use only these colours.
- *   bg-primary, text-primary-dark, from-gradient-green to-gradient-cyan, text-accent-rust ...
+ * Tailwind CDN config — Nasra poster brand
  */
 tailwind.config = {
     theme: {
@@ -12,41 +9,26 @@ tailwind.config = {
         },
         extend: {
             colors: {
-                // Primary brand greens
                 primary: {
-                    DEFAULT: '#0D6616',
-                    light:   '#466857',
-                    dark:    '#162716',
+                    DEFAULT: '#004D26',
+                    light:   '#0A6B3A',
+                    dark:    '#00331A',
                 },
-                // Approved gradient palette
-                gradient: {
-                    purple: '#3F188D',
-                    green:  '#067640',
-                    plum:   '#2F043B',
-                    night:  '#021906',
-                    forest: '#041B08',
-                    cyan:   '#0097B2',
-                    lime:   '#7ED957',
-                    moss:   '#2B4723',
-                    leaf:   '#177B12',
-                },
-                // Complementary colours
-                complement: {
-                    slate: '#2C3333',
-                    gray:  '#737373',
-                    navy:  '#172333',
-                },
-                // Accent colours
                 accent: {
-                    rust: '#84260A',
-                    navy: '#0D1B64',
-                    ink:  '#172333',
+                    DEFAULT: '#FFCC00',
+                    dark:    '#E6B800',
+                },
+                ink:    '#111111',
+                muted:  '#5C5C5C',
+                surface: {
+                    DEFAULT: '#FFFFFF',
+                    soft:    '#FAFAF7',
                 },
             },
             fontFamily: {
-                sans:   ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-                serif:  ['"Libre Baskerville"', 'Georgia', 'serif'],
-                script: ['"Kaushan Script"', 'cursive'],
+                sans:    ['"Source Sans 3"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                display: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                script:  ['Caveat', 'cursive'],
             },
         },
     },

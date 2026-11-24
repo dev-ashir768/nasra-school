@@ -40,7 +40,7 @@ $schema = [
     <meta name="description" content="<?= e($pageDesc) ?>">
     <meta name="robots" content="<?= http_response_code() === 404 ? 'noindex, follow' : 'index, follow, max-image-preview:large' ?>">
     <link rel="canonical" href="<?= e($canonical) ?>">
-    <meta name="theme-color" content="#0D6616">
+    <meta name="theme-color" content="#004D26">
     <meta name="csrf-token" content="<?= e(csrf_token()) ?>">
 
     <!-- Open Graph / social sharing -->
@@ -69,16 +69,16 @@ $schema = [
 
     <!-- Above-the-fold assets first -->
     <link rel="preload" as="image" href="<?= asset('images/branding/logo.webp') ?>" type="image/webp">
-    <?php if ($isHome && is_file(PUBLIC_PATH . '/assets/images/home/hero.png')): ?>
-        <link rel="preload" as="image" href="<?= asset('images/home/hero.png') ?>" fetchpriority="high">
+    <?php if ($isHome && is_file(PUBLIC_PATH . '/assets/images/home/hero-2.jpg')): ?>
+        <link rel="preload" as="image" href="<?= asset('images/home/hero-2.jpg') ?>" fetchpriority="high">
     <?php endif; ?>
 
     <!-- Fonts (non-blocking) -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kaushan+Script&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Montserrat:wght@700;800;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <!-- Icons - Font Awesome (non-blocking) -->
     <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kaushan+Script&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Montserrat:wght@700;800;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     </noscript>
 
@@ -92,7 +92,7 @@ $schema = [
 
     <script type="application/ld+json"><?= json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
 </head>
-<body class="flex min-h-screen flex-col overflow-x-clip bg-white font-sans text-complement-slate antialiased">
+<body class="flex min-h-screen flex-col overflow-x-clip bg-surface font-sans text-ink antialiased">
 
     <a href="#main" class="sr-only z-[100] rounded bg-primary px-4 py-2 text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>
 

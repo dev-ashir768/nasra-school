@@ -55,7 +55,7 @@ function photo(string $path, string $alt, string $class = '', bool $eager = fals
         $loading = $eager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
         return '<img src="' . e(asset('images/' . $path)) . '" alt="' . e($alt) . '" class="object-cover ' . e($class) . '" ' . $loading . ' decoding="async">';
     }
-    return '<div class="flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-primary-light/40 to-gradient-lime/30 text-center text-xs text-primary-dark/60 ' . e($class) . '">'
+    return '<div class="flex flex-col items-center justify-center gap-2 bg-primary/10 text-center text-xs text-primary-dark/60 ' . e($class) . '">'
         . '<i class="fa-regular fa-image text-2xl"></i><span class="px-2">images/' . e($path) . '</span></div>';
 }
 
