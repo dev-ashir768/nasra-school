@@ -8,6 +8,15 @@ $heroSlides = [
     ['home/legacy-1.jpg',    'A Nasra School campus building'],
 ];
 
+// From nasraschool.edu.pk — The Nasra Difference
+$differences = [
+    ['fa-star',          'Individuality', 'We celebrate individuality amongst our diversity and actively promote inclusion of every individual by empowering our students to be the best, most authentic version of themselves.'],
+    ['fa-book-open',     'Learning',      'The dedication of our faculty serves to galvanize our students to learn, grow and develop into positive, productive and pro-active assets of society. Extraordinary faculty create extraordinary students!'],
+    ['fa-shield-halved', 'Confidence',    'By giving ample exposure to challenging leadership programs, Nasra School empowers its pupils to forge ahead confidently, in their school years and beyond.'],
+    ['fa-handshake',     'Tolerance',     'Our school motto is tolerance. We believe that tolerance, which stands in stark opposition to ignorance, is the hallmark of an enlightened and elevated mindset.'],
+    ['fa-users',         'Team Work',     'As our players are taught, sportsmanship, strategy and cooperation form the basis of all team work, and along with honed skill lead to victory.'],
+];
+
 // Real alumni testimonials from nasraschool.edu.pk/alumni
 $testimonials = [
     ['Falak Naz', 'PhD Student, Mass Communications, Karachi University', 'My teachers were my mentors — they taught me how to be an ambassador of peace, light, and knowledge. They worked on me so I could become a symbol of change, a symbol of enlightenment.'],
@@ -17,7 +26,6 @@ $testimonials = [
     ['Alina Rizwan', 'Journalism Student, SZABIST University', 'A school is expected to provide mere education, but I applaud my alma mater, Nasra School, for aiding me along a journey of becoming a better human being — an education which only ends with life.'],
 ];
 
-// label, icon, slug — yellow accent bars (not solid green walls)
 $stages = [
     ['Pre-Primary',      'fa-child-reaching', 'pre-primary'],
     ['Primary',          'fa-graduation-cap', 'primary'],
@@ -27,12 +35,10 @@ $stages = [
 ?>
 
 <!-- ============ HERO ============ -->
-<!-- Height = one viewport minus sticky header (see .hero-banner in app.css) -->
 <section class="hero-banner relative flex items-center overflow-hidden bg-ink text-white" data-hero-slider aria-roledescription="carousel" aria-label="Life at Nasra School">
     <div class="hero-slides absolute inset-0" aria-hidden="true">
         <?php foreach ($heroSlides as $i => [$img, $alt]): ?>
             <div class="hero-slide<?= $i === 0 ? ' is-active' : '' ?>"<?= $i === 0 ? '' : ' aria-hidden="true"' ?>>
-                <?php /* All slides load eagerly — lazy images inside opacity:0 never fetch, so fade looks broken */ ?>
                 <?= photo($img, $alt, 'ken-burns h-full w-full', true) ?>
             </div>
         <?php endforeach; ?>
@@ -43,7 +49,7 @@ $stages = [
         <div class="max-w-2xl xl:max-w-[38rem]">
             <p class="hero-in flex items-center gap-3 text-sm text-white/75" style="--d:.05s">
                 <span class="h-px w-8 bg-accent" aria-hidden="true"></span>
-                Since 1949 in Karachi
+                The Nasra School System · Est. 1949
             </p>
 
             <h1 class="hero-in mt-4 font-display text-[clamp(1.85rem,5vw,3.5rem)] font-black uppercase leading-[1.05] tracking-tight sm:mt-5" style="--d:.15s">
@@ -63,7 +69,7 @@ $stages = [
             </h1>
 
             <p class="hero-in mt-4 max-w-md text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base" style="--d:.3s">
-                Affordable English-medium education rooted in character, tolerance, and opportunity shaping Karachi for over seven decades.
+                High-quality English-medium education at affordable costs — making opportunity accessible to thousands of deserving children across Karachi.
             </p>
 
             <p class="hero-in mt-3 font-script text-xl text-accent sm:text-2xl" style="--d:.4s">
@@ -88,65 +94,98 @@ $stages = [
     </a>
 </section>
 
-<!-- ============ ABOUT / LEGACY ============ -->
-<section id="about" class="relative overflow-hidden pb-16 pt-20 lg:pt-24">
-    <div class="container relative grid items-center gap-14 lg:grid-cols-2">
-        <div class="mx-auto w-full max-w-md overflow-hidden rounded-2xl" data-animate="fade-right">
-            <?= photo('home/legacy.jpg', 'Nasra School campus building', 'aspect-[4/3] w-full') ?>
-        </div>
+<!-- ============ A LEGACY OF PRIDE ============ -->
+<?php
+$legacyPillars = [
+    ['fa-book-open',       'Academic Excellence'],
+    ['fa-trophy',          'Holistic Development'],
+    ['fa-people-group',    'Caring Community'],
+    ['fa-star',            'A Bright Future'],
+];
+?>
+<section id="about" class="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+    <div class="container">
+        <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-12">
 
-        <div class="border-l-4 border-accent pl-6 md:pl-8" data-animate="fade-left">
-            <p class="eyebrow">About Nasra School</p>
-            <h2 class="section-title mt-4">A Legacy of Pride</h2>
-            <p class="lead mt-6 max-w-lg">
-                Education Trust Nasra School (ETNS) delivers high-quality, English-medium PK–12 education rooted in holistic development and inclusive values, serving over 11,000 students from diverse backgrounds across five purpose-built campuses in Karachi.
-            </p>
-            <p class="body-text mt-4 max-w-lg">
-                Our mission: to provide affordable, high-quality education to the children of underserved communities, bridging the education and gender gaps prevalent in the nation.
-            </p>
-            <a href="<?= base_url('about') ?>" class="btn btn-primary mt-8">Discover Our Story <i class="fa-solid fa-arrow-right"></i></a>
+            <!-- Photo + yellow corner frame -->
+            <div class="lg:col-span-4" data-animate="fade-right">
+                <div class="legacy-frame relative mx-auto max-w-md lg:mx-0 lg:max-w-none">
+                    <div class="legacy-frame__media overflow-hidden rounded-2xl">
+                        <?= photo('home/legacy.jpg', 'Nasra School campus building', 'aspect-[4/5] w-full sm:aspect-[5/6]') ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story -->
+            <div class="lg:col-span-5" data-animate="fade-up">
+                <div class="flex gap-4 sm:gap-5">
+                    <span class="mt-1 hidden w-1 shrink-0 self-stretch rounded-full bg-accent sm:block" aria-hidden="true"></span>
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-[0.18em] text-primary">About Our School</p>
+                        <h2 class="mt-3 font-display text-[1.85rem] font-extrabold leading-[1.15] tracking-[-0.02em] text-primary sm:text-[2.15rem] lg:text-[2.35rem]">
+                            A Legacy of Pride
+                        </h2>
+                        <p class="mt-5 max-w-md text-[0.98rem] leading-[1.75] text-muted">
+                            For over 75 years, Education Trust Nasra School has been a beacon of knowledge, character and excellence. Our commitment is to provide quality English-medium education that inspires, empowers and prepares students for a successful future — at a cost families can afford.
+                        </p>
+                        <a href="<?= base_url('about/history') ?>" class="btn btn-primary mt-8 !rounded-md">
+                            Learn More <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillars -->
+            <div class="lg:col-span-3" data-animate="fade-left">
+                <ul class="flex flex-col gap-5 sm:grid sm:grid-cols-2 sm:gap-6 lg:flex lg:flex-col lg:gap-6">
+                    <?php foreach ($legacyPillars as $i => [$icon, $label]): ?>
+                        <li class="flex items-center gap-4" style="--d: <?= 0.1 + $i * 0.08 ?>s">
+                            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
+                                <i class="fa-solid <?= $icon ?>"></i>
+                            </span>
+                            <span class="font-display text-[0.95rem] font-bold leading-snug text-primary"><?= e($label) ?></span>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+
         </div>
     </div>
 </section>
 
-<!-- ============ STATS (light — not another green wall) ============ -->
-<section class="container" aria-label="Nasra School in numbers">
-    <div class="grid grid-cols-2 gap-y-8 rounded-xl border border-muted/15 bg-surface-soft px-6 py-9 text-center md:grid-cols-4 md:divide-x md:divide-muted/15" data-animate="zoom">
-        <div>
-            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/25 text-lg text-primary"><i class="fa-solid fa-school"></i></span>
-            <p class="stat-number mt-4 text-ink"><span data-count="5">5</span></p>
-            <p class="mt-2 text-sm text-muted">campuses across Karachi</p>
+<!-- ============ THE NASRA DIFFERENCE ============ -->
+<section class="py-20 lg:py-24" aria-labelledby="difference-title">
+    <div class="container">
+        <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
+            <p class="eyebrow justify-center">The Nasra School System</p>
+            <h2 id="difference-title" class="section-title mt-4">The Nasra Difference</h2>
+            <p class="lead mt-4">What sets Education Trust Nasra School apart — values lived every day across our campuses.</p>
         </div>
-        <div>
-            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/25 text-lg text-primary"><i class="fa-solid fa-book-open"></i></span>
-            <p class="stat-number mt-4 text-ink">PK–12</p>
-            <p class="mt-2 text-sm text-muted">learning journey</p>
-        </div>
-        <div>
-            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/25 text-lg text-primary"><i class="fa-solid fa-calendar-days"></i></span>
-            <p class="stat-number mt-4 text-ink"><span data-count="1949" data-plain>1949</span></p>
-            <p class="mt-2 text-sm text-muted">year founded</p>
-        </div>
-        <div>
-            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/25 text-lg text-primary"><i class="fa-solid fa-users"></i></span>
-            <p class="stat-number mt-4 text-ink"><span data-count="500000">500,000</span>+</p>
-            <p class="mt-2 text-sm text-muted">alumni</p>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <?php foreach ($differences as $i => [$icon, $label, $copy]): ?>
+                <article class="border border-muted/15 bg-white p-6 transition hover:border-accent/50" data-animate="fade-up" data-delay="<?= $i * 80 ?>">
+                    <span class="grid h-11 w-11 place-items-center rounded-lg bg-accent/20 text-lg text-primary"><i class="fa-solid <?= $icon ?>"></i></span>
+                    <h3 class="card-title mt-4"><?= e($label) ?></h3>
+                    <p class="mt-3 text-sm leading-relaxed text-muted"><?= e($copy) ?></p>
+                </article>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
 
 <!-- ============ ACADEMIC PATHWAYS ============ -->
-<section class="py-20 lg:py-24">
+<section class="bg-surface-soft py-20 lg:py-24">
     <div class="container">
         <div class="text-center" data-animate="fade-up">
-            <p class="eyebrow">Our Academic Pathways</p>
+            <p class="eyebrow">Academics</p>
             <h2 class="section-title mt-4">Learning for Every Stage</h2>
-            <p class="lead mx-auto mt-4 max-w-2xl">Balanced learning, concept-based education, physical development, and character building.</p>
+            <p class="lead mx-auto mt-4 max-w-2xl">From pre-primary through higher secondary — balanced learning, character building, and pathways that prepare students for life beyond Nasra.</p>
         </div>
 
         <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <?php foreach ($stages as $i => [$label, $icon, $slug]): ?>
-                <a href="<?= base_url('academics/' . $slug) ?>" class="group overflow-hidden rounded-2xl border border-muted/20 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                <a href="<?= base_url('academics/' . $slug) ?>" class="group overflow-hidden border border-muted/20 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-lg"
                    data-animate="fade-up" data-delay="<?= $i * 120 ?>">
                     <div class="overflow-hidden">
                         <?= photo("home/{$slug}.jpg", "{$label} students at Nasra School", 'aspect-[16/10] w-full transition duration-700 group-hover:scale-105') ?>
@@ -164,21 +203,25 @@ $stages = [
 </section>
 
 <!-- ============ MOTTO ============ -->
-<section class="container" aria-label="Our motto">
-    <div class="rounded-xl border border-muted/15 bg-white px-8 py-10 md:px-12" data-animate="fade-up">
-        <h2 class="title-sm text-ink">Our Motto: <span class="relative text-primary after:absolute after:inset-x-0 after:-bottom-1 after:h-1 after:bg-accent">Tolerance</span></h2>
-        <p class="mt-4 max-w-xl text-muted">At Nasra School, we respect different beliefs, backgrounds and perspectives.</p>
+<section class="container py-16 lg:py-20" aria-label="Our motto">
+    <div class="border border-muted/15 bg-white px-8 py-10 md:px-12" data-animate="fade-up">
+        <p class="eyebrow">Guiding Principles</p>
+        <h2 class="title-sm mt-4 text-ink">Our Motto: <span class="relative text-primary after:absolute after:inset-x-0 after:-bottom-1 after:h-1 after:bg-accent">Tolerance</span></h2>
+        <p class="mt-5 max-w-3xl text-muted leading-relaxed">
+            We believe that tolerance, which stands in stark opposition to ignorance, is the hallmark of an educated, elevated and enlightened mindset. It is fair-mindedness beyond discrimination — understanding and respect for others’ religious beliefs, socioeconomic backgrounds, and unique perspectives without harsh judgment.
+        </p>
+        <a href="<?= base_url('about/guiding-principles') ?>" class="btn btn-primary mt-8">Mission, Vision &amp; Values <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 </section>
 
-<!-- ============ CAMPUS LIFE ============ -->
+<!-- ============ CAMPUS LIFE / TEAM WORK ============ -->
 <section class="overflow-hidden bg-surface-soft py-20 lg:py-24">
     <div class="container grid items-center gap-14 lg:grid-cols-[2fr_3fr]">
         <div data-animate="fade-right">
             <p class="eyebrow">Campus Life</p>
-            <h2 class="section-title mt-4">A Vibrant Learning Community</h2>
+            <h2 class="section-title mt-4">Sportsmanship &amp; Community</h2>
             <p class="lead mt-6 max-w-md">
-                From academics to co-curricular activities, Nasra School offers a nurturing environment for holistic development.
+                Sportsmanship, strategy and cooperation form the basis of all team work — and along with honed skill lead to victory. From the field to creative arts and leadership programmes, campus life shapes confident Nasrarians.
             </p>
             <a href="<?= base_url('campus-life') ?>" class="btn btn-primary mt-8">Explore Campus Life <i class="fa-solid fa-arrow-right"></i></a>
         </div>
@@ -193,7 +236,7 @@ $stages = [
     </div>
 </section>
 
-<!-- ============ TESTIMONIALS (light panel — not green wall) ============ -->
+<!-- ============ TESTIMONIALS ============ -->
 <section class="container py-20 lg:py-24" aria-labelledby="testimonials-title">
     <div class="testimonials relative overflow-hidden rounded-3xl border border-muted/15 bg-white px-6 pb-8 pt-10 text-ink shadow-sm md:px-24 md:pb-10" data-animate="fade-up" aria-roledescription="carousel">
 
@@ -204,8 +247,8 @@ $stages = [
             <i class="fa-solid fa-chevron-right"></i>
         </button>
 
-        <p class="eyebrow">What Our Alumni Say</p>
-        <h2 id="testimonials-title" class="section-title mt-4">Trusted by Generations</h2>
+        <p class="eyebrow">Alumni</p>
+        <h2 id="testimonials-title" class="section-title mt-4">Voices of Nasra</h2>
 
         <div class="t-viewport mt-6 overflow-hidden" aria-live="polite">
             <div class="t-track flex transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]">
@@ -237,7 +280,7 @@ $stages = [
     </div>
 </section>
 
-<!-- ============ OUR LEGACY SINCE 1949 ============ -->
+<!-- ============ FOUNDER ============ -->
 <section class="overflow-hidden bg-white" aria-labelledby="legacy-title">
     <div class="grid items-stretch lg:grid-cols-[38%_1fr]">
         <div class="relative min-h-[320px]" data-animate="fade-right">
@@ -248,12 +291,13 @@ $stages = [
 
         <div class="container grid items-center gap-10 py-14 lg:mx-0 lg:max-w-none lg:grid-cols-[1fr_auto] lg:py-20 lg:pl-14">
             <div data-animate="fade-up">
-                <p class="eyebrow">Our Founder</p>
-                <h2 id="legacy-title" class="section-title mt-4 font-display">Our Legacy Since 1949</h2>
+                <p class="eyebrow">Late Founder of ETNS</p>
+                <h2 id="legacy-title" class="section-title mt-4 font-display">Nasra Wazir Ali (S.I.)</h2>
+                <p class="mt-2 text-sm font-medium text-muted">Pioneer educationalist · Humanitarian · Sitara-e-Imtiaz · 1922–2015</p>
                 <p class="lead mt-6 max-w-xl">
-                    In February 1949, Nasra Wazir Ali (S.I.) began teaching neighbourhood children in two rooms of her own home in Karachi. That humble class grew into five campuses and more than 500,000 graduates, nurturing generations with knowledge, character and compassion for over seven decades.
+                    In February 1949, from the living room of a bungalow on Bunder Road, Nasra Wazir Ali began teaching neighbourhood children alongside her own daughter. That humble beginning became Education Trust Nasra School — registered the following year as a not-for-profit to serve children of lower-income households.
                 </p>
-                <a href="<?= base_url('about/history') ?>" class="btn btn-primary mt-8">Learn More About Our History <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="<?= base_url('about/history') ?>" class="btn btn-primary mt-8">Full History <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <figure class="max-w-xs border-accent/40 lg:border-l-4 lg:border-l-accent lg:pl-10" data-animate="fade-left" data-delay="150">
@@ -261,20 +305,21 @@ $stages = [
                 <blockquote class="mt-4 font-sans text-[1.375rem] font-light italic leading-[1.4] tracking-[-0.01em] text-ink md:text-2xl">
                     Tolerance is the hallmark of an educated, elevated and enlightened mindset.
                 </blockquote>
-                <figcaption class="mt-5 text-sm text-muted">— Nasra School Guiding Principles</figcaption>
+                <figcaption class="mt-5 text-sm text-muted">— Nasra School Motto</figcaption>
             </figure>
         </div>
     </div>
 </section>
 
-<!-- ============ CTA (single deep brand moment) ============ -->
+<!-- ============ CTA ============ -->
 <section class="relative overflow-hidden bg-ink text-white">
     <svg class="absolute left-0 top-0 h-12 w-full text-white" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
         <path fill="currentColor" d="M0 0h1440v10C1200 40 960 0 720 14S240 44 0 10z"/>
     </svg>
     <div class="container relative flex flex-col items-start gap-6 pb-14 pt-24 md:flex-row md:items-center md:justify-between" data-animate="fade-up">
         <div>
-            <h2 class="section-title !text-white">Be Part of the Nasra Story</h2>
+            <h2 class="section-title !text-white">Join the Nasra Family</h2>
+            <p class="mt-3 max-w-lg text-white/75">Affordable, high-quality education for underserved communities — bridging education and gender gaps since 1949.</p>
             <p class="mt-3 font-script text-3xl text-accent">Rooted in Values, Ready for the Future</p>
         </div>
         <a href="<?= base_url('admissions') ?>" class="btn btn-accent !px-8 !py-4 text-base">View Admissions <i class="fa-solid fa-arrow-right"></i></a>

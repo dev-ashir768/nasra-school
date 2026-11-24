@@ -159,6 +159,43 @@ html.drawer-open { overflow: hidden; }
 .btn .fa-arrow-right { transition: transform .3s ease; }
 .btn:hover .fa-arrow-right { transform: translateX(4px); }
 
+/* ---------- Legacy section: yellow corner frame ---------- */
+.legacy-frame {
+    padding: 0.85rem 0 0 0.85rem;
+}
+.legacy-frame::before,
+.legacy-frame::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+/* Top-left L */
+.legacy-frame::before {
+    left: 0;
+    top: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-top: 3px solid #FFCC00;
+    border-left: 3px solid #FFCC00;
+    border-top-left-radius: 1.1rem;
+}
+/* Bottom-left L */
+.legacy-frame::after {
+    left: 0;
+    bottom: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-bottom: 3px solid #FFCC00;
+    border-left: 3px solid #FFCC00;
+    border-bottom-left-radius: 1.1rem;
+}
+.legacy-frame__media {
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 18px 40px -24px rgba(0, 51, 26, .35);
+}
+
 /* ---------- Hero: exactly one viewport below sticky header ---------- */
 .hero-banner {
     height: calc(100svh - 4rem);      /* navbar h-16 */

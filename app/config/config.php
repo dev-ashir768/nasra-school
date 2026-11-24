@@ -17,7 +17,7 @@ return [
     // Defaults for <meta> tags and structured data (pages can override title/description/image)
     'seo' => [
         'title_suffix' => 'Nasra School | Education Trust Nasra School, Karachi',
-        'description'  => 'Education Trust Nasra School (ETNS) has provided affordable, high-quality English-medium PK–12 education across five campuses in Karachi since 1949.',
+        'description'  => 'Education Trust Nasra School (ETNS), founded in 1949 by Nasra Wazir Ali (S.I.), provides affordable high-quality English-medium education across five campuses in Karachi — bridging education and gender gaps.',
         'image'        => 'images/branding/logo-512.png',
         'locale'       => 'en_PK',
     ],
