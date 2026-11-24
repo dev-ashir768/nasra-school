@@ -29,14 +29,14 @@ $stages = [
 <!-- ============ HERO ============ -->
 <!-- Height = one viewport minus sticky header (see .hero-banner in app.css) -->
 <section class="hero-banner relative flex items-center overflow-hidden bg-ink text-white" data-hero-slider aria-roledescription="carousel" aria-label="Life at Nasra School">
-    <div class="absolute inset-0" aria-hidden="true">
+    <div class="hero-slides absolute inset-0" aria-hidden="true">
         <?php foreach ($heroSlides as $i => [$img, $alt]): ?>
-            <div class="hero-slide absolute inset-0 transition-opacity duration-[1400ms] ease-in-out <?= $i === 0 ? 'is-active opacity-100' : 'opacity-0' ?>">
-                <?= photo($img, $alt, 'ken-burns h-full w-full', $i === 0) ?>
+            <div class="hero-slide<?= $i === 0 ? ' is-active' : '' ?>"<?= $i === 0 ? '' : ' aria-hidden="true"' ?>>
+                <?php /* All slides load eagerly — lazy images inside opacity:0 never fetch, so fade looks broken */ ?>
+                <?= photo($img, $alt, 'ken-burns h-full w-full', true) ?>
             </div>
         <?php endforeach; ?>
-        <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/55 to-ink/25"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/30"></div>
+        <div class="hero-scrim absolute inset-0"></div>
     </div>
 
     <div class="container relative z-10 flex h-full w-full flex-col justify-center py-8 sm:py-10">
@@ -63,16 +63,15 @@ $stages = [
             </h1>
 
             <p class="hero-in mt-4 max-w-md text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base" style="--d:.3s">
-                Affordable English-medium education rooted in character, tolerance, and opportunity — shaping Karachi for over seven decades.
+                Affordable English-medium education rooted in character, tolerance, and opportunity shaping Karachi for over seven decades.
             </p>
 
             <p class="hero-in mt-3 font-script text-xl text-accent sm:text-2xl" style="--d:.4s">
                 Rooted in Values, Ready for the Future
             </p>
 
-            <div class="hero-in mt-6 flex flex-wrap gap-3 sm:mt-7" style="--d:.55s">
+            <div class="hero-in mt-6 sm:mt-7" style="--d:.55s">
                 <a href="<?= base_url('admissions') ?>" class="btn btn-accent">Explore Admissions <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="<?= base_url('about') ?>" class="btn border-2 border-white/70 bg-transparent text-white hover:border-accent hover:bg-accent hover:text-primary-dark">Our Story</a>
             </div>
         </div>
     </div>

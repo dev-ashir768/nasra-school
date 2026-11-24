@@ -66,7 +66,11 @@ $isSection = fn(string $path) => $path === '/' ? is_active('/') : strpos(Router:
                 </a>
             </div>
             <div class="flex items-center gap-5">
-                <span class="hidden text-white/45 lg:inline">Karachi · Since 1949</span>
+                <a href="<?= base_url('community/giving') ?>" class="hidden font-medium text-accent hover:text-white lg:inline">
+                    Giving to Education
+                </a>
+                <span class="hidden h-3 w-px bg-white/20 lg:block" aria-hidden="true"></span>
+                <span class="hidden text-white/45 xl:inline">Karachi · Since 1949</span>
                 <div class="flex items-center gap-3">
                     <a href="<?= e(config('social.facebook')) ?>" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-accent"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="<?= e(config('social.instagram')) ?>" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-accent"><i class="fa-brands fa-instagram"></i></a>

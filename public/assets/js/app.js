@@ -109,7 +109,7 @@ $(function () {
         $('[data-count]').each(function () { counterObserver.observe(this); });
     }
 
-    // ---------- Hero full-bleed carousel ----------
+    // ---------- Hero full-bleed carousel (CSS opacity crossfade) ----------
     $('[data-hero-slider]').each(function () {
         const $root = $(this);
         const $slides = $root.find('.hero-slide');
@@ -117,7 +117,7 @@ $(function () {
         const count = $slides.length;
         if (count < 2) return;
 
-        const slideTime = reduceMotion ? 999999 : 6000;
+        const slideTime = 6000;
         let index = 0;
         let timer = null;
 
@@ -125,19 +125,16 @@ $(function () {
 
         function show(next) {
             index = ((next % count) + count) % count;
-            $slides.removeClass('is-active opacity-100').addClass('opacity-0')
-                .attr('aria-hidden', 'true')
-                .eq(index).addClass('is-active opacity-100').removeClass('opacity-0')
-                .attr('aria-hidden', 'false');
+            $slides.removeClass('is-active').attr('aria-hidden', 'true');
+            $slides.eq(index).addClass('is-active').removeAttr('aria-hidden');
 
-            $dots.removeClass('is-current').removeAttr('aria-current')
-                .eq(index).addClass('is-current').attr('aria-current', 'true');
+            $dots.removeClass('is-current').removeAttr('aria-current');
+            $dots.eq(index).addClass('is-current').attr('aria-current', 'true');
 
-            // Restart progress fill animation
             const fill = $dots.eq(index).find('.dot-fill')[0];
             if (fill) {
                 fill.style.animation = 'none';
-                fill.offsetHeight; // reflow
+                void fill.offsetWidth;
                 fill.style.animation = '';
             }
         }
@@ -147,16 +144,20 @@ $(function () {
             if (reduceMotion) return;
             timer = setInterval(function () { show(index + 1); }, slideTime);
         }
-        function stop() { clearInterval(timer); timer = null; }
+        function stop() {
+            if (timer) clearInterval(timer);
+            timer = null;
+        }
 
-        $dots.each(function (n) {
-            $(this).on('click', function () {
-                show(n);
-                play();
-            });
+        $dots.on('click', function () {
+            show($dots.index(this));
+            play();
         });
 
-        $root.on('mouseenter focusin', stop).on('mouseleave focusout', play);
+        // Pause only while interacting with the progress pills — not the whole hero
+        $root.find('.hero-dots')
+            .on('mouseenter focusin', stop)
+            .on('mouseleave focusout', play);
 
         show(0);
         play();

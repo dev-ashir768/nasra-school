@@ -176,14 +176,34 @@ html.drawer-open { overflow: hidden; }
         max-height: calc(100svh - 6.5rem);
     }
 }
-.hero-banner .hero-slide img {
+.hero-slides { isolation: isolate; }
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 1.2s ease-in-out;
+    pointer-events: none;
+}
+.hero-slide.is-active {
+    opacity: 1;
+    z-index: 1;
+}
+.hero-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+.hero-scrim {
+    z-index: 2;
+    background:
+        linear-gradient(90deg, rgba(17,17,17,.9) 0%, rgba(17,17,17,.55) 45%, rgba(17,17,17,.25) 100%),
+        linear-gradient(0deg, rgba(17,17,17,.7) 0%, transparent 45%, rgba(17,17,17,.3) 100%);
+    pointer-events: none;
+}
 .ken-burns {
-    transform: scale(1.08);
-    transition: transform 8s linear;
+    transform: scale(1.06);
+    transition: transform 7s linear;
 }
 .hero-slide.is-active .ken-burns {
     transform: scale(1);
@@ -279,5 +299,6 @@ html.drawer-open { overflow: hidden; }
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     .js [data-animate] { opacity: 1; transform: none; }
     .ken-burns { transform: none !important; transition: none !important; }
+    .hero-slide { transition: none !important; }
     .hero-dots .dot-fill { transform: none; animation: none; background: #FFCC00; }
 }
