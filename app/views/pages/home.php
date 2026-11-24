@@ -27,66 +27,63 @@ $stages = [
 ?>
 
 <!-- ============ HERO ============ -->
-<section class="hero-banner relative flex min-h-[100svh] items-center overflow-hidden bg-ink text-white" data-hero-slider aria-roledescription="carousel" aria-label="Life at Nasra School">
-    <!-- Full-viewport background slides -->
+<!-- Height = one viewport minus sticky header (see .hero-banner in app.css) -->
+<section class="hero-banner relative flex items-center overflow-hidden bg-ink text-white" data-hero-slider aria-roledescription="carousel" aria-label="Life at Nasra School">
     <div class="absolute inset-0" aria-hidden="true">
         <?php foreach ($heroSlides as $i => [$img, $alt]): ?>
             <div class="hero-slide absolute inset-0 transition-opacity duration-[1400ms] ease-in-out <?= $i === 0 ? 'is-active opacity-100' : 'opacity-0' ?>">
                 <?= photo($img, $alt, 'ken-burns h-full w-full', $i === 0) ?>
             </div>
         <?php endforeach; ?>
-        <!-- Cinematic scrim: readable type without washing the photo -->
         <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/55 to-ink/25"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/30"></div>
     </div>
 
-    <div class="container relative z-10 flex w-full flex-col justify-center py-24 lg:min-h-[100svh] lg:py-28">
-        <div class="max-w-2xl xl:max-w-[40rem]">
+    <div class="container relative z-10 flex h-full w-full flex-col justify-center py-8 sm:py-10">
+        <div class="max-w-2xl xl:max-w-[38rem]">
             <p class="hero-in flex items-center gap-3 text-sm text-white/75" style="--d:.05s">
                 <span class="h-px w-8 bg-accent" aria-hidden="true"></span>
                 Since 1949 in Karachi
             </p>
 
-            <h1 class="hero-in mt-7 font-display text-[2.5rem] font-black uppercase leading-[1.02] tracking-tight sm:text-[3.25rem] xl:text-[4rem]" style="--d:.15s">
+            <h1 class="hero-in mt-4 font-display text-[clamp(1.85rem,5vw,3.5rem)] font-black uppercase leading-[1.05] tracking-tight sm:mt-5" style="--d:.15s">
                 <span class="block text-white">Real Education</span>
-                <span class="mt-1 block text-white/90">Begins With</span>
-                <span class="relative mt-1 inline-block text-white">
-                    <span class="absolute -top-4 left-1 flex gap-1.5" aria-hidden="true">
-                        <span class="h-3.5 w-0.5 rotate-[-28deg] bg-accent"></span>
-                        <span class="h-5 w-0.5 bg-accent"></span>
-                        <span class="h-3.5 w-0.5 rotate-[28deg] bg-accent"></span>
+                <span class="mt-0.5 block text-white/90">Begins With</span>
+                <span class="relative mt-0.5 inline-block text-white">
+                    <span class="absolute -top-3 left-1 flex gap-1.5" aria-hidden="true">
+                        <span class="h-3 w-0.5 rotate-[-28deg] bg-accent"></span>
+                        <span class="h-4 w-0.5 bg-accent"></span>
+                        <span class="h-3 w-0.5 rotate-[28deg] bg-accent"></span>
                     </span>
                     A Child's
                 </span>
-                <span class="mt-2 block">
+                <span class="mt-1 block">
                     <span class="brush-word brush-word-light">Thinking</span>
                 </span>
             </h1>
 
-            <p class="hero-in mt-6 max-w-md text-base leading-relaxed text-white/80 sm:text-lg" style="--d:.3s">
+            <p class="hero-in mt-4 max-w-md text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base" style="--d:.3s">
                 Affordable English-medium education rooted in character, tolerance, and opportunity — shaping Karachi for over seven decades.
             </p>
 
-            <p class="hero-in mt-4 font-script text-2xl text-accent sm:text-3xl" style="--d:.4s">
+            <p class="hero-in mt-3 font-script text-xl text-accent sm:text-2xl" style="--d:.4s">
                 Rooted in Values, Ready for the Future
             </p>
 
-            <div class="hero-in mt-9 flex flex-wrap gap-3" style="--d:.55s">
+            <div class="hero-in mt-6 flex flex-wrap gap-3 sm:mt-7" style="--d:.55s">
                 <a href="<?= base_url('admissions') ?>" class="btn btn-accent">Explore Admissions <i class="fa-solid fa-arrow-right"></i></a>
                 <a href="<?= base_url('about') ?>" class="btn border-2 border-white/70 bg-transparent text-white hover:border-accent hover:bg-accent hover:text-primary-dark">Our Story</a>
             </div>
         </div>
     </div>
 
-    <!-- Vertical progress pills (right) -->
-    <div class="hero-dots is-vertical absolute right-4 top-1/2 z-20 -translate-y-1/2 sm:right-6 lg:right-8">
+    <div class="hero-dots is-vertical absolute right-3 top-1/2 z-20 -translate-y-1/2 sm:right-5 lg:right-7">
         <?php foreach ($heroSlides as $i => $_): ?>
             <button type="button" class="<?= $i === 0 ? 'is-current' : '' ?>" aria-label="Show photo <?= $i + 1 ?> of <?= count($heroSlides) ?>"<?= $i === 0 ? ' aria-current="true"' : '' ?>><span class="dot-fill"></span></button>
         <?php endforeach; ?>
     </div>
 
-    <!-- Scroll hint -->
-    <a href="#about" class="hero-in absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/60 transition hover:text-accent lg:flex" style="--d:.8s" aria-label="Scroll to about">
+    <a href="#about" class="hero-in absolute bottom-4 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-white/55 transition hover:text-accent lg:flex" style="--d:.8s" aria-label="Scroll to about">
         <span>Scroll</span>
         <span class="hero-scroll-line" aria-hidden="true"></span>
     </a>
