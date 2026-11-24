@@ -154,19 +154,25 @@ $legacyPillars = [
 </section>
 
 <!-- ============ THE NASRA DIFFERENCE ============ -->
-<section class="py-20 lg:py-24" aria-labelledby="difference-title">
-    <div class="container">
+<section class="difference-section relative overflow-hidden py-20 lg:py-24" aria-labelledby="difference-title">
+    <div class="pointer-events-none absolute inset-0 opacity-40" aria-hidden="true">
+        <div class="absolute -left-24 top-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl"></div>
+        <div class="absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-accent/25 blur-3xl"></div>
+    </div>
+
+    <div class="container relative">
         <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
             <p class="eyebrow justify-center">The Nasra School System</p>
             <h2 id="difference-title" class="section-title mt-4">The Nasra Difference</h2>
             <p class="lead mt-4">What sets Education Trust Nasra School apart — values lived every day across our campuses.</p>
         </div>
 
-        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- 5 cards: wrap + center so the last row never looks incomplete -->
+        <div class="difference-grid mt-12 flex flex-wrap justify-center gap-5 lg:gap-6">
             <?php foreach ($differences as $i => [$icon, $label, $copy]): ?>
-                <article class="border border-muted/15 bg-white p-6 transition hover:border-accent/50" data-animate="fade-up" data-delay="<?= $i * 80 ?>">
-                    <span class="grid h-11 w-11 place-items-center rounded-lg bg-accent/20 text-lg text-primary"><i class="fa-solid <?= $icon ?>"></i></span>
-                    <h3 class="card-title mt-4"><?= e($label) ?></h3>
+                <article class="difference-card group" data-animate="fade-up" data-delay="<?= $i * 80 ?>">
+                    <span class="difference-card__icon"><i class="fa-solid <?= $icon ?>"></i></span>
+                    <h3 class="mt-5 font-display text-lg font-bold text-primary"><?= e($label) ?></h3>
                     <p class="mt-3 text-sm leading-relaxed text-muted"><?= e($copy) ?></p>
                 </article>
             <?php endforeach; ?>
@@ -175,7 +181,7 @@ $legacyPillars = [
 </section>
 
 <!-- ============ ACADEMIC PATHWAYS ============ -->
-<section class="bg-surface-soft py-20 lg:py-24">
+<section class="bg-[#F3F4F6] py-20 lg:py-24">
     <div class="container">
         <div class="text-center" data-animate="fade-up">
             <p class="eyebrow">Academics</p>
@@ -183,18 +189,18 @@ $legacyPillars = [
             <p class="lead mx-auto mt-4 max-w-2xl">From pre-primary through higher secondary — balanced learning, character building, and pathways that prepare students for life beyond Nasra.</p>
         </div>
 
-        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             <?php foreach ($stages as $i => [$label, $icon, $slug]): ?>
-                <a href="<?= base_url('academics/' . $slug) ?>" class="group overflow-hidden border border-muted/20 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                <a href="<?= base_url('academics/' . $slug) ?>" class="group overflow-hidden rounded-2xl bg-[#E8EAED] shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
                    data-animate="fade-up" data-delay="<?= $i * 120 ?>">
                     <div class="overflow-hidden">
                         <?= photo("home/{$slug}.jpg", "{$label} students at Nasra School", 'aspect-[16/10] w-full transition duration-700 group-hover:scale-105') ?>
                     </div>
-                    <div class="h-1 w-full bg-accent"></div>
+                    <div class="h-1 w-full bg-gradient-to-r from-accent to-primary"></div>
                     <div class="flex items-center gap-3 px-5 py-4">
-                        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent/20 text-primary"><i class="fa-solid <?= $icon ?>"></i></span>
+                        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-primary shadow-sm"><i class="fa-solid <?= $icon ?>"></i></span>
                         <span class="card-title flex-1"><?= e($label) ?></span>
-                        <span class="grid h-8 w-8 place-items-center rounded-full bg-ink/5 text-xs text-ink transition group-hover:bg-accent group-hover:text-primary-dark"><i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="grid h-8 w-8 place-items-center rounded-full bg-white/80 text-xs text-ink transition group-hover:bg-accent group-hover:text-primary-dark"><i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </a>
             <?php endforeach; ?>
