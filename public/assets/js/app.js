@@ -32,9 +32,8 @@ $(function () {
         }
     });
 
-    // ---------- Scroll-driven UI (progress bar, header, back-to-top) ----------
+    // ---------- Scroll-driven UI (progress bar, header) ----------
     const $header = $('#site-header');
-    const $backToTop = $('#back-to-top');
     const progress = document.getElementById('scroll-progress');
     let ticking = false;
 
@@ -44,7 +43,6 @@ $(function () {
 
         progress.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
         $header.toggleClass('is-scrolled', y > 20);
-        $backToTop.toggleClass('is-shown', y > 600);
         ticking = false;
     }
 
@@ -55,10 +53,6 @@ $(function () {
         }
     });
     onScroll();
-
-    $backToTop.on('click', function () {
-        lenis ? lenis.scrollTo(0) : $('html, body').animate({ scrollTop: 0 }, 600);
-    });
 
     // ---------- Reveal on scroll ----------
     const $animated = $('[data-animate]');

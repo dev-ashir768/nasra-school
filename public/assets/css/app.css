@@ -32,18 +32,35 @@ html {
     transform-origin: 0 50%; transform: scaleX(0);
 }
 
-/* ---------- Back to top ---------- */
-#back-to-top {
-    position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40;
-    width: 3rem; height: 3rem; border-radius: 999px;
-    display: grid; place-items: center;
-    background: #004D26; color: #fff;
-    box-shadow: 0 10px 25px -5px rgba(0, 77, 38, .45);
-    opacity: 0; transform: translateY(1rem) scale(.8); pointer-events: none;
-    transition: opacity .35s ease, transform .35s ease, background .2s;
+/* ---------- WhatsApp float ---------- */
+#whatsapp-float {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 40;
+    width: 3.75rem;
+    height: 3.75rem;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: transparent;
+    transition: transform .3s ease;
 }
-#back-to-top.is-shown { opacity: 1; transform: none; pointer-events: auto; }
-#back-to-top:hover { background: #00331A; transform: translateY(-3px); }
+#whatsapp-float:hover { transform: translateY(-3px) scale(1.05); }
+#whatsapp-float img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+@media (min-width: 768px) {
+    #whatsapp-float {
+        right: 1.35rem;
+        bottom: 1.35rem;
+        width: 4.25rem;
+        height: 4.25rem;
+    }
+}
 
 /* ---------- Header on scroll ---------- */
 .site-logo {

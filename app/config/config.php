@@ -35,5 +35,6 @@ return [
         'facebook'  => 'https://www.facebook.com/people/ETNS-Education-Trust-Nasra-School/100063850159981/',
         'instagram' => 'https://www.instagram.com/nasraschools/',
         'youtube'   => 'https://www.youtube.com/channel/UCxLEtU78o1nbuMguIKi9pPg/featured',
+        'whatsapp'  => 'https://wa.me/922132361313',
     ],
 ];

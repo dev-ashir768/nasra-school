@@ -6,9 +6,8 @@
 
     <div class="container grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-            <a href="<?= base_url() ?>" class="flex items-center gap-3">
-                <img src="<?= asset('images/branding/logo.webp') ?>" alt="" width="48" height="48" loading="lazy" class="h-12 w-12">
-                <span class="font-display text-lg font-extrabold text-white">Nasra School</span>
+            <a href="<?= base_url() ?>" class="inline-flex items-center" aria-label="Nasra School home">
+                <img src="<?= asset('images/branding/logo.webp') ?>" alt="Nasra School" width="80" height="80" loading="lazy" class="h-20 w-20">
             </a>
             <p class="mt-4 text-sm leading-relaxed">
                 Education Trust Nasra School (ETNS) is a not-for-profit organization established in 1949 under the Trust Act of 1882.
@@ -18,14 +17,10 @@
 
         <div>
             <h3 class="font-display text-base font-bold text-white">Quick Links</h3>
-            <ul class="footer-links mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5 text-sm sm:grid-cols-1">
-                <li><a href="<?= base_url() ?>">Home</a></li>
+            <ul class="footer-links mt-5 space-y-2.5 text-sm">
                 <li><a href="<?= base_url('about') ?>">About Us</a></li>
                 <li><a href="<?= base_url('academics') ?>">Academics</a></li>
-                <li><a href="<?= base_url('campus-life') ?>">Campus Life</a></li>
                 <li><a href="<?= base_url('admissions') ?>">Admissions</a></li>
-                <li><a href="<?= base_url('community') ?>">Community</a></li>
-                <li><a href="<?= base_url('careers') ?>">Careers</a></li>
                 <li><a href="<?= base_url('contact') ?>">Contact Us</a></li>
             </ul>
         </div>

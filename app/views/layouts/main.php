@@ -109,10 +109,10 @@ $schema = [
 
     <?php partial('footer') ?>
 
-    <!-- Back to top -->
-    <button type="button" id="back-to-top" aria-label="Back to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+    <!-- WhatsApp float -->
+    <a href="<?= e(config('social.whatsapp')) ?>" id="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <img src="<?= asset('images/gif/whatsapp.gif') ?>" alt="" width="64" height="64" loading="lazy">
+    </a>
 
     <!-- Scripts (deferred so they never block rendering) -->
     <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"

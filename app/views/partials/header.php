@@ -106,9 +106,9 @@ $navRight = array_slice($navLinks, $navMid, null, true);
     <!-- Main navbar: mobile = logo left; desktop xl = logo centered with split nav -->
     <div class="border-b border-black/5 bg-white">
         <!-- Mobile / tablet -->
-        <div class="container flex h-16 items-center gap-4 xl:hidden">
+        <div class="container flex h-[4.5rem] items-center gap-4 xl:hidden">
             <a href="<?= base_url() ?>" class="flex shrink-0 items-center" aria-label="Nasra School home">
-                <img src="<?= asset('images/branding/logo.webp') ?>" alt="Nasra School" width="56" height="56" class="site-logo h-11 w-11 rounded-full object-cover">
+                <img src="<?= asset('images/branding/logo.webp') ?>" alt="Nasra School" width="64" height="64" class="site-logo h-14 w-14 rounded-full object-cover">
             </a>
             <div class="ml-auto flex items-center gap-3">
                 <a href="<?= base_url('admissions') ?>" class="btn btn-primary hidden !rounded-md !px-4 !py-2.5 !text-xs font-semibold sm:inline-flex">Admissions</a>
