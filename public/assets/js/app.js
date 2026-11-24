@@ -242,18 +242,58 @@ $(function () {
         play();
     });
 
-    // ---------- Mobile menu ----------
-    $('#menu-toggle').on('click', function () {
-        const $menu = $('#mobile-menu').toggleClass('hidden');
-        const open = !$menu.hasClass('hidden');
-        $(this).attr('aria-expanded', open)
-            .find('i').toggleClass('fa-bars', !open).toggleClass('fa-xmark', open);
+    // ---------- Mobile drawer menu ----------
+    const $drawer = $('#mobile-drawer');
+    const $burger = $('#menu-toggle');
+
+    function openDrawer() {
+        $drawer.addClass('is-open').attr('aria-hidden', false);
+        $burger.addClass('is-active').attr({ 'aria-expanded': true, 'aria-label': 'Close menu' });
+        $('html').addClass('drawer-open');
+        if (lenis) lenis.stop();
+        setTimeout(function () { $drawer.find('.drawer-close').trigger('focus'); }, 350);
+    }
+
+    function closeDrawer() {
+        if (!$drawer.hasClass('is-open')) return;
+        $drawer.removeClass('is-open').attr('aria-hidden', true);
+        $burger.removeClass('is-active').attr({ 'aria-expanded': false, 'aria-label': 'Open menu' });
+        $('html').removeClass('drawer-open');
+        if (lenis) lenis.start();
+        $burger.trigger('focus');
+    }
+
+    $burger.on('click', function () {
+        $drawer.hasClass('is-open') ? closeDrawer() : openDrawer();
+    });
+    $drawer.on('click', '[data-drawer-close]', closeDrawer);
+    $drawer.on('click', 'a[href]', closeDrawer);
+
+    $(document).on('keydown', function (e) {
+        if (!$drawer.hasClass('is-open')) return;
+        if (e.key === 'Escape') closeDrawer();
+
+        // Keep keyboard focus inside the open drawer
+        if (e.key === 'Tab') {
+            const $focusable = $drawer.find('a[href], button').filter(':visible');
+            const first = $focusable.first()[0];
+            const last = $focusable.last()[0];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
     });
 
-    // Mobile dropdowns (Academics, Admissions)
-    $('.mobile-dropdown > button').on('click', function () {
-        $(this).next().toggleClass('hidden');
-        $(this).find('i').toggleClass('rotate-180');
+    // Close if the screen grows to desktop width while open
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', function (e) {
+        if (e.matches) closeDrawer();
+    });
+
+    // Accordion submenus (Academics, Admissions) - only one open at a time
+    $drawer.on('click', '.drawer-toggle', function () {
+        const $btn = $(this);
+        const willOpen = $btn.attr('aria-expanded') !== 'true';
+        $drawer.find('.drawer-toggle').not($btn).attr('aria-expanded', false).next('.drawer-sub').removeClass('is-open');
+        $btn.attr('aria-expanded', willOpen).next('.drawer-sub').toggleClass('is-open', willOpen);
     });
 
     // ---------- Contact form via AJAX ----------
