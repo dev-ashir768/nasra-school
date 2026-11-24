@@ -107,8 +107,8 @@ $legacyPillars = [
     <div class="container">
         <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-12">
 
-            <!-- Photo + yellow corner frame -->
-            <div class="lg:col-span-4" data-animate="fade-right">
+            <!-- Photo first on mobile + desktop -->
+            <div class="order-1 lg:col-span-4" data-animate="fade-right">
                 <div class="legacy-frame relative mx-auto max-w-md lg:mx-0 lg:max-w-none">
                     <div class="legacy-frame__media overflow-hidden rounded-2xl">
                         <?= photo('home/legacy-award.jpg', 'Nasra School campus building', 'aspect-[4/5] w-full sm:aspect-[5/6]') ?>
@@ -117,7 +117,7 @@ $legacyPillars = [
             </div>
 
             <!-- Story -->
-            <div class="lg:col-span-5" data-animate="fade-up">
+            <div class="order-2 lg:col-span-5" data-animate="fade-up">
                 <div class="flex gap-4 sm:gap-5">
                     <span class="mt-1 hidden w-1 shrink-0 self-stretch rounded-full bg-accent sm:block" aria-hidden="true"></span>
                     <div>
@@ -136,7 +136,7 @@ $legacyPillars = [
             </div>
 
             <!-- Pillars -->
-            <div class="lg:col-span-3" data-animate="fade-left">
+            <div class="order-3 lg:col-span-3" data-animate="fade-left">
                 <ul class="flex flex-col gap-5 sm:grid sm:grid-cols-2 sm:gap-6 lg:flex lg:flex-col lg:gap-6">
                     <?php foreach ($legacyPillars as $i => [$icon, $label]): ?>
                         <li class="flex items-center gap-4" style="--d: <?= 0.1 + $i * 0.08 ?>s">
@@ -278,8 +278,8 @@ $campusPillars = [
     </div>
 
     <div class="container relative grid items-center gap-10 sm:gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 xl:gap-20">
-        <!-- Images first on mobile; text left on desktop -->
-        <div class="order-1 campus-mosaic-wrap relative mx-auto w-full max-w-lg lg:order-2 lg:max-w-none" data-animate="fade-left">
+        <!-- Mosaic first in DOM = first on mobile; content moves left on lg via grid placement -->
+        <div class="campus-mosaic-wrap relative mx-auto w-full max-w-lg lg:col-start-2 lg:row-start-1 lg:max-w-none" data-animate="fade-left">
             <div class="ss-mosaic" aria-label="Life at Nasra School">
                 <?php foreach ($campusMosaic as $i => [$img, $alt]): ?>
                     <div class="ss-mosaic__item ss-mosaic__item--<?= $i + 1 ?>">
@@ -293,7 +293,7 @@ $campusPillars = [
             <p class="mt-5 text-center font-script text-xl text-primary/60 lg:text-left">Life beyond the classroom</p>
         </div>
 
-        <div class="order-2 lg:order-1" data-animate="fade-right">
+        <div class="lg:col-start-1 lg:row-start-1" data-animate="fade-right">
             <p class="eyebrow">Campus Life</p>
             <h2 id="campus-title" class="section-title mt-4">Sportsmanship &amp; Community</h2>
             <p class="mt-3 font-script text-2xl text-primary/70 md:text-3xl">Where skill meets character</p>
@@ -447,11 +447,12 @@ $igProfile = config('social.instagram') ?: ('https://www.instagram.com/' . $igHa
 <!-- ============ FOUNDER ============ -->
 <section class="founder-section relative overflow-hidden bg-white" aria-labelledby="legacy-title">
     <div class="founder-section__inner grid items-stretch lg:grid-cols-[minmax(0,38%)_minmax(0,62%)]">
-        <div class="founder-section__photo relative min-h-[280px] sm:min-h-[340px]" data-animate="fade-right">
+        <!-- Photo first on mobile + desktop -->
+        <div class="founder-section__photo order-1 relative min-h-[280px] sm:min-h-[340px]" data-animate="fade-right">
             <?= photo('home/founder.jpg', 'Nasra Wazir Ali (S.I.), founder of Nasra School', 'absolute inset-0 h-full w-full object-[50%_28%] grayscale') ?>
         </div>
 
-        <div class="founder-section__copy grid items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1fr_auto] lg:gap-12 lg:py-20 lg:pl-14 lg:pr-10 xl:pr-16">
+        <div class="founder-section__copy order-2 grid items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1fr_auto] lg:gap-12 lg:py-20 lg:pl-14 lg:pr-10 xl:pr-16">
             <div data-animate="fade-up">
                 <p class="eyebrow">Late Founder of ETNS</p>
                 <h2 id="legacy-title" class="section-title mt-4 font-display">Nasra Wazir Ali (S.I.)</h2>
