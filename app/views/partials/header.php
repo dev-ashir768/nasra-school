@@ -152,29 +152,32 @@ $navRight = array_slice($navLinks, $navMid, null, true);
     <div class="drawer-backdrop" data-drawer-close></div>
 
     <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Site menu">
-        <div class="flex items-center justify-between border-b border-black/5 px-5 py-4">
-            <a href="<?= base_url() ?>" aria-label="Nasra School home">
-                <img src="<?= asset('images/branding/logo.webp') ?>" alt="" width="56" height="56" class="h-14 w-14 rounded-full object-cover">
+        <div class="drawer-panel__head">
+            <a href="<?= base_url() ?>" class="drawer-panel__brand" aria-label="Nasra School home">
+                <img src="<?= asset('images/branding/logo.webp') ?>" alt="" width="48" height="48" class="h-12 w-12 rounded-full object-cover">
+                <span>
+                    <span class="drawer-panel__brand-name">Nasra School</span>
+                    <span class="drawer-panel__brand-tag">Est. 1949</span>
+                </span>
             </a>
             <button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">
-                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
         </div>
 
-        <nav class="flex-1 overflow-y-auto px-3 py-4" aria-label="Mobile">
-            <ul class="space-y-1">
-                <?php $n = 0; foreach ($navLinks as $label => $item): ?>
+        <nav class="drawer-panel__nav" aria-label="Mobile">
+            <ul class="drawer-nav">
+                <?php foreach ($navLinks as $label => $item): ?>
                     <?php [$path, $children] = is_array($item) ? $item : [$item, []]; $active = $isSection($path); ?>
-                    <li class="drawer-item" style="--i: <?= $n++ ?>">
+                    <li>
                         <?php if ($children): ?>
                             <button type="button" class="drawer-link drawer-toggle <?= $active ? 'is-current' : '' ?>" aria-expanded="false">
-                                <span class="drawer-icon"><i class="fa-solid <?= $navIcons[$label] ?? 'fa-circle' ?>"></i></span>
-                                <span class="flex-1 text-left"><?= e($label) ?></span>
-                                <i class="fa-solid fa-chevron-down drawer-chevron"></i>
+                                <span><?= e($label) ?></span>
+                                <i class="fa-solid fa-chevron-down drawer-chevron" aria-hidden="true"></i>
                             </button>
                             <div class="drawer-sub">
                                 <div>
-                                    <ul class="ml-[3.25rem] space-y-0.5 border-l border-black/10 py-1 pl-4">
+                                    <ul class="drawer-sublist">
                                         <li><a href="<?= base_url($path) ?>" class="drawer-sublink">Overview</a></li>
                                         <?php foreach ($children as $childLabel => $childPath): ?>
                                             <li><a href="<?= base_url($childPath) ?>" class="drawer-sublink <?= is_active($childPath) ? 'is-current' : '' ?>"><?= e($childLabel) ?></a></li>
@@ -184,8 +187,7 @@ $navRight = array_slice($navLinks, $navMid, null, true);
                             </div>
                         <?php else: ?>
                             <a href="<?= base_url($path) ?>" class="drawer-link <?= $active ? 'is-current' : '' ?>"<?= $active ? ' aria-current="page"' : '' ?>>
-                                <span class="drawer-icon"><i class="fa-solid <?= $navIcons[$label] ?? 'fa-circle' ?>"></i></span>
-                                <span class="flex-1"><?= e($label) ?></span>
+                                <span><?= e($label) ?></span>
                             </a>
                         <?php endif; ?>
                     </li>
@@ -193,11 +195,16 @@ $navRight = array_slice($navLinks, $navMid, null, true);
             </ul>
         </nav>
 
-        <div class="drawer-item border-t border-black/5 px-5 pb-6 pt-5" style="--i: <?= $n ?>">
-            <a href="<?= base_url('admissions') ?>" class="btn btn-primary w-full !py-3.5">Admissions</a>
-            <div class="mt-5 space-y-2 text-sm text-muted">
-                <a href="tel:<?= e(config('contact.tel')) ?>" class="flex items-center gap-3 hover:text-primary"><i class="fa-solid fa-phone w-4 text-primary"></i> <?= e(config('contact.phone')) ?></a>
-                <a href="mailto:<?= e(config('contact.email')) ?>" class="flex items-center gap-3 hover:text-primary"><i class="fa-solid fa-envelope w-4 text-primary"></i> <?= e(config('contact.email')) ?></a>
+        <div class="drawer-panel__foot">
+            <a href="<?= base_url('admissions') ?>" class="btn btn-accent w-full !rounded-md !py-3.5">Admissions</a>
+            <div class="drawer-panel__contact">
+                <a href="tel:<?= e(config('contact.tel')) ?>"><i class="fa-solid fa-phone" aria-hidden="true"></i><?= e(config('contact.phone')) ?></a>
+                <a href="mailto:<?= e(config('contact.email')) ?>"><i class="fa-solid fa-envelope" aria-hidden="true"></i><?= e(config('contact.email')) ?></a>
+            </div>
+            <div class="drawer-panel__social">
+                <a href="<?= e(config('social.facebook')) ?>" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="<?= e(config('social.instagram')) ?>" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="<?= e(config('social.youtube')) ?>" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
     </aside>
