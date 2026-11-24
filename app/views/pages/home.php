@@ -1,11 +1,11 @@
 <?php
 // Full-bleed hero carousel backgrounds
 $heroSlides = [
-    ['home/hero-banner.jpg', 'Nasra School students on campus'],
-    ['home/hero.jpg',        'Nasra School students walking to class'],
-    ['home/hero-2.jpg',      'Students in Nasra School uniforms'],
-    ['home/campus-1.jpg',    'Student batting in a school cricket match'],
-    ['home/legacy-1.jpg',    'A Nasra School campus building'],
+    ['home/hero-banner-01.jpg', 'Nasra School students on campus'],
+    ['home/hero-banner-02.jpg',        'Nasra School students walking to class'],
+    ['home/hero-banner-05.jpg',    'A Nasra School campus building'],
+    ['home/hero-banner-03.jpg',      'Students in Nasra School uniforms'],
+    ['home/hero-banner-04.jpg',    'Student batting in a school cricket match'],
 ];
 
 // From nasraschool.edu.pk — The Nasra Difference
