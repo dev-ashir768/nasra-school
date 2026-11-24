@@ -159,6 +159,38 @@ html.drawer-open { overflow: hidden; }
 .btn .fa-arrow-right { transition: transform .3s ease; }
 .btn:hover .fa-arrow-right { transform: translateX(4px); }
 
+/* ---------- Campus Life SS mosaic (circle + leaf) ---------- */
+.ss-mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+@media (min-width: 640px) {
+    .ss-mosaic { gap: 1.15rem; }
+}
+.ss-mosaic__item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border: 0;
+    box-shadow: none;
+    background: #e8eaed;
+}
+.ss-mosaic__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+.ss-mosaic__item:hover img {
+    transform: scale(1.05);
+}
+/* Same leaf shape on all 4, mirrored so big curves face center */
+.ss-mosaic__item--1 { border-radius: 1rem 70% 1rem 1rem; }   /* big TR */
+.ss-mosaic__item--2 { border-radius: 70% 1rem 1rem 1rem; }   /* big TL (liked) */
+.ss-mosaic__item--3 { border-radius: 1rem 1rem 70% 1rem; }   /* big BR */
+.ss-mosaic__item--4 { border-radius: 1rem 1rem 1rem 70%; }   /* big BL */
+
 /* ---------- Academics pathways ---------- */
 .academics-section {
     background: linear-gradient(180deg, #F6F7F9 0%, #ECEFF2 55%, #F6F7F9 100%);

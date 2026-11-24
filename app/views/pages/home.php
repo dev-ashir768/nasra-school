@@ -228,8 +228,16 @@ $legacyPillars = [
 </section>
 
 <!-- ============ CAMPUS LIFE / TEAM WORK ============ -->
+<?php
+$campusMosaic = [
+    ['campus-1',  'Student batting in a school cricket match'],
+    ['campus-2',  'Students at cricket practice'],
+    ['hero-2',    'Students in Nasra School uniforms'],
+    ['legacy-1',  'Students on a Nasra School campus'],
+];
+?>
 <section class="overflow-hidden bg-surface-soft py-20 lg:py-24">
-    <div class="container grid items-center gap-14 lg:grid-cols-[2fr_3fr]">
+    <div class="container grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16 xl:gap-20">
         <div data-animate="fade-right">
             <p class="eyebrow">Campus Life</p>
             <h2 class="section-title mt-4">Sportsmanship &amp; Community</h2>
@@ -239,10 +247,10 @@ $legacyPillars = [
             <a href="<?= base_url('campus-life') ?>" class="btn btn-primary mt-8">Explore Campus Life <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
-        <div class="grid grid-cols-3 gap-3">
-            <?php foreach ([['campus-1', 'Student batting in a school cricket match'], ['campus-2', 'Students at cricket practice'], ['legacy-1', 'Students on a Nasra School campus']] as $i => [$img, $alt]): ?>
-                <div class="overflow-hidden rounded-lg" data-animate="fade-up" data-delay="<?= $i * 150 ?>">
-                    <?= photo("home/{$img}.jpg", $alt, 'aspect-[3/4] w-full') ?>
+        <div class="ss-mosaic mx-auto w-full max-w-md lg:max-w-none" data-animate="fade-left">
+            <?php foreach ($campusMosaic as $i => [$img, $alt]): ?>
+                <div class="ss-mosaic__item ss-mosaic__item--<?= $i + 1 ?>">
+                    <?= photo("home/{$img}.jpg", $alt, 'h-full w-full') ?>
                 </div>
             <?php endforeach; ?>
         </div>
