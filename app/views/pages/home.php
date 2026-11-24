@@ -164,19 +164,25 @@ $legacyPillars = [
         <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
             <p class="eyebrow justify-center">The Nasra School System</p>
             <h2 id="difference-title" class="section-title mt-4">The Nasra Difference</h2>
-            <p class="lead mt-4">What sets Education Trust Nasra School apart values lived every day across our campuses.</p>
+            <p class="lead mt-4">What sets Education Trust Nasra School apart — values lived every day across our campuses.</p>
         </div>
 
-        <!-- 5 cards: wrap + center so the last row never looks incomplete -->
-        <div class="difference-grid mt-12 flex flex-wrap justify-center gap-5 lg:gap-6">
+        <ol class="difference-timeline mt-14 lg:mt-16" data-animate="fade-up">
             <?php foreach ($differences as $i => [$icon, $label, $copy]): ?>
-                <article class="difference-card group" data-animate="fade-up" data-delay="<?= $i * 80 ?>">
-                    <span class="difference-card__icon"><i class="fa-solid <?= $icon ?>"></i></span>
-                    <h3 class="mt-5 font-display text-lg font-bold text-primary"><?= e($label) ?></h3>
-                    <p class="mt-3 text-sm leading-relaxed text-muted"><?= e($copy) ?></p>
-                </article>
+                <li class="difference-timeline__item" data-animate="fade-up" data-delay="<?= $i * 90 ?>">
+                    <span class="difference-timeline__marker" aria-hidden="true">
+                        <span class="difference-timeline__num"><?= str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT) ?></span>
+                    </span>
+                    <article class="difference-timeline__body">
+                        <span class="difference-timeline__icon"><i class="fa-solid <?= $icon ?>"></i></span>
+                        <div>
+                            <h3 class="difference-timeline__title"><?= e($label) ?></h3>
+                            <p class="difference-timeline__copy"><?= e($copy) ?></p>
+                        </div>
+                    </article>
+                </li>
             <?php endforeach; ?>
-        </div>
+        </ol>
     </div>
 </section>
 
