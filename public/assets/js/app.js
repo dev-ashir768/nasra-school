@@ -300,19 +300,65 @@ $(function () {
         $btn.attr('aria-expanded', willOpen).next('.drawer-sub').toggleClass('is-open', willOpen);
     });
 
-    // ---------- Instagram embeds (re-process after async script) ----------
-    function processInstagramEmbeds() {
-        if (window.instgrm && window.instgrm.Embeds && typeof window.instgrm.Embeds.process === 'function') {
-            window.instgrm.Embeds.process();
+    // ---------- Instagram embeds (lazy — only when section nears viewport) ----------
+    (function lazyInstagram() {
+        const section = document.querySelector('[data-ig-lazy]');
+        if (!section) return;
+
+        function processEmbeds() {
+            if (window.instgrm && window.instgrm.Embeds && typeof window.instgrm.Embeds.process === 'function') {
+                window.instgrm.Embeds.process();
+                return true;
+            }
+            return false;
         }
-    }
-    processInstagramEmbeds();
-    // embed.js may load after app.js — retry briefly
-    let igTries = 0;
-    const igTimer = setInterval(function () {
-        processInstagramEmbeds();
-        if ((window.instgrm && window.instgrm.Embeds) || ++igTries > 20) clearInterval(igTimer);
-    }, 300);
+
+        function injectAndLoad() {
+            section.querySelectorAll('[data-ig-permalink]').forEach(function (item) {
+                if (item.querySelector('.instagram-media')) return;
+                const permalink = item.getAttribute('data-ig-permalink');
+                if (!permalink) return;
+                const skeleton = item.querySelector('.instagram-embeds__skeleton');
+                if (skeleton) skeleton.remove();
+                const bq = document.createElement('blockquote');
+                bq.className = 'instagram-media';
+                bq.setAttribute('data-instgrm-permalink', permalink);
+                bq.setAttribute('data-instgrm-version', '14');
+                const a = document.createElement('a');
+                a.href = permalink;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.textContent = 'View this post on Instagram';
+                bq.appendChild(a);
+                item.appendChild(bq);
+            });
+
+            if (processEmbeds()) return;
+
+            const s = document.createElement('script');
+            s.src = 'https://www.instagram.com/embed.js';
+            s.async = true;
+            s.onload = function () {
+                let tries = 0;
+                const t = setInterval(function () {
+                    if (processEmbeds() || ++tries > 25) clearInterval(t);
+                }, 200);
+            };
+            document.body.appendChild(s);
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            injectAndLoad();
+            return;
+        }
+
+        const io = new IntersectionObserver(function (entries) {
+            if (!entries.some(function (e) { return e.isIntersecting; })) return;
+            io.disconnect();
+            injectAndLoad();
+        }, { rootMargin: '280px 0px' });
+        io.observe(section);
+    })();
 
     // ---------- Homepage video player ----------
     $('[data-video-player]').each(function () {

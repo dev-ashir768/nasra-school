@@ -66,6 +66,8 @@ $schema = [
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="https://code.jquery.com">
+    <link rel="dns-prefetch" href="https://www.instagram.com">
+    <link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
 
     <!-- Above-the-fold assets first -->
     <link rel="preload" as="image" href="<?= asset('images/branding/logo.webp') ?>" type="image/webp">
@@ -111,7 +113,7 @@ $schema = [
 
     <!-- WhatsApp float -->
     <a href="<?= e(config('social.whatsapp')) ?>" id="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-        <img src="<?= asset('images/gif/whatsapp.gif') ?>" alt="" width="64" height="64" loading="lazy">
+        <img src="<?= asset('images/gif/whatsapp.gif') ?>" alt="" width="64" height="64" loading="lazy" decoding="async" fetchpriority="low">
     </a>
 
     <!-- Scripts (deferred so they never block rendering) -->
@@ -120,6 +122,5 @@ $schema = [
             crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
     <script defer src="<?= asset('js/app.js') ?>"></script>
-    <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>

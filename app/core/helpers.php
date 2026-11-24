@@ -50,10 +50,18 @@ function asset(string $path): string
  */
 function photo(string $path, string $alt, string $class = '', bool $eager = false): string
 {
-    if (is_file(PUBLIC_PATH . '/assets/images/' . ltrim($path, '/'))) {
-        // Above-the-fold images load immediately at high priority; everything else lazy-loads
-        $loading = $eager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
-        return '<img src="' . e(asset('images/' . $path)) . '" alt="' . e($alt) . '" class="object-cover ' . e($class) . '" ' . $loading . ' decoding="async">';
+    $file = PUBLIC_PATH . '/assets/images/' . ltrim($path, '/');
+    if (is_file($file)) {
+        // Above-the-fold images load immediately; everything else lazy-loads
+        $loading = $eager
+            ? 'loading="eager" fetchpriority="high"'
+            : 'loading="lazy" fetchpriority="low"';
+        $dims = '';
+        $size = @getimagesize($file);
+        if (is_array($size) && !empty($size[0]) && !empty($size[1])) {
+            $dims = ' width="' . (int) $size[0] . '" height="' . (int) $size[1] . '"';
+        }
+        return '<img src="' . e(asset('images/' . $path)) . '" alt="' . e($alt) . '" class="object-cover ' . e($class) . '"' . $dims . ' ' . $loading . ' decoding="async">';
     }
     return '<div class="flex flex-col items-center justify-center gap-2 bg-primary/10 text-center text-xs text-primary-dark/60 ' . e($class) . '">'
         . '<i class="fa-regular fa-image text-2xl"></i><span class="px-2">images/' . e($path) . '</span></div>';

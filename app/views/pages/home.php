@@ -39,7 +39,7 @@ $stages = [
     <div class="hero-slides absolute inset-0" aria-hidden="true">
         <?php foreach ($heroSlides as $i => [$img, $alt]): ?>
             <div class="hero-slide<?= $i === 0 ? ' is-active' : '' ?>"<?= $i === 0 ? '' : ' aria-hidden="true"' ?>>
-                <?= photo($img, $alt, 'ken-burns h-full w-full', true) ?>
+                <?= photo($img, $alt, 'ken-burns h-full w-full', $i === 0) ?>
             </div>
         <?php endforeach; ?>
         <div class="hero-scrim absolute inset-0"></div>
@@ -356,7 +356,7 @@ $igPosts   = array_values(array_filter($igFeed['posts'] ?? []));
 $igProfile = config('social.instagram') ?: ('https://www.instagram.com/' . $igHandle . '/');
 ?>
 <?php if ($igPosts): ?>
-<section class="instagram-section relative overflow-hidden py-20 lg:py-28" aria-labelledby="instagram-title">
+<section class="instagram-section relative overflow-hidden py-20 lg:py-28" aria-labelledby="instagram-title" data-ig-lazy>
     <div class="container relative">
         <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
             <p class="eyebrow justify-center">
@@ -379,14 +379,9 @@ $igProfile = config('social.instagram') ?: ('https://www.instagram.com/' . $igHa
                 $permalink = strtok($permalink, '?') ?: $permalink;
                 $permalink = rtrim($permalink, '/') . '/';
                 ?>
-                <div class="instagram-embeds__item">
-                    <blockquote
-                        class="instagram-media"
-                        data-instgrm-permalink="<?= e($permalink) ?>"
-                        data-instgrm-version="14"
-                    >
-                        <a href="<?= e($permalink) ?>" target="_blank" rel="noopener noreferrer">View this post on Instagram</a>
-                    </blockquote>
+                <div class="instagram-embeds__item" data-ig-permalink="<?= e($permalink) ?>">
+                    <div class="instagram-embeds__skeleton" aria-hidden="true"></div>
+                    <a class="sr-only" href="<?= e($permalink) ?>" target="_blank" rel="noopener noreferrer">View on Instagram</a>
                 </div>
             <?php endforeach; ?>
         </div>
