@@ -247,7 +247,7 @@ $legacyPillars = [
 
             <div data-animate="fade-up" data-delay="120">
                 <p class="text-base leading-relaxed text-white/80 md:text-lg">
-                    We believe that tolerance, which stands in stark opposition to ignorance, is the hallmark of an educated, elevated and enlightened mindset. It is fair-mindedness beyond discrimination understanding and respect for others’ beliefs, backgrounds, and perspectives without harsh judgment.
+                    We believe that tolerance, which stands in stark opposition to ignorance, is the hallmark of an educated, elevated and enlightened mindset. It is fair mindedness beyond discrimination understanding and respect for others’ beliefs, backgrounds, and perspectives without harsh judgment.
                 </p>
                 <a href="<?= base_url('about/guiding-principles') ?>" class="btn btn-accent mt-10">
                     Mission, Vision &amp; Values <i class="fa-solid fa-arrow-right"></i>
