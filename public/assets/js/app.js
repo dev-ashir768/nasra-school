@@ -193,8 +193,8 @@ $(function () {
         function update() {
             const index = (pos - 1 + count) % count;
             $slides.each(function (n) { $(this).attr('aria-hidden', n !== index); });
-            $dots.removeClass('w-8 !bg-accent').addClass('w-2.5')
-                .eq(index).removeClass('w-2.5').addClass('w-8 !bg-accent');
+            $dots.removeClass('w-7 !bg-accent').addClass('w-2')
+                .eq(index).removeClass('w-2').addClass('w-7 !bg-accent');
         }
 
         function step(delta) {

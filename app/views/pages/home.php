@@ -216,14 +216,36 @@ $legacyPillars = [
 </section>
 
 <!-- ============ MOTTO ============ -->
-<section class="container py-16 lg:py-20" aria-label="Our motto">
-    <div class="border border-muted/15 bg-white px-8 py-10 md:px-12" data-animate="fade-up">
-        <p class="eyebrow">Guiding Principles</p>
-        <h2 class="title-sm mt-4 text-ink">Our Motto: <span class="relative text-primary after:absolute after:inset-x-0 after:-bottom-1 after:h-1 after:bg-accent">Tolerance</span></h2>
-        <p class="mt-5 max-w-3xl text-muted leading-relaxed">
-            We believe that tolerance, which stands in stark opposition to ignorance, is the hallmark of an educated, elevated and enlightened mindset. It is fair-mindedness beyond discrimination — understanding and respect for others’ religious beliefs, socioeconomic backgrounds, and unique perspectives without harsh judgment.
-        </p>
-        <a href="<?= base_url('about/guiding-principles') ?>" class="btn btn-primary mt-8">Mission, Vision &amp; Values <i class="fa-solid fa-arrow-right"></i></a>
+<section class="motto-section relative overflow-hidden bg-primary text-white" aria-labelledby="motto-title">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="motto-section__glow"></div>
+        <p class="motto-section__watermark">TOLERANCE</p>
+    </div>
+
+    <div class="container relative py-20 lg:py-28">
+        <div class="grid items-end gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 xl:gap-24">
+            <div data-animate="fade-up">
+                <p class="eyebrow !text-accent">
+                    <span class="inline-block h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+                    Our Motto
+                </p>
+                <h2 id="motto-title" class="motto-section__word mt-6">
+                    <span class="brush-word brush-word-light">Tolerance</span>
+                </h2>
+                <p class="mt-6 max-w-xl font-script text-3xl leading-none text-accent md:text-4xl">
+                    The hallmark of an enlightened mindset
+                </p>
+            </div>
+
+            <div data-animate="fade-up" data-delay="120">
+                <p class="text-base leading-relaxed text-white/80 md:text-lg">
+                    We believe that tolerance, which stands in stark opposition to ignorance, is the hallmark of an educated, elevated and enlightened mindset. It is fair-mindedness beyond discrimination understanding and respect for others’ beliefs, backgrounds, and perspectives without harsh judgment.
+                </p>
+                <a href="<?= base_url('about/guiding-principles') ?>" class="btn btn-accent mt-10">
+                    Mission, Vision &amp; Values <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -258,45 +280,45 @@ $campusMosaic = [
 </section>
 
 <!-- ============ TESTIMONIALS ============ -->
-<section class="container py-20 lg:py-24" aria-labelledby="testimonials-title">
-    <div class="testimonials relative overflow-hidden rounded-3xl border border-muted/15 bg-white px-6 pb-8 pt-10 text-ink shadow-sm md:px-24 md:pb-10" data-animate="fade-up" aria-roledescription="carousel">
+<section class="testimonials overflow-hidden bg-white py-20 lg:py-24" aria-labelledby="testimonials-title" aria-roledescription="carousel" data-animate="fade-up">
+    <div class="container">
+        <div class="mx-auto max-w-3xl text-center">
+            <p class="eyebrow justify-center">Alumni</p>
+            <h2 id="testimonials-title" class="section-title mt-4">Voices of Nasra</h2>
+        </div>
 
-        <button type="button" class="t-prev absolute left-5 top-1/2 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-ink/5 text-ink ring-1 ring-ink/10 transition hover:bg-accent md:grid" aria-label="Previous testimonial">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button type="button" class="t-next absolute right-5 top-1/2 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-ink/5 text-ink ring-1 ring-ink/10 transition hover:bg-accent md:grid" aria-label="Next testimonial">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
+        <div class="relative mx-auto mt-12 max-w-3xl">
+            <i class="fa-solid fa-quote-left absolute -top-2 left-0 text-4xl text-accent/80 md:-left-4 md:text-5xl" aria-hidden="true"></i>
 
-        <p class="eyebrow">Alumni</p>
-        <h2 id="testimonials-title" class="section-title mt-4">Voices of Nasra</h2>
-
-        <div class="t-viewport mt-6 overflow-hidden" aria-live="polite">
-            <div class="t-track flex transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]">
-                <?php foreach ($testimonials as $i => [$name, $role, $quote]): ?>
-                    <?php $initials = implode('', array_map(fn($w) => $w[0], array_slice(array_filter(explode(' ', str_replace('.', '', $name))), 0, 2))); ?>
-                    <figure class="t-slide grid w-full shrink-0 items-center gap-6 md:grid-cols-[1fr_auto] md:gap-10" role="group" aria-roledescription="slide" aria-label="<?= $i + 1 ?> of <?= count($testimonials) ?>">
-                        <blockquote class="font-sans text-lg font-light italic leading-[1.65] text-ink/80 md:text-xl">“<?= e($quote) ?>”</blockquote>
-                        <figcaption class="flex items-center gap-4 border-muted/20 md:w-72 md:border-l md:pl-10">
-                            <span class="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-accent font-sans text-xl font-bold text-primary-dark"><?= e($initials) ?></span>
-                            <span>
-                                <span class="block font-semibold text-ink"><?= e($name) ?></span>
-                                <span class="block text-sm text-muted"><?= e($role) ?></span>
-                            </span>
-                        </figcaption>
-                    </figure>
-                <?php endforeach; ?>
+            <div class="t-viewport overflow-hidden" aria-live="polite">
+                <div class="t-track flex transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]">
+                    <?php foreach ($testimonials as $i => [$name, $role, $quote]): ?>
+                        <figure class="t-slide w-full shrink-0 px-2 text-center md:px-8" role="group" aria-roledescription="slide" aria-label="<?= $i + 1 ?> of <?= count($testimonials) ?>">
+                            <blockquote class="font-sans text-xl font-light leading-[1.55] tracking-[-0.01em] text-ink md:text-[1.375rem] lg:text-[1.5rem]">
+                                <?= e($quote) ?>
+                            </blockquote>
+                            <figcaption class="mt-10">
+                                <span class="block font-display text-base font-bold tracking-wide text-primary"><?= e($name) ?></span>
+                                <span class="mt-1 block text-sm text-muted"><?= e($role) ?></span>
+                            </figcaption>
+                        </figure>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
 
-        <div class="mt-8 flex items-center justify-center gap-4">
-            <button type="button" class="t-prev grid h-10 w-10 place-items-center rounded-full bg-ink/5 text-ink md:hidden" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
-            <div class="t-dots flex items-center gap-2">
+        <div class="mt-10 flex items-center justify-center gap-5">
+            <button type="button" class="t-prev grid h-11 w-11 place-items-center text-primary transition hover:text-accent" aria-label="Previous testimonial">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="t-dots flex items-center gap-2.5">
                 <?php foreach ($testimonials as $i => $_): ?>
-                    <button type="button" class="h-2.5 rounded-full bg-ink/15 transition-all duration-300 <?= $i === 0 ? 'w-8 !bg-accent' : 'w-2.5' ?>" aria-label="Show testimonial <?= $i + 1 ?>"></button>
+                    <button type="button" class="h-2 rounded-full bg-ink/15 transition-all duration-300 <?= $i === 0 ? 'w-7 !bg-accent' : 'w-2' ?>" aria-label="Show testimonial <?= $i + 1 ?>"></button>
                 <?php endforeach; ?>
             </div>
-            <button type="button" class="t-next grid h-10 w-10 place-items-center rounded-full bg-ink/5 text-ink md:hidden" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+            <button type="button" class="t-next grid h-11 w-11 place-items-center text-primary transition hover:text-accent" aria-label="Next testimonial">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
         </div>
     </div>
 </section>

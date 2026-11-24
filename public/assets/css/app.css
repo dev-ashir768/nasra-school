@@ -159,6 +159,40 @@ html.drawer-open { overflow: hidden; }
 .btn .fa-arrow-right { transition: transform .3s ease; }
 .btn:hover .fa-arrow-right { transform: translateX(4px); }
 
+/* ---------- Motto statement band ---------- */
+.motto-section__glow {
+    position: absolute;
+    inset: auto -10% -40% auto;
+    width: min(48rem, 70vw);
+    height: min(48rem, 70vw);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 204, 0, .18) 0%, transparent 65%);
+}
+.motto-section__watermark {
+    position: absolute;
+    left: -2%;
+    bottom: -8%;
+    margin: 0;
+    font-family: Montserrat, system-ui, sans-serif;
+    font-weight: 900;
+    font-size: clamp(5rem, 18vw, 14rem);
+    line-height: .85;
+    letter-spacing: -0.04em;
+    color: rgba(255, 255, 255, .05);
+    text-transform: uppercase;
+    user-select: none;
+    white-space: nowrap;
+}
+.motto-section__word {
+    font-family: Montserrat, system-ui, sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.75rem, 8vw, 5.5rem);
+    line-height: .95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
 /* ---------- Campus Life SS mosaic (circle + leaf) ---------- */
 .ss-mosaic {
     display: grid;
