@@ -167,11 +167,11 @@ html.drawer-open { overflow: hidden; }
     width: 100%;
     max-width: 22rem;
     padding: 1.5rem 1.35rem 1.6rem;
-    border-radius: 1.15rem;
-    background: linear-gradient(180deg, #F1F3F5 0%, #E5E8EC 100%);
-    border: 1px solid rgba(0, 0, 0, .04);
-    box-shadow: 0 10px 28px -22px rgba(0, 51, 26, .35);
-    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    border-radius: 1.25rem;
+    border: 0;
+    box-shadow: none;
+    background: linear-gradient(160deg, #F4F6F8 0%, #E8EBEE 48%, #E2E6EA 100%);
+    transition: transform .3s ease, background .3s ease;
 }
 @media (min-width: 640px) {
     .difference-card { width: calc(50% - 0.75rem); max-width: none; }
@@ -180,9 +180,8 @@ html.drawer-open { overflow: hidden; }
     .difference-card { width: calc(33.333% - 1rem); }
 }
 .difference-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255, 204, 0, .45);
-    box-shadow: 0 18px 36px -20px rgba(0, 51, 26, .4);
+    transform: translateY(-3px);
+    background: linear-gradient(160deg, #F7F8FA 0%, #ECEFF2 48%, #E6EAEF 100%);
 }
 .difference-card__icon {
     display: grid;
@@ -190,10 +189,11 @@ html.drawer-open { overflow: hidden; }
     width: 2.85rem;
     height: 2.85rem;
     border-radius: 999px;
-    background: linear-gradient(135deg, #FFCC00 0%, #F5E6A3 48%, #0A6B3A 160%);
+    border: 0;
+    box-shadow: none;
+    background: linear-gradient(135deg, #FFCC00 0%, #F0D96A 55%, #0A6B3A 145%);
     color: #00331A;
     font-size: 1rem;
-    box-shadow: 0 8px 16px -10px rgba(0, 77, 38, .45);
 }
 
 /* ---------- Legacy section: yellow corner frame ---------- */

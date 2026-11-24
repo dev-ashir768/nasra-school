@@ -191,16 +191,16 @@ $legacyPillars = [
 
         <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             <?php foreach ($stages as $i => [$label, $icon, $slug]): ?>
-                <a href="<?= base_url('academics/' . $slug) ?>" class="group overflow-hidden rounded-2xl bg-[#E8EAED] shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
+                <a href="<?= base_url('academics/' . $slug) ?>" class="group overflow-hidden rounded-2xl bg-gradient-to-b from-[#F1F3F5] to-[#E5E8EC] transition duration-300 hover:-translate-y-1"
                    data-animate="fade-up" data-delay="<?= $i * 120 ?>">
                     <div class="overflow-hidden">
                         <?= photo("home/{$slug}.jpg", "{$label} students at Nasra School", 'aspect-[16/10] w-full transition duration-700 group-hover:scale-105') ?>
                     </div>
                     <div class="h-1 w-full bg-gradient-to-r from-accent to-primary"></div>
                     <div class="flex items-center gap-3 px-5 py-4">
-                        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-primary shadow-sm"><i class="fa-solid <?= $icon ?>"></i></span>
+                        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-accent to-[#F5E6A3] text-primary"><i class="fa-solid <?= $icon ?>"></i></span>
                         <span class="card-title flex-1"><?= e($label) ?></span>
-                        <span class="grid h-8 w-8 place-items-center rounded-full bg-white/80 text-xs text-ink transition group-hover:bg-accent group-hover:text-primary-dark"><i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="grid h-8 w-8 place-items-center rounded-full bg-white/70 text-xs text-ink transition group-hover:bg-accent group-hover:text-primary-dark"><i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </a>
             <?php endforeach; ?>
