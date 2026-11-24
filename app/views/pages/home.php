@@ -69,7 +69,7 @@ $stages = [
             </h1>
 
             <p class="hero-in mt-4 max-w-md text-sm leading-relaxed text-white/80 sm:mt-5 sm:text-base" style="--d:.3s">
-                High-quality English-medium education at affordable costs — making opportunity accessible to thousands of deserving children across Karachi.
+                High-quality English-medium education at affordable costs making opportunity accessible to thousands of deserving children across Karachi.
             </p>
 
             <p class="hero-in mt-3 font-script text-xl text-accent sm:text-2xl" style="--d:.4s">
@@ -111,7 +111,7 @@ $legacyPillars = [
             <div class="lg:col-span-4" data-animate="fade-right">
                 <div class="legacy-frame relative mx-auto max-w-md lg:mx-0 lg:max-w-none">
                     <div class="legacy-frame__media overflow-hidden rounded-2xl">
-                        <?= photo('home/legacy.jpg', 'Nasra School campus building', 'aspect-[4/5] w-full sm:aspect-[5/6]') ?>
+                        <?= photo('home/legacy-award.jpg', 'Nasra School campus building', 'aspect-[4/5] w-full sm:aspect-[5/6]') ?>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@ $legacyPillars = [
                             A Legacy of Pride
                         </h2>
                         <p class="mt-5 max-w-md text-[0.98rem] leading-[1.75] text-muted">
-                            For over 75 years, Education Trust Nasra School has been a beacon of knowledge, character and excellence. Our commitment is to provide quality English-medium education that inspires, empowers and prepares students for a successful future — at a cost families can afford.
+                            For over 75 years, Education Trust Nasra School has been a beacon of knowledge, character and excellence. Our commitment is to provide quality English-medium education that inspires, empowers and prepares students for a successful future at a cost families can afford.
                         </p>
                         <a href="<?= base_url('about/history') ?>" class="btn btn-primary mt-8 !rounded-md">
                             Learn More <i class="fa-solid fa-arrow-right"></i>
@@ -190,7 +190,7 @@ $legacyPillars = [
         <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
             <p class="eyebrow justify-center">Academics</p>
             <h2 class="section-title mt-4">Learning for Every Stage</h2>
-            <p class="lead mx-auto mt-4 max-w-2xl">From pre-primary through higher secondary — balanced learning, character building, and pathways that prepare students for life beyond Nasra.</p>
+            <p class="lead mx-auto mt-4 max-w-2xl">From pre-primary through higher secondary balanced learning, character building, and pathways that prepare students for life beyond Nasra.</p>
         </div>
 
         <div class="mt-14 grid gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
@@ -252,10 +252,10 @@ $legacyPillars = [
 <!-- ============ CAMPUS LIFE / TEAM WORK ============ -->
 <?php
 $campusMosaic = [
-    ['campus-1',  'Student batting in a school cricket match'],
-    ['campus-2',  'Students at cricket practice'],
-    ['hero-2',    'Students in Nasra School uniforms'],
-    ['legacy-1',  'Students on a Nasra School campus'],
+    ['sportsmanship',  'Student batting in a school cricket match'],
+    ['creativity',  'Students at cricket practice'],
+    ['sports-girl',    'Students in Nasra School uniforms'],
+    ['leadership',  'Students on a Nasra School campus'],
 ];
 $campusPillars = [
     ['fa-trophy',     'Sportsmanship'],
@@ -287,7 +287,7 @@ $campusPillars = [
             <h2 id="campus-title" class="section-title mt-4">Sportsmanship &amp; Community</h2>
             <p class="mt-3 font-script text-2xl text-primary/70 md:text-3xl">Where skill meets character</p>
             <p class="lead mt-5 max-w-md">
-                Sportsmanship, strategy and cooperation form the basis of all team work — and along with honed skill lead to victory. From the field to creative arts and leadership programmes, campus life shapes confident Nasrarians.
+                Sportsmanship, strategy and cooperation form the basis of all team work and along with honed skill lead to victory. From the field to creative arts and leadership programmes, campus life shapes confident Nasrarians.
             </p>
 
             <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-3" aria-label="Campus life pillars">
@@ -314,12 +314,12 @@ $videoPoster = $videoCfg['poster'] ?? 'home/hero-banner.jpg';
 $youtubeId   = $videoCfg['youtube_id'] ?? '';
 $hasLocalVideo = is_file(PUBLIC_PATH . '/assets/' . ltrim($videoLocal, '/'));
 ?>
-<section class="video-section relative overflow-hidden py-20 lg:py-28" aria-labelledby="video-title">
+<section class="video-section relative overflow-hidden pb-20 lg:pb-28" aria-labelledby="video-title">
     <div class="container relative">
         <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
             <p class="eyebrow justify-center">Experience Nasra</p>
             <h2 id="video-title" class="section-title mt-4">Life at Nasra School</h2>
-            <p class="lead mt-4">A glimpse of our campuses, classrooms and community — where values and ambition grow together.</p>
+            <p class="lead mt-4">A glimpse of our campuses, classrooms and community where values and ambition grow together.</p>
         </div>
 
         <div
@@ -356,7 +356,7 @@ $igPosts   = array_values(array_filter($igFeed['posts'] ?? []));
 $igProfile = config('social.instagram') ?: ('https://www.instagram.com/' . $igHandle . '/');
 ?>
 <?php if ($igPosts): ?>
-<section class="instagram-section relative overflow-hidden py-20 lg:py-28" aria-labelledby="instagram-title" data-ig-lazy>
+<section class="instagram-section relative overflow-hidden pb-16" aria-labelledby="instagram-title" data-ig-lazy>
     <div class="container relative">
         <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
             <p class="eyebrow justify-center">

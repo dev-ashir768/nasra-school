@@ -708,12 +708,17 @@ html.drawer-open { overflow: hidden; }
         linear-gradient(0deg, rgba(17,17,17,.7) 0%, transparent 45%, rgba(17,17,17,.3) 100%);
     pointer-events: none;
 }
+/* Use @keyframes (not transition) so the first slide also zooms on initial load */
 .ken-burns {
     transform: scale(1.06);
-    transition: transform 7s linear;
+    will-change: transform;
 }
 .hero-slide.is-active .ken-burns {
-    transform: scale(1);
+    animation: heroKenBurns 7s linear forwards;
+}
+@keyframes heroKenBurns {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1); }
 }
 
 /* Vertical progress pills on the right */
@@ -805,7 +810,7 @@ html.drawer-open { overflow: hidden; }
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     .js [data-animate] { opacity: 1; transform: none; }
-    .ken-burns { transform: none !important; transition: none !important; }
+    .ken-burns { transform: none !important; animation: none !important; }
     .hero-slide { transition: none !important; }
     .hero-dots .dot-fill { transform: none; animation: none; background: #FFCC00; }
 }

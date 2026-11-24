@@ -120,7 +120,16 @@ $(function () {
         function show(next) {
             index = ((next % count) + count) % count;
             $slides.removeClass('is-active').attr('aria-hidden', 'true');
+            // Force a frame without is-active so ken-burns animation restarts every slide
+            void $root[0].offsetWidth;
             $slides.eq(index).addClass('is-active').removeAttr('aria-hidden');
+
+            const img = $slides.eq(index).find('.ken-burns')[0];
+            if (img) {
+                img.style.animation = 'none';
+                void img.offsetWidth;
+                img.style.animation = '';
+            }
 
             $dots.removeClass('is-current').removeAttr('aria-current');
             $dots.eq(index).addClass('is-current').attr('aria-current', 'true');
