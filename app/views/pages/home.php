@@ -278,6 +278,9 @@ $campusPillars = [
                         <?= photo("home/{$img}.jpg", $alt, 'h-full w-full') ?>
                     </div>
                 <?php endforeach; ?>
+                <div class="ss-mosaic__logo" aria-hidden="true">
+                    <img src="<?= asset('images/branding/logo.webp') ?>" alt="" width="96" height="96" loading="lazy" decoding="async">
+                </div>
             </div>
             <p class="mt-5 text-center font-script text-xl text-primary/60 lg:text-left">Life beyond the classroom</p>
         </div>
