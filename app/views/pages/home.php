@@ -1,4 +1,13 @@
 <?php
+// Full-bleed hero carousel backgrounds
+$heroSlides = [
+    ['home/hero-banner.jpg', 'Nasra School students on campus'],
+    ['home/hero.jpg',        'Nasra School students walking to class'],
+    ['home/hero-2.jpg',      'Students in Nasra School uniforms'],
+    ['home/campus-1.jpg',    'Student batting in a school cricket match'],
+    ['home/legacy-1.jpg',    'A Nasra School campus building'],
+];
+
 // Real alumni testimonials from nasraschool.edu.pk/alumni
 $testimonials = [
     ['Falak Naz', 'PhD Student, Mass Communications, Karachi University', 'My teachers were my mentors — they taught me how to be an ambassador of peace, light, and knowledge. They worked on me so I could become a symbol of change, a symbol of enlightenment.'],
@@ -8,59 +17,83 @@ $testimonials = [
     ['Alina Rizwan', 'Journalism Student, SZABIST University', 'A school is expected to provide mere education, but I applaud my alma mater, Nasra School, for aiding me along a journey of becoming a better human being — an education which only ends with life.'],
 ];
 
-// label, icon, slug, [accent bar, icon chip, arrow on hover]
+// label, icon, slug — yellow accent bars (not solid green walls)
 $stages = [
-    ['Pre-Primary',      'fa-child-reaching', 'pre-primary',      ['bg-primary', 'bg-primary/10 text-primary', 'group-hover:bg-primary group-hover:text-white']],
-    ['Primary',          'fa-graduation-cap', 'primary',          ['bg-primary', 'bg-primary/10 text-primary', 'group-hover:bg-primary group-hover:text-white']],
-    ['Secondary',        'fa-book-open',      'secondary',        ['bg-primary', 'bg-primary/10 text-primary', 'group-hover:bg-primary group-hover:text-white']],
-    ['Higher Secondary', 'fa-user-graduate',  'higher-secondary', ['bg-primary', 'bg-primary/10 text-primary', 'group-hover:bg-primary group-hover:text-white']],
+    ['Pre-Primary',      'fa-child-reaching', 'pre-primary'],
+    ['Primary',          'fa-graduation-cap', 'primary'],
+    ['Secondary',        'fa-book-open',      'secondary'],
+    ['Higher Secondary', 'fa-user-graduate',  'higher-secondary'],
 ];
 ?>
 
 <!-- ============ HERO ============ -->
-<section class="relative overflow-hidden bg-surface">
-    <!-- Photo: soft left fade (desktop) -->
-    <div class="pointer-events-none absolute inset-y-0 right-0 hidden w-[48%] lg:block xl:w-[52%]">
-        <?= photo('home/hero-2.jpg', 'Nasra School student', 'h-full w-full object-cover object-[center_20%]', true) ?>
-        <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent"></div>
+<section class="hero-banner relative flex min-h-[100svh] items-center overflow-hidden bg-ink text-white" data-hero-slider aria-roledescription="carousel" aria-label="Life at Nasra School">
+    <!-- Full-viewport background slides -->
+    <div class="absolute inset-0" aria-hidden="true">
+        <?php foreach ($heroSlides as $i => [$img, $alt]): ?>
+            <div class="hero-slide absolute inset-0 transition-opacity duration-[1400ms] ease-in-out <?= $i === 0 ? 'is-active opacity-100' : 'opacity-0' ?>">
+                <?= photo($img, $alt, 'ken-burns h-full w-full', $i === 0) ?>
+            </div>
+        <?php endforeach; ?>
+        <!-- Cinematic scrim: readable type without washing the photo -->
+        <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/55 to-ink/25"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/30"></div>
     </div>
 
-    <div class="container relative pb-16 pt-12 lg:min-h-[78vh] lg:pb-24 lg:pt-20">
-        <div class="max-w-xl xl:max-w-[36rem]">
-            <h1 class="font-display text-[2.35rem] font-black uppercase leading-[1.02] tracking-tight sm:text-[3rem] xl:text-[3.6rem]">
-                <span class="hero-in block text-primary" style="--d:.1s">Real Education</span>
-                <span class="hero-in block text-ink" style="--d:.22s">Begins With</span>
-                <span class="hero-in relative mt-1 inline-block text-ink" style="--d:.34s">
-                    <span class="absolute -top-3 left-0 flex gap-1" aria-hidden="true">
-                        <span class="h-3 w-0.5 rotate-[-25deg] bg-accent"></span>
-                        <span class="h-4 w-0.5 bg-accent"></span>
-                        <span class="h-3 w-0.5 rotate-[25deg] bg-accent"></span>
+    <div class="container relative z-10 flex w-full flex-col justify-center py-24 lg:min-h-[100svh] lg:py-28">
+        <div class="max-w-2xl xl:max-w-[40rem]">
+            <p class="hero-in flex items-center gap-3 text-sm text-white/75" style="--d:.05s">
+                <span class="h-px w-8 bg-accent" aria-hidden="true"></span>
+                Since 1949 in Karachi
+            </p>
+
+            <h1 class="hero-in mt-7 font-display text-[2.5rem] font-black uppercase leading-[1.02] tracking-tight sm:text-[3.25rem] xl:text-[4rem]" style="--d:.15s">
+                <span class="block text-white">Real Education</span>
+                <span class="mt-1 block text-white/90">Begins With</span>
+                <span class="relative mt-1 inline-block text-white">
+                    <span class="absolute -top-4 left-1 flex gap-1.5" aria-hidden="true">
+                        <span class="h-3.5 w-0.5 rotate-[-28deg] bg-accent"></span>
+                        <span class="h-5 w-0.5 bg-accent"></span>
+                        <span class="h-3.5 w-0.5 rotate-[28deg] bg-accent"></span>
                     </span>
                     A Child's
                 </span>
-                <span class="hero-in mt-1 block" style="--d:.46s">
-                    <span class="brush-word text-ink">Thinking</span>
+                <span class="mt-2 block">
+                    <span class="brush-word brush-word-light">Thinking</span>
                 </span>
             </h1>
-            <p class="hero-in lead mt-6 max-w-md" style="--d:.58s">
-                Affordable, high-quality English-medium education rooted in character, tolerance, and opportunity — since 1949.
+
+            <p class="hero-in mt-6 max-w-md text-base leading-relaxed text-white/80 sm:text-lg" style="--d:.3s">
+                Affordable English-medium education rooted in character, tolerance, and opportunity — shaping Karachi for over seven decades.
             </p>
-            <div class="hero-in mt-8 flex flex-wrap gap-4" style="--d:.7s">
-                <a href="<?= base_url('admissions') ?>" class="btn btn-primary">Explore Admissions <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="<?= base_url('about') ?>" class="btn btn-outline">Our Story</a>
+
+            <p class="hero-in mt-4 font-script text-2xl text-accent sm:text-3xl" style="--d:.4s">
+                Rooted in Values, Ready for the Future
+            </p>
+
+            <div class="hero-in mt-9 flex flex-wrap gap-3" style="--d:.55s">
+                <a href="<?= base_url('admissions') ?>" class="btn btn-accent">Explore Admissions <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="<?= base_url('about') ?>" class="btn border-2 border-white/70 bg-transparent text-white hover:border-accent hover:bg-accent hover:text-primary-dark">Our Story</a>
             </div>
         </div>
-
-        <!-- Mobile photo -->
-        <div class="hero-in relative mt-10 aspect-[4/3] overflow-hidden lg:hidden" style="--d:.8s">
-            <?= photo('home/hero-2.jpg', 'Nasra School student', 'h-full w-full object-cover', true) ?>
-            <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
-        </div>
     </div>
+
+    <!-- Vertical progress pills (right) -->
+    <div class="hero-dots is-vertical absolute right-4 top-1/2 z-20 -translate-y-1/2 sm:right-6 lg:right-8">
+        <?php foreach ($heroSlides as $i => $_): ?>
+            <button type="button" class="<?= $i === 0 ? 'is-current' : '' ?>" aria-label="Show photo <?= $i + 1 ?> of <?= count($heroSlides) ?>"<?= $i === 0 ? ' aria-current="true"' : '' ?>><span class="dot-fill"></span></button>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- Scroll hint -->
+    <a href="#about" class="hero-in absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/60 transition hover:text-accent lg:flex" style="--d:.8s" aria-label="Scroll to about">
+        <span>Scroll</span>
+        <span class="hero-scroll-line" aria-hidden="true"></span>
+    </a>
 </section>
 
 <!-- ============ ABOUT / LEGACY ============ -->
-<section class="relative overflow-hidden pb-16 pt-20 lg:pt-24">
+<section id="about" class="relative overflow-hidden pb-16 pt-20 lg:pt-24">
     <div class="container relative grid items-center gap-14 lg:grid-cols-2">
         <div class="mx-auto w-full max-w-md overflow-hidden rounded-2xl" data-animate="fade-right">
             <?= photo('home/legacy.jpg', 'Nasra School campus building', 'aspect-[4/3] w-full') ?>
@@ -80,28 +113,28 @@ $stages = [
     </div>
 </section>
 
-<!-- ============ STATS ============ -->
+<!-- ============ STATS (light — not another green wall) ============ -->
 <section class="container" aria-label="Nasra School in numbers">
-    <div class="grid grid-cols-2 gap-y-8 rounded-xl bg-primary px-6 py-9 text-center text-white md:grid-cols-4 md:divide-x md:divide-white/15" data-animate="zoom">
+    <div class="grid grid-cols-2 gap-y-8 rounded-xl border border-muted/15 bg-surface-soft px-6 py-9 text-center md:grid-cols-4 md:divide-x md:divide-muted/15" data-animate="zoom">
         <div>
-            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/20 text-lg text-accent"><i class="fa-solid fa-school"></i></span>
-            <p class="stat-number mt-4"><span data-count="5">5</span></p>
-            <p class="mt-2 text-sm text-white/80">campuses across Karachi</p>
+            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/25 text-lg text-primary"><i class="fa-solid fa-school"></i></span>
+            <p class="stat-number mt-4 text-ink"><span data-count="5">5</span></p>
+            <p class="mt-2 text-sm text-muted">campuses across Karachi</p>
         </div>
         <div>
-            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/20 text-lg text-accent"><i class="fa-solid fa-book-open"></i></span>
-            <p class="stat-number mt-4">PK–12</p>
-            <p class="mt-2 text-sm text-white/80">learning journey</p>
+            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/25 text-lg text-primary"><i class="fa-solid fa-book-open"></i></span>
+            <p class="stat-number mt-4 text-ink">PK–12</p>
+            <p class="mt-2 text-sm text-muted">learning journey</p>
         </div>
         <div>
-            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/20 text-lg text-accent"><i class="fa-solid fa-calendar-days"></i></span>
-            <p class="stat-number mt-4"><span data-count="1949" data-plain>1949</span></p>
-            <p class="mt-2 text-sm text-white/80">year founded</p>
+            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/25 text-lg text-primary"><i class="fa-solid fa-calendar-days"></i></span>
+            <p class="stat-number mt-4 text-ink"><span data-count="1949" data-plain>1949</span></p>
+            <p class="mt-2 text-sm text-muted">year founded</p>
         </div>
         <div>
-            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/20 text-lg text-accent"><i class="fa-solid fa-users"></i></span>
-            <p class="stat-number mt-4"><span data-count="500000">500,000</span>+</p>
-            <p class="mt-2 text-sm text-white/80">alumni</p>
+            <span class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-accent/25 text-lg text-primary"><i class="fa-solid fa-users"></i></span>
+            <p class="stat-number mt-4 text-ink"><span data-count="500000">500,000</span>+</p>
+            <p class="mt-2 text-sm text-muted">alumni</p>
         </div>
     </div>
 </section>
@@ -116,17 +149,17 @@ $stages = [
         </div>
 
         <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <?php foreach ($stages as $i => [$label, $icon, $slug, [$bar, $chip, $hover]]): ?>
-                <a href="<?= base_url('academics/' . $slug) ?>" class="group overflow-hidden rounded-2xl border border-muted/20 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+            <?php foreach ($stages as $i => [$label, $icon, $slug]): ?>
+                <a href="<?= base_url('academics/' . $slug) ?>" class="group overflow-hidden rounded-2xl border border-muted/20 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-lg"
                    data-animate="fade-up" data-delay="<?= $i * 120 ?>">
                     <div class="overflow-hidden">
                         <?= photo("home/{$slug}.jpg", "{$label} students at Nasra School", 'aspect-[16/10] w-full transition duration-700 group-hover:scale-105') ?>
                     </div>
-                    <div class="h-1 w-full <?= $bar ?>"></div>
+                    <div class="h-1 w-full bg-accent"></div>
                     <div class="flex items-center gap-3 px-5 py-4">
-                        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl <?= $chip ?>"><i class="fa-solid <?= $icon ?>"></i></span>
+                        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent/20 text-primary"><i class="fa-solid <?= $icon ?>"></i></span>
                         <span class="card-title flex-1"><?= e($label) ?></span>
-                        <span class="grid h-8 w-8 place-items-center rounded-full bg-primary/10 text-xs text-primary transition <?= $hover ?>"><i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="grid h-8 w-8 place-items-center rounded-full bg-ink/5 text-xs text-ink transition group-hover:bg-accent group-hover:text-primary-dark"><i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </a>
             <?php endforeach; ?>
@@ -136,14 +169,14 @@ $stages = [
 
 <!-- ============ MOTTO ============ -->
 <section class="container" aria-label="Our motto">
-    <div class="rounded-xl border border-primary/10 bg-surface-soft px-8 py-10 md:px-12" data-animate="fade-up">
-        <h2 class="title-sm">Our Motto: <span class="relative text-primary after:absolute after:inset-x-0 after:-bottom-1 after:h-1 after:bg-accent">Tolerance</span></h2>
+    <div class="rounded-xl border border-muted/15 bg-white px-8 py-10 md:px-12" data-animate="fade-up">
+        <h2 class="title-sm text-ink">Our Motto: <span class="relative text-primary after:absolute after:inset-x-0 after:-bottom-1 after:h-1 after:bg-accent">Tolerance</span></h2>
         <p class="mt-4 max-w-xl text-muted">At Nasra School, we respect different beliefs, backgrounds and perspectives.</p>
     </div>
 </section>
 
 <!-- ============ CAMPUS LIFE ============ -->
-<section class="overflow-hidden py-20 lg:py-24">
+<section class="overflow-hidden bg-surface-soft py-20 lg:py-24">
     <div class="container grid items-center gap-14 lg:grid-cols-[2fr_3fr]">
         <div data-animate="fade-right">
             <p class="eyebrow">Campus Life</p>
@@ -155,8 +188,8 @@ $stages = [
         </div>
 
         <div class="grid grid-cols-3 gap-3">
-            <?php foreach ([['campus-1', 'Student batting in a school cricket match'], ['campus-2', 'Students at cricket practice'], ['campus-3', 'Student playing the violin']] as $i => [$img, $alt]): ?>
-                <div class="overflow-hidden" data-animate="fade-up" data-delay="<?= $i * 150 ?>">
+            <?php foreach ([['campus-1', 'Student batting in a school cricket match'], ['campus-2', 'Students at cricket practice'], ['legacy-1', 'Students on a Nasra School campus']] as $i => [$img, $alt]): ?>
+                <div class="overflow-hidden rounded-lg" data-animate="fade-up" data-delay="<?= $i * 150 ?>">
                     <?= photo("home/{$img}.jpg", $alt, 'aspect-[3/4] w-full') ?>
                 </div>
             <?php endforeach; ?>
@@ -164,32 +197,31 @@ $stages = [
     </div>
 </section>
 
-<!-- ============ TESTIMONIALS ============ -->
-<section class="container pb-20 lg:pb-24" aria-labelledby="testimonials-title">
-    <div class="testimonials relative overflow-hidden rounded-3xl bg-primary px-6 pb-8 pt-10 text-white md:px-24 md:pb-10" data-animate="fade-up" aria-roledescription="carousel">
+<!-- ============ TESTIMONIALS (light panel — not green wall) ============ -->
+<section class="container py-20 lg:py-24" aria-labelledby="testimonials-title">
+    <div class="testimonials relative overflow-hidden rounded-3xl border border-muted/15 bg-white px-6 pb-8 pt-10 text-ink shadow-sm md:px-24 md:pb-10" data-animate="fade-up" aria-roledescription="carousel">
 
-        <!-- Side arrows (tablet / desktop) -->
-        <button type="button" class="t-prev absolute left-5 top-1/2 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/15 transition hover:bg-accent hover:text-primary-dark md:grid" aria-label="Previous testimonial">
+        <button type="button" class="t-prev absolute left-5 top-1/2 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-ink/5 text-ink ring-1 ring-ink/10 transition hover:bg-accent md:grid" aria-label="Previous testimonial">
             <i class="fa-solid fa-chevron-left"></i>
         </button>
-        <button type="button" class="t-next absolute right-5 top-1/2 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/15 transition hover:bg-accent hover:text-primary-dark md:grid" aria-label="Next testimonial">
+        <button type="button" class="t-next absolute right-5 top-1/2 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-ink/5 text-ink ring-1 ring-ink/10 transition hover:bg-accent md:grid" aria-label="Next testimonial">
             <i class="fa-solid fa-chevron-right"></i>
         </button>
 
-        <p class="eyebrow !text-accent">What Our Alumni Say</p>
-        <h2 id="testimonials-title" class="section-title mt-4 !text-white">Trusted by Generations</h2>
+        <p class="eyebrow">What Our Alumni Say</p>
+        <h2 id="testimonials-title" class="section-title mt-4">Trusted by Generations</h2>
 
         <div class="t-viewport mt-6 overflow-hidden" aria-live="polite">
             <div class="t-track flex transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]">
                 <?php foreach ($testimonials as $i => [$name, $role, $quote]): ?>
                     <?php $initials = implode('', array_map(fn($w) => $w[0], array_slice(array_filter(explode(' ', str_replace('.', '', $name))), 0, 2))); ?>
                     <figure class="t-slide grid w-full shrink-0 items-center gap-6 md:grid-cols-[1fr_auto] md:gap-10" role="group" aria-roledescription="slide" aria-label="<?= $i + 1 ?> of <?= count($testimonials) ?>">
-                        <blockquote class="font-sans text-lg font-light italic leading-[1.65] text-white/90 md:text-xl">“<?= e($quote) ?>”</blockquote>
-                        <figcaption class="flex items-center gap-4 border-white/15 md:w-72 md:border-l md:pl-10">
-                            <span class="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-accent font-sans text-xl font-bold text-primary-dark ring-4 ring-white/10"><?= e($initials) ?></span>
+                        <blockquote class="font-sans text-lg font-light italic leading-[1.65] text-ink/80 md:text-xl">“<?= e($quote) ?>”</blockquote>
+                        <figcaption class="flex items-center gap-4 border-muted/20 md:w-72 md:border-l md:pl-10">
+                            <span class="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-accent font-sans text-xl font-bold text-primary-dark"><?= e($initials) ?></span>
                             <span>
-                                <span class="block font-semibold text-white"><?= e($name) ?></span>
-                                <span class="block text-sm text-white/60"><?= e($role) ?></span>
+                                <span class="block font-semibold text-ink"><?= e($name) ?></span>
+                                <span class="block text-sm text-muted"><?= e($role) ?></span>
                             </span>
                         </figcaption>
                     </figure>
@@ -197,25 +229,22 @@ $stages = [
             </div>
         </div>
 
-        <!-- Dots (+ arrows on mobile) -->
         <div class="mt-8 flex items-center justify-center gap-4">
-            <button type="button" class="t-prev grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white md:hidden" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+            <button type="button" class="t-prev grid h-10 w-10 place-items-center rounded-full bg-ink/5 text-ink md:hidden" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
             <div class="t-dots flex items-center gap-2">
                 <?php foreach ($testimonials as $i => $_): ?>
-                    <button type="button" class="h-2.5 rounded-full bg-white/25 transition-all duration-300 <?= $i === 0 ? 'w-8 !bg-accent' : 'w-2.5' ?>" aria-label="Show testimonial <?= $i + 1 ?>"></button>
+                    <button type="button" class="h-2.5 rounded-full bg-ink/15 transition-all duration-300 <?= $i === 0 ? 'w-8 !bg-accent' : 'w-2.5' ?>" aria-label="Show testimonial <?= $i + 1 ?>"></button>
                 <?php endforeach; ?>
             </div>
-            <button type="button" class="t-next grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white md:hidden" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+            <button type="button" class="t-next grid h-10 w-10 place-items-center rounded-full bg-ink/5 text-ink md:hidden" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </div>
 </section>
 
 <!-- ============ OUR LEGACY SINCE 1949 ============ -->
-<section class="overflow-hidden bg-surface" aria-labelledby="legacy-title">
+<section class="overflow-hidden bg-white" aria-labelledby="legacy-title">
     <div class="grid items-stretch lg:grid-cols-[38%_1fr]">
-        <!-- Founder photo, curved right edge (bleeds to the left edge of the screen) -->
         <div class="relative min-h-[320px]" data-animate="fade-right">
-            <div class="absolute inset-0 rounded-tr-[45%_100%] bg-primary/40 lg:-right-4"></div>
             <div class="absolute inset-0 overflow-hidden rounded-tr-[45%_100%]">
                 <?= photo('home/founder.jpg', 'Nasra Wazir Ali (S.I.), founder of Nasra School', 'h-full w-full object-[50%_30%] grayscale') ?>
             </div>
@@ -231,9 +260,9 @@ $stages = [
                 <a href="<?= base_url('about/history') ?>" class="btn btn-primary mt-8">Learn More About Our History <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
-            <figure class="max-w-xs border-primary/20 lg:border-l lg:pl-10" data-animate="fade-left" data-delay="150">
-                <i class="fa-solid fa-quote-left text-4xl text-primary"></i>
-                <blockquote class="mt-4 font-sans text-[1.375rem] font-light italic leading-[1.4] tracking-[-0.01em] text-primary-dark md:text-2xl">
+            <figure class="max-w-xs border-accent/40 lg:border-l-4 lg:border-l-accent lg:pl-10" data-animate="fade-left" data-delay="150">
+                <i class="fa-solid fa-quote-left text-4xl text-accent"></i>
+                <blockquote class="mt-4 font-sans text-[1.375rem] font-light italic leading-[1.4] tracking-[-0.01em] text-ink md:text-2xl">
                     Tolerance is the hallmark of an educated, elevated and enlightened mindset.
                 </blockquote>
                 <figcaption class="mt-5 text-sm text-muted">— Nasra School Guiding Principles</figcaption>
@@ -242,9 +271,9 @@ $stages = [
     </div>
 </section>
 
-<!-- ============ CTA ============ -->
-<section class="relative overflow-hidden bg-primary text-white">
-    <svg class="absolute left-0 top-0 h-12 w-full text-surface" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
+<!-- ============ CTA (single deep brand moment) ============ -->
+<section class="relative overflow-hidden bg-ink text-white">
+    <svg class="absolute left-0 top-0 h-12 w-full text-white" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
         <path fill="currentColor" d="M0 0h1440v10C1200 40 960 0 720 14S240 44 0 10z"/>
     </svg>
     <div class="container relative flex flex-col items-start gap-6 pb-14 pt-24 md:flex-row md:items-center md:justify-between" data-animate="fade-up">
@@ -252,6 +281,6 @@ $stages = [
             <h2 class="section-title !text-white">Be Part of the Nasra Story</h2>
             <p class="mt-3 font-script text-3xl text-accent">Rooted in Values, Ready for the Future</p>
         </div>
-        <a href="<?= base_url('admissions') ?>" class="btn btn-white !px-8 !py-4 text-base">View Admissions <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="<?= base_url('admissions') ?>" class="btn btn-accent !px-8 !py-4 text-base">View Admissions <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 </section>

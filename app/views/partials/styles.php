@@ -45,6 +45,9 @@
         .btn-white {
             @apply bg-white text-primary shadow-md hover:bg-accent hover:text-primary-dark;
         }
+        .btn-accent {
+            @apply bg-accent text-primary-dark hover:bg-accent-dark;
+        }
 
         .nav-link {
             @apply relative py-2 text-sm font-semibold text-ink/80 transition hover:text-primary;
@@ -66,6 +69,9 @@
         .brush-word::before {
             content: '';
             @apply absolute inset-x-0 bottom-[0.15em] -z-10 h-[0.55em] -skew-x-3 rounded-sm bg-accent;
+        }
+        .brush-word-light {
+            @apply text-white;
         }
     }
 </style>

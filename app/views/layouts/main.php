@@ -69,8 +69,10 @@ $schema = [
 
     <!-- Above-the-fold assets first -->
     <link rel="preload" as="image" href="<?= asset('images/branding/logo.webp') ?>" type="image/webp">
-    <?php if ($isHome && is_file(PUBLIC_PATH . '/assets/images/home/hero-2.jpg')): ?>
-        <link rel="preload" as="image" href="<?= asset('images/home/hero-2.jpg') ?>" fetchpriority="high">
+    <?php if ($isHome && is_file(PUBLIC_PATH . '/assets/images/home/hero-banner.jpg')): ?>
+        <link rel="preload" as="image" href="<?= asset('images/home/hero-banner.jpg') ?>" fetchpriority="high">
+    <?php elseif ($isHome && is_file(PUBLIC_PATH . '/assets/images/home/hero.jpg')): ?>
+        <link rel="preload" as="image" href="<?= asset('images/home/hero.jpg') ?>" fetchpriority="high">
     <?php endif; ?>
 
     <!-- Fonts (non-blocking) -->
