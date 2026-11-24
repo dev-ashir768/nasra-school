@@ -37,4 +37,11 @@ return [
         'youtube'   => 'https://www.youtube.com/channel/UCxLEtU78o1nbuMguIKi9pPg/featured',
         'whatsapp'  => 'https://wa.me/922132361313',
     ],
+
+    // Homepage video — local file wins if present, else YouTube
+    'video' => [
+        'youtube_id' => '3G0XLEaSd2o', // from nasraschool.edu.pk
+        'local'      => 'videos/campus.mp4',
+        'poster'     => 'home/hero-banner.jpg',
+    ],
 ];

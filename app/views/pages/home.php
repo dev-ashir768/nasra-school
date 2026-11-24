@@ -180,6 +180,48 @@ $legacyPillars = [
     </div>
 </section>
 
+<!-- ============ VIDEO / EXPERIENCE ============ -->
+<?php
+$videoCfg    = config('video') ?: [];
+$videoLocal  = $videoCfg['local'] ?? 'videos/campus.mp4';
+$videoPoster = $videoCfg['poster'] ?? 'home/hero-banner.jpg';
+$youtubeId   = $videoCfg['youtube_id'] ?? '';
+$hasLocalVideo = is_file(PUBLIC_PATH . '/assets/' . ltrim($videoLocal, '/'));
+?>
+<section class="video-section relative overflow-hidden py-20 lg:py-28" aria-labelledby="video-title">
+    <div class="container relative">
+        <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
+            <p class="eyebrow justify-center">Experience Nasra</p>
+            <h2 id="video-title" class="section-title mt-4">Life at Nasra School</h2>
+            <p class="lead mt-4">A glimpse of our campuses, classrooms and community — where values and ambition grow together.</p>
+        </div>
+
+        <div
+            class="video-player relative mx-auto mt-12 max-w-5xl overflow-hidden rounded-2xl bg-ink"
+            data-video-player
+            <?php if ($hasLocalVideo): ?>
+                data-video-src="<?= e(asset($videoLocal)) ?>"
+            <?php elseif ($youtubeId): ?>
+                data-youtube="<?= e($youtubeId) ?>"
+            <?php endif; ?>
+            data-animate="fade-up"
+            data-delay="100"
+        >
+            <div class="video-player__media aspect-video">
+                <?= photo($videoPoster, 'Students and campus life at Nasra School', 'video-player__poster h-full w-full') ?>
+                <div class="video-player__scrim" aria-hidden="true"></div>
+            </div>
+
+            <button type="button" class="video-player__play" aria-label="Play video">
+                <span class="video-player__play-ring" aria-hidden="true"></span>
+                <i class="fa-solid fa-play" aria-hidden="true"></i>
+            </button>
+
+            <p class="video-player__caption font-script">Rooted in Values, Ready for the Future</p>
+        </div>
+    </div>
+</section>
+
 <!-- ============ ACADEMIC PATHWAYS ============ -->
 <section class="academics-section relative overflow-hidden py-20 lg:py-24">
     <div class="pointer-events-none absolute inset-0" aria-hidden="true">

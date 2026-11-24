@@ -300,6 +300,48 @@ $(function () {
         $btn.attr('aria-expanded', willOpen).next('.drawer-sub').toggleClass('is-open', willOpen);
     });
 
+    // ---------- Homepage video player ----------
+    $('[data-video-player]').each(function () {
+        const $root = $(this);
+        const $btn = $root.find('.video-player__play');
+        const youtube = $root.data('youtube');
+        const src = $root.data('video-src');
+        let started = false;
+
+        function start() {
+            if (started) return;
+            started = true;
+            const $media = $root.find('.video-player__media');
+
+            if (src) {
+                const $video = $('<video class="video-player__video" controls playsinline autoplay></video>');
+                $video.append($('<source>').attr({ src: src, type: 'video/mp4' }));
+                $media.append($video);
+                $video[0].play().catch(function () {});
+            } else if (youtube) {
+                const embed = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(youtube)
+                    + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                $media.append(
+                    $('<iframe class="video-player__embed" title="Nasra School video" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture">')
+                        .attr('src', embed)
+                );
+            } else {
+                started = false;
+                return;
+            }
+
+            $root.addClass('is-playing');
+        }
+
+        $btn.on('click', start);
+        $root.on('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                start();
+            }
+        });
+    });
+
     // ---------- Contact form via AJAX ----------
     $('#contact-form').on('submit', function (e) {
         e.preventDefault();
