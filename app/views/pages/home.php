@@ -5,7 +5,7 @@ $heroSlides = [
     ['home/hero-banner-02.jpg',        'Nasra School students on campus'],
     ['home/hero-banner-03.jpg',    'Nasra School students on campus'],
     ['home/hero-banner-05.jpg',      'Nasra School students on campus'],
-    ['home/hero-banner-05.jpg',    'Nasra School students on campus'],
+    ['home/hero-banner-06.jpg',    'Nasra School students on campus'],
 ];
 
 // From nasraschool.edu.pk — The Nasra Difference
