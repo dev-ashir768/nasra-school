@@ -120,5 +120,6 @@ $schema = [
             crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
     <script defer src="<?= asset('js/app.js') ?>"></script>
+    <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>

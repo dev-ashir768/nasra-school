@@ -300,6 +300,20 @@ $(function () {
         $btn.attr('aria-expanded', willOpen).next('.drawer-sub').toggleClass('is-open', willOpen);
     });
 
+    // ---------- Instagram embeds (re-process after async script) ----------
+    function processInstagramEmbeds() {
+        if (window.instgrm && window.instgrm.Embeds && typeof window.instgrm.Embeds.process === 'function') {
+            window.instgrm.Embeds.process();
+        }
+    }
+    processInstagramEmbeds();
+    // embed.js may load after app.js — retry briefly
+    let igTries = 0;
+    const igTimer = setInterval(function () {
+        processInstagramEmbeds();
+        if ((window.instgrm && window.instgrm.Embeds) || ++igTries > 20) clearInterval(igTimer);
+    }, 300);
+
     // ---------- Homepage video player ----------
     $('[data-video-player]').each(function () {
         const $root = $(this);

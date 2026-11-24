@@ -222,6 +222,56 @@ $hasLocalVideo = is_file(PUBLIC_PATH . '/assets/' . ltrim($videoLocal, '/'));
     </div>
 </section>
 
+<!-- ============ INSTAGRAM ============ -->
+<?php
+$igFeed    = config('instagram_feed') ?: [];
+$igHandle  = ltrim((string) ($igFeed['handle'] ?? 'nasraschools'), '@');
+$igPosts   = array_values(array_filter($igFeed['posts'] ?? []));
+$igProfile = config('social.instagram') ?: ('https://www.instagram.com/' . $igHandle . '/');
+?>
+<?php if ($igPosts): ?>
+<section class="instagram-section relative overflow-hidden py-20 lg:py-28" aria-labelledby="instagram-title">
+    <div class="container relative">
+        <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end" data-animate="fade-up">
+            <div>
+                <p class="eyebrow">
+                    <i class="fa-brands fa-instagram text-base" aria-hidden="true"></i>
+                    Instagram
+                </p>
+                <h2 id="instagram-title" class="section-title mt-4">@<?= e($igHandle) ?></h2>
+                <p class="lead mt-3 max-w-xl">Moments from our campuses, classrooms and community — follow Nasra for daily life at ETNS.</p>
+            </div>
+            <a href="<?= e($igProfile) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary shrink-0">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                Follow on Instagram
+            </a>
+        </div>
+
+        <div class="instagram-embeds mt-12" data-animate="fade-up" data-delay="80">
+            <?php foreach ($igPosts as $permalink): ?>
+                <?php
+                $permalink = trim((string) $permalink);
+                if ($permalink === '') continue;
+                // Normalize to clean permalink (strip query/utm)
+                $permalink = strtok($permalink, '?') ?: $permalink;
+                $permalink = rtrim($permalink, '/') . '/';
+                ?>
+                <div class="instagram-embeds__item">
+                    <blockquote
+                        class="instagram-media"
+                        data-instgrm-permalink="<?= e($permalink) ?>"
+                        data-instgrm-version="14"
+                        data-instgrm-captioned
+                    >
+                        <a href="<?= e($permalink) ?>" target="_blank" rel="noopener noreferrer">View this post on Instagram</a>
+                    </blockquote>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
 <!-- ============ ACADEMIC PATHWAYS ============ -->
 <section class="academics-section relative overflow-hidden py-20 lg:py-24">
     <div class="pointer-events-none absolute inset-0" aria-hidden="true">

@@ -44,4 +44,16 @@ return [
         'local'      => 'videos/campus.mp4',
         'poster'     => 'home/hero-banner.jpg',
     ],
+
+    // Homepage Instagram embeds — paste post permalinks (Share → Embed / Copy link)
+    'instagram_feed' => [
+        'handle' => 'nasraschools',
+        'posts'  => [
+            'https://www.instagram.com/p/Dfok-oxnGqu/',
+            'https://www.instagram.com/reel/DfrfOOTj_QW/',
+            'https://www.instagram.com/p/DgFU0XKFs2x/',
+            'https://www.instagram.com/reel/Df4b8kCjr1n/',
+            'https://www.instagram.com/p/De1TtdLCXBR/',
+        ],
+    ],
 ];
