@@ -159,6 +159,97 @@ html.drawer-open { overflow: hidden; }
 .btn .fa-arrow-right { transition: transform .3s ease; }
 .btn:hover .fa-arrow-right { transform: translateX(4px); }
 
+/* ---------- Academics pathways ---------- */
+.academics-section {
+    background: linear-gradient(180deg, #F6F7F9 0%, #ECEFF2 55%, #F6F7F9 100%);
+}
+.stage-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    border: 0;
+    box-shadow: none;
+    background: linear-gradient(165deg, #F3F5F7 0%, #E6E9ED 100%);
+    transition: transform .35s ease, background .35s ease;
+}
+.stage-card:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(165deg, #F7F8FA 0%, #EBEEF2 100%);
+}
+.stage-card__media {
+    position: relative;
+    aspect-ratio: 5 / 4;
+    overflow: hidden;
+}
+.stage-card__media img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform .7s ease;
+}
+.stage-card:hover .stage-card__media img {
+    transform: scale(1.06);
+}
+.stage-card__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(17, 17, 17, .55) 100%);
+    opacity: .85;
+    transition: opacity .35s ease;
+}
+.stage-card:hover .stage-card__veil { opacity: 1; }
+.stage-card__num {
+    position: absolute;
+    left: 1rem;
+    bottom: 0.85rem;
+    z-index: 1;
+    font-family: Montserrat, ui-sans-serif, system-ui, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .25);
+}
+.stage-card__body {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1.1rem 1.15rem 1.25rem;
+}
+.stage-card__icon {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    border-radius: 999px;
+    border: 0;
+    box-shadow: none;
+    background: linear-gradient(135deg, #FFCC00, #F0D96A);
+    color: #00331A;
+    font-size: 0.9rem;
+}
+.stage-card__go {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .55);
+    color: #111;
+    font-size: 0.7rem;
+    transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+.stage-card:hover .stage-card__go {
+    background: #FFCC00;
+    color: #00331A;
+    transform: translateX(3px);
+}
+
 /* ---------- The Nasra Difference ---------- */
 .difference-section {
     background: linear-gradient(165deg, #F7F8F9 0%, #EEF2F0 42%, #F5F1E6 100%);

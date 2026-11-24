@@ -27,10 +27,10 @@ $testimonials = [
 ];
 
 $stages = [
-    ['Pre-Primary',      'fa-child-reaching', 'pre-primary'],
-    ['Primary',          'fa-graduation-cap', 'primary'],
-    ['Secondary',        'fa-book-open',      'secondary'],
-    ['Higher Secondary', 'fa-user-graduate',  'higher-secondary'],
+    ['01', 'Pre-Primary',      'fa-child-reaching', 'pre-primary',      'Play-based beginnings that build curiosity, confidence and care.'],
+    ['02', 'Primary',          'fa-graduation-cap', 'primary',          'Strong foundations in literacy, numeracy and character.'],
+    ['03', 'Secondary',        'fa-book-open',      'secondary',        'Concept-driven learning with leadership and expression.'],
+    ['04', 'Higher Secondary', 'fa-user-graduate',  'higher-secondary', 'College-ready pathways with purpose and ambition.'],
 ];
 ?>
 
@@ -181,26 +181,33 @@ $legacyPillars = [
 </section>
 
 <!-- ============ ACADEMIC PATHWAYS ============ -->
-<section class="bg-[#F3F4F6] py-20 lg:py-24">
-    <div class="container">
-        <div class="text-center" data-animate="fade-up">
-            <p class="eyebrow">Academics</p>
+<section class="academics-section relative overflow-hidden py-20 lg:py-24">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute left-1/2 top-0 h-px w-40 -translate-x-1/2 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
+    </div>
+
+    <div class="container relative">
+        <div class="mx-auto max-w-2xl text-center" data-animate="fade-up">
+            <p class="eyebrow justify-center">Academics</p>
             <h2 class="section-title mt-4">Learning for Every Stage</h2>
             <p class="lead mx-auto mt-4 max-w-2xl">From pre-primary through higher secondary — balanced learning, character building, and pathways that prepare students for life beyond Nasra.</p>
         </div>
 
-        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            <?php foreach ($stages as $i => [$label, $icon, $slug]): ?>
-                <a href="<?= base_url('academics/' . $slug) ?>" class="group overflow-hidden rounded-2xl bg-gradient-to-b from-[#F1F3F5] to-[#E5E8EC] transition duration-300 hover:-translate-y-1"
-                   data-animate="fade-up" data-delay="<?= $i * 120 ?>">
-                    <div class="overflow-hidden">
-                        <?= photo("home/{$slug}.jpg", "{$label} students at Nasra School", 'aspect-[16/10] w-full transition duration-700 group-hover:scale-105') ?>
+        <div class="mt-14 grid gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
+            <?php foreach ($stages as $i => [$num, $label, $icon, $slug, $blurb]): ?>
+                <a href="<?= base_url('academics/' . $slug) ?>" class="stage-card group" data-animate="fade-up" data-delay="<?= $i * 100 ?>">
+                    <div class="stage-card__media">
+                        <?= photo("home/{$slug}.jpg", "{$label} students at Nasra School", 'h-full w-full') ?>
+                        <div class="stage-card__veil" aria-hidden="true"></div>
+                        <span class="stage-card__num"><?= e($num) ?></span>
                     </div>
-                    <div class="h-1 w-full bg-gradient-to-r from-accent to-primary"></div>
-                    <div class="flex items-center gap-3 px-5 py-4">
-                        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-accent to-[#F5E6A3] text-primary"><i class="fa-solid <?= $icon ?>"></i></span>
-                        <span class="card-title flex-1"><?= e($label) ?></span>
-                        <span class="grid h-8 w-8 place-items-center rounded-full bg-white/70 text-xs text-ink transition group-hover:bg-accent group-hover:text-primary-dark"><i class="fa-solid fa-arrow-right"></i></span>
+                    <div class="stage-card__body">
+                        <span class="stage-card__icon"><i class="fa-solid <?= $icon ?>"></i></span>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="font-display text-base font-bold text-primary"><?= e($label) ?></h3>
+                            <p class="mt-1 text-xs leading-relaxed text-muted"><?= e($blurb) ?></p>
+                        </div>
+                        <span class="stage-card__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </a>
             <?php endforeach; ?>
