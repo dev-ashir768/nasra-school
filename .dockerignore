@@ -1,0 +1,6 @@
+.git
+.gitignore
+design
+README.md
+storage/logs/*
+!storage/logs/.gitkeep
