@@ -292,8 +292,8 @@ $(function () {
         }
     });
 
-    // Close if the screen grows to desktop width while open
-    window.matchMedia('(min-width: 1024px)').addEventListener('change', function (e) {
+    // Close if the screen grows to desktop nav width while open
+    window.matchMedia('(min-width: 1280px)').addEventListener('change', function (e) {
         if (e.matches) closeDrawer();
     });
 

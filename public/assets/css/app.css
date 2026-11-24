@@ -47,7 +47,8 @@ html {
 
 /* ---------- Header on scroll ---------- */
 #site-header.is-scrolled { box-shadow: 0 8px 30px -12px rgba(0, 51, 26, .25); }
-#site-header.is-scrolled #site-logo { width: 3rem; height: 3rem; }
+#site-header.is-scrolled #site-logo { width: 2.75rem; height: 2.75rem; }
+#site-header.is-scrolled .site-topbar { display: none; }
 
 /* ---------- Hamburger (morphs into an X) ---------- */
 .burger {
